@@ -1,0 +1,15 @@
+[project]
+name = "minerva-dataset-pipeline"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "pydantic>=2.12.5",
+    "pyarrow>=20.0.0",
+    "litellm>=1.81.15",
+    "pytest>=9.0.2",
+    "datasets>=4.5.0",
+    "datasketch>=1.9.0",
+]

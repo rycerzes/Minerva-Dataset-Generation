@@ -1,0 +1,55 @@
+{
+  "splits": {
+    "train": {
+      "samples": 28476,
+      "unique_licenses": 3015,
+      "by_source": {
+        "scancode": 19285,
+        "synthetic": 6923,
+        "fossology": 2268
+      },
+      "labels_not_in_train": 0
+    },
+    "validation": {
+      "samples": 3996,
+      "unique_licenses": 2625,
+      "by_source": {
+        "scancode": 2756,
+        "synthetic": 925,
+        "fossology": 315
+      },
+      "labels_not_in_train": 0
+    },
+    "test": {
+      "samples": 4086,
+      "unique_licenses": 2768,
+      "by_source": {
+        "scancode": 2772,
+        "synthetic": 988,
+        "fossology": 326
+      },
+      "labels_not_in_train": 0
+    }
+  },
+  "split_policy": {
+    "train_ratio": 0.8,
+    "validation_ratio": 0.1,
+    "test_ratio": 0.09999999999999995,
+    "per_license": true,
+    "singleton_labels": "train_only",
+    "two_sample_labels": "train_plus_test_when_test_split_exists"
+  },
+  "total_samples": 36558,
+  "total_unique_licenses": 3015,
+  "by_source": {
+    "scancode": 24813,
+    "synthetic": 8836,
+    "fossology": 2909
+  },
+  "classes_with_1_sample": 247,
+  "classes_with_le_3_samples": 491,
+  "classes_with_le_5_samples": 893,
+  "manual_final_synthetic_cleanup": {
+    "dropped_short_synthetic_after_cleanup": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "label": {
+      "names": [
+        "license_related",
+        "not_license_related"
+      ],
+      "_type": "ClassLabel"
+    },
+    "source": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "negative_type": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

@@ -11,22 +11,22 @@
       "labels_not_in_train": 0
     },
     "validation": {
-      "samples": 3996,
-      "unique_licenses": 2625,
+      "samples": 2207,
+      "unique_licenses": 1659,
       "by_source": {
-        "scancode": 2756,
-        "synthetic": 925,
-        "fossology": 315
+        "scancode": 1472,
+        "fossology": 126,
+        "synthetic": 609
       },
       "labels_not_in_train": 0
     },
     "test": {
-      "samples": 4086,
-      "unique_licenses": 2768,
+      "samples": 2226,
+      "unique_licenses": 1695,
       "by_source": {
-        "scancode": 2772,
-        "synthetic": 988,
-        "fossology": 326
+        "scancode": 1436,
+        "synthetic": 676,
+        "fossology": 114
       },
       "labels_not_in_train": 0
     }
@@ -34,22 +34,28 @@
   "split_policy": {
     "train_ratio": 0.8,
     "validation_ratio": 0.1,
-    "test_ratio": 0.09999999999999995,
+    "test_ratio": 0.1,
     "per_license": true,
     "singleton_labels": "train_only",
     "two_sample_labels": "train_plus_test_when_test_split_exists"
   },
-  "total_samples": 36558,
+  "total_samples": 32909,
   "total_unique_licenses": 3015,
   "by_source": {
-    "scancode": 24813,
-    "synthetic": 8836,
-    "fossology": 2909
+    "scancode": 22193,
+    "synthetic": 8208,
+    "fossology": 2508
   },
-  "classes_with_1_sample": 247,
-  "classes_with_le_3_samples": 491,
-  "classes_with_le_5_samples": 893,
-  "manual_final_synthetic_cleanup": {
-    "dropped_short_synthetic_after_cleanup": 1
+  "classes_with_1_sample": 336,
+  "classes_with_le_3_samples": 667,
+  "classes_with_le_5_samples": 1010,
+  "cross_split_dedup": {
+    "method": "MinHashLSH char-3gram, threshold 0.8 (matches src/utils.py)",
+    "policy": "no fragment text appears in >1 split; train kept whole, leaked val/test rows dropped",
+    "dropped": {
+      "validation": 1789,
+      "test": 1860
+    },
+    "script": "fix_atarashi_leakage.py --near"
   }
 }

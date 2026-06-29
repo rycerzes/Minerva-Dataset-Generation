@@ -13,7 +13,8 @@ from builder.hybrid_merge import (
     HybridMerger,
     save_hybrid_dataset,
 )
-from builder.augmented_merge import AugmentedMerger, AugmentedMergerConfig
+from builder.augmented_merge import AugmentedMerger, AugmentedMergerConfig, NirjasSample
+from fetchers.shortform_license import generate_shortform_positives
 from exporter.dataset_export import DatasetExporter, ExportConfig
 from augmentation.legal_structure_splitter import LegalStructureSplitter
 from augmentation.llm_synthetic import SurgicalLLMInjector
@@ -241,6 +242,16 @@ def run_pipeline(
         nirjas_balanced=nirjas_balanced,
     )
     aug_merger.print_statistics(atarashi_samples, nirjas_samples)
+
+    # Inject short-form license positives (SPDX tags, one-line references) so the
+    # classifier doesn't learn "license = long prose" and silently drop SPDX-tagged
+    # files before Atarashi. Deterministic templates over known license IDs; no LLM.
+    sf_texts = generate_shortform_positives(sorted({e.license_key for e in dataset}))
+    nirjas_samples = nirjas_samples + [
+        NirjasSample(text=t, label="license_related", source="shortform", negative_type=None)
+        for t in sf_texts
+    ]
+    print(f"  Injected {len(sf_texts):,} short-form license positives into Nirjas pool")
 
     step = total_steps
     print(f"\n[{step}/{total_steps}] Exporting HF datasets...")

@@ -1,32 +1,32 @@
 {
   "splits": {
     "train": {
-      "samples": 28476,
+      "samples": 28574,
       "unique_licenses": 3015,
       "by_source": {
-        "scancode": 19285,
-        "synthetic": 6923,
-        "fossology": 2268
+        "fossology": 2338,
+        "scancode": 19873,
+        "synthetic": 6363
       },
       "labels_not_in_train": 0
     },
     "validation": {
-      "samples": 2207,
-      "unique_licenses": 1659,
+      "samples": 3648,
+      "unique_licenses": 1780,
       "by_source": {
-        "scancode": 1472,
-        "fossology": 126,
-        "synthetic": 609
+        "fossology": 264,
+        "scancode": 2522,
+        "synthetic": 862
       },
       "labels_not_in_train": 0
     },
     "test": {
-      "samples": 2226,
-      "unique_licenses": 1695,
+      "samples": 3574,
+      "unique_licenses": 1754,
       "by_source": {
-        "scancode": 1436,
-        "synthetic": 676,
-        "fossology": 114
+        "fossology": 310,
+        "scancode": 2443,
+        "synthetic": 821
       },
       "labels_not_in_train": 0
     }
@@ -34,28 +34,19 @@
   "split_policy": {
     "train_ratio": 0.8,
     "validation_ratio": 0.1,
-    "test_ratio": 0.1,
+    "test_ratio": 0.09999999999999995,
     "per_license": true,
-    "singleton_labels": "train_only",
-    "two_sample_labels": "train_plus_test_when_test_split_exists"
+    "assignment": "content_hash_frozen",
+    "learnability_guard": "license_kept_in_train_if_no_train_sample"
   },
-  "total_samples": 32909,
+  "total_samples": 35796,
   "total_unique_licenses": 3015,
   "by_source": {
-    "scancode": 22193,
-    "synthetic": 8208,
-    "fossology": 2508
+    "fossology": 2912,
+    "scancode": 24838,
+    "synthetic": 8046
   },
-  "classes_with_1_sample": 336,
-  "classes_with_le_3_samples": 667,
-  "classes_with_le_5_samples": 1010,
-  "cross_split_dedup": {
-    "method": "MinHashLSH char-3gram, threshold 0.8 (matches src/utils.py)",
-    "policy": "no fragment text appears in >1 split; train kept whole, leaked val/test rows dropped",
-    "dropped": {
-      "validation": 1789,
-      "test": 1860
-    },
-    "script": "fix_atarashi_leakage.py --near"
-  }
+  "classes_with_1_sample": 247,
+  "classes_with_le_3_samples": 490,
+  "classes_with_le_5_samples": 912
 }

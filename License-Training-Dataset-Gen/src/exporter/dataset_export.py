@@ -23,9 +23,9 @@ Exports
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
-import random
 from collections import defaultdict
 from pathlib import Path
 from typing import Optional
@@ -42,6 +42,25 @@ except ImportError:  # pragma: no cover — direct-script execution
     from builder.augmented_merge import AtarashiSample, NirjasSample
 
 logger = logging.getLogger(__name__)
+
+
+def _split_of(text: str, val_ratio: float, test_ratio: float) -> str:
+    """Assign a split from the text's content hash — deterministic and frozen.
+
+    A sample's split is a pure function of its text, so the same text always
+    lands in the same split no matter what else is in the pool. This keeps the
+    test set stable across pipeline re-runs (benchmark numbers stay comparable)
+    and prevents identical/upsampled duplicate texts from leaking across the
+    train/test boundary. Stratification is preserved statistically: the hash is
+    uniform and independent of label/license, so each group splits at the same
+    ratios over any reasonably sized pool.
+    """
+    h = int(hashlib.md5(text.encode("utf-8")).hexdigest(), 16) / (1 << 128)
+    if h < test_ratio:
+        return "test"
+    if h < test_ratio + val_ratio:
+        return "validation"
+    return "train"
 
 
 # Configuration
@@ -184,7 +203,6 @@ class DatasetExporter:
             )
             return DatasetDict({"train": ds})
 
-        rng = random.Random(self.config.random_seed)
         by_key: dict[str, list[AtarashiSample]] = defaultdict(list)
         for sample in samples:
             by_key[sample.license_key].append(sample)
@@ -196,46 +214,23 @@ class DatasetExporter:
         test_ratio = self._test_split_ratio
 
         for group in by_key.values():
-            group = list(group)
-            rng.shuffle(group)
-            n = len(group)
+            # Content-hash split (frozen across re-runs), applied per license so
+            # the learnability guard below can run on each class independently.
+            g_train, g_val, g_test = [], [], []
+            g_buckets = {"train": g_train, "validation": g_val, "test": g_test}
+            for sample in group:
+                g_buckets[_split_of(sample.text, val_ratio, test_ratio)].append(sample)
 
-            if n == 1 or (val_ratio <= 0.0 and test_ratio <= 0.0):
+            # Every validation/test label must be seen in train, else its
+            # metrics are impossible. If the hash left this license with no
+            # train sample, fold everything back into train.
+            if not g_train:
                 train.extend(group)
                 continue
 
-            if n == 2:
-                # Keep the label learnable. Prefer a test example for the
-                # two-sample case; validation metrics should focus on labels
-                # with >=3 samples.
-                train.append(group[0])
-                if test_ratio > 0.0:
-                    test.append(group[1])
-                elif val_ratio > 0.0:
-                    validation.append(group[1])
-                else:
-                    train.append(group[1])
-                continue
-
-            n_val = max(1, round(n * val_ratio)) if val_ratio > 0.0 else 0
-            n_test = max(1, round(n * test_ratio)) if test_ratio > 0.0 else 0
-
-            # Always leave at least one training sample.
-            while n_val + n_test > n - 1:
-                if n_val >= n_test and n_val > 0:
-                    n_val -= 1
-                elif n_test > 0:
-                    n_test -= 1
-                else:
-                    break
-
-            validation.extend(group[:n_val])
-            test.extend(group[n_val : n_val + n_test])
-            train.extend(group[n_val + n_test :])
-
-        rng.shuffle(train)
-        rng.shuffle(validation)
-        rng.shuffle(test)
+            train.extend(g_train)
+            validation.extend(g_val)
+            test.extend(g_test)
 
         result = DatasetDict(
             {
@@ -285,39 +280,15 @@ class DatasetExporter:
             )
             return DatasetDict({"train": ds})
 
-        rng = random.Random(self.config.random_seed)
         val_ratio = self.config.validation_split_ratio
         test_ratio = self._test_split_ratio
-
-        by_label: dict[str, list[NirjasSample]] = defaultdict(list)
-        for sample in samples:
-            by_label[sample.label].append(sample)
 
         train: list[NirjasSample] = []
         validation: list[NirjasSample] = []
         test: list[NirjasSample] = []
-
-        for group in by_label.values():
-            group = list(group)
-            rng.shuffle(group)
-            n = len(group)
-            if val_ratio <= 0.0 and test_ratio <= 0.0:
-                train.extend(group)
-                continue
-
-            n_val = round(n * val_ratio) if val_ratio > 0.0 else 0
-            n_test = round(n * test_ratio) if test_ratio > 0.0 else 0
-            if n_val + n_test > n:
-                overflow = n_val + n_test - n
-                n_test = max(0, n_test - overflow)
-
-            validation.extend(group[:n_val])
-            test.extend(group[n_val : n_val + n_test])
-            train.extend(group[n_val + n_test :])
-
-        rng.shuffle(train)
-        rng.shuffle(validation)
-        rng.shuffle(test)
+        buckets = {"train": train, "validation": validation, "test": test}
+        for sample in samples:
+            buckets[_split_of(sample.text, val_ratio, test_ratio)].append(sample)
 
         result = DatasetDict(
             {
@@ -375,8 +346,8 @@ class DatasetExporter:
             "validation_ratio": self.config.validation_split_ratio,
             "test_ratio": self._test_split_ratio,
             "per_license": True,
-            "singleton_labels": "train_only",
-            "two_sample_labels": "train_plus_test_when_test_split_exists",
+            "assignment": "content_hash_frozen",
+            "learnability_guard": "license_kept_in_train_if_no_train_sample",
         }
         stats["total_samples"] = total
         stats["total_unique_licenses"] = len(all_keys)
@@ -433,6 +404,7 @@ class DatasetExporter:
             "validation_ratio": self.config.validation_split_ratio,
             "test_ratio": self._test_split_ratio,
             "stratify_by": "label",
+            "assignment": "content_hash_frozen",
         }
         stats["total_samples"] = total
         stats["by_label"] = label_counts

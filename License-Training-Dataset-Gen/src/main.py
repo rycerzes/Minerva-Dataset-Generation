@@ -26,6 +26,8 @@ from augmentation.rare_license_augmenter import (
     RareLicenseAugmenterConfig,
 )
 from fetchers.code_comments import CodeCommentFetcher
+from fetchers.attribution_noise import generate_attribution_negatives
+from utils import dedup_near_duplicates
 
 logger = logging.getLogger(__name__)
 
@@ -62,6 +64,7 @@ def run_pipeline(
     max_nirjas_samples: int | None = None,
     rare_license_threshold: int = 5,
     rare_license_augment_count: int = 5,
+    attribution_noise_count: int = 4000,
 ) -> dict:
     total_steps = 10 if enable_llm else 7
 
@@ -202,6 +205,14 @@ def run_pipeline(
             cs = neg_stats["cache"]
             print(f"  Cache hits/misses:    {cs['hits']}/{cs['misses']}")
 
+        # Intra-set near-dedup: LLM generates per-license so identical templates
+        # can cluster. One pass before balancing removes them.
+        if hard_negatives:
+            keep = dedup_near_duplicates([hn.text for hn in hard_negatives])
+            n_dropped = len(hard_negatives) - len(keep)
+            hard_negatives = [hard_negatives[i] for i in keep]
+            print(f"  Near-dedup:           {n_dropped:,} removed → {len(hard_negatives):,} remain")
+
     step = total_steps - 2
     if code_comments_limit > 0:
         print(
@@ -210,6 +221,12 @@ def run_pipeline(
         comment_fetcher = CodeCommentFetcher(cache_dir=cache_dir)
         code_comments = comment_fetcher.fetch(max_samples=code_comments_limit)
         print(f"  Fetched {len(code_comments):,} clean non-license code comments")
+        # Targeted hard negatives for the attribution/credit/docstring register —
+        # potion-32M's gcc false positives (see attribution_noise.py). LLM-free.
+        if attribution_noise_count > 0:
+            attr_neg = generate_attribution_negatives(n=attribution_noise_count)
+            code_comments = code_comments + attr_neg
+            print(f"  + {len(attr_neg):,} synthetic attribution-register hard negatives")
     else:
         print(
             f"\n[{step}/{total_steps}] Skipping code comments (--code-comments-limit 0)"
@@ -427,6 +444,17 @@ def main():
             "(default: 5). Results are cached so re-runs are free."
         ),
     )
+    parser.add_argument(
+        "--attribution-noise-count",
+        type=int,
+        default=4000,
+        help=(
+            "Number of synthetic attribution-register hard negatives (author "
+            "tags, credit lines, docstrings, URL comments) to add to the "
+            "not_license_related class (default: 4000). These target the "
+            "generic_code_comment false-positive register. Set 0 to disable."
+        ),
+    )
 
     args = parser.parse_args()
 
@@ -448,6 +476,7 @@ def main():
         max_nirjas_samples=args.max_nirjas_samples,
         rare_license_threshold=args.rare_license_threshold,
         rare_license_augment_count=args.rare_license_augment_count,
+        attribution_noise_count=args.attribution_noise_count,
     )
 
 

@@ -61,6 +61,31 @@ class LegalStructureSplitter:
     def __init__(self, config: Optional[SplitterConfig] = None):
         self.config = config or SplitterConfig()
 
+    @staticmethod
+    def _is_junk_fragment(text: str) -> bool:
+        """True for sliding-window artifacts that shouldn't be labelled license text.
+
+        Error-mining Nirjas false negatives showed the recall gap is mostly the
+        splitter emitting garbage positives: ruler lines (``----*/``), form-field
+        stubs (``Date:``, ``Email Address: Phone Number:``), and tiny mid-word
+        cuts. The model is right to reject those; they're label noise. ponytail:
+        conservative heuristics — anything with real prose passes.
+        """
+        t = text.strip()
+        if not t:
+            return True
+        letters = sum(c.isalpha() for c in t)
+        if letters < 20:
+            return True  # tiny cuts, ruler lines, "Date:"
+        if letters / len(t) < 0.5:
+            return True  # punctuation/ruler heavy
+        if len(re.findall(r"[A-Za-z]{2,}", t)) < 4:
+            return True  # stubs
+        # colon-heavy label:value forms with no sentence structure (form fields)
+        if len(t) < 120 and t.count(":") >= 2 and not any(p in t for p in ".!?"):
+            return True
+        return False
+
     def _extract_placeholders(self, text: str) -> list[str]:
         placeholders: list[str] = []
         for pattern in LEGAL_PLACEHOLDER_PATTERNS:
@@ -120,6 +145,8 @@ class LegalStructureSplitter:
         overlap = self.config.overlap_tokens
 
         if text_length <= max_size:
+            if self._is_junk_fragment(text):
+                return []
             placeholders = []
             if self.config.extract_placeholders:
                 placeholders = self._extract_placeholders(text)
@@ -154,27 +181,41 @@ class LegalStructureSplitter:
             else:
                 current_end = hard_end
 
-            fragment_text = text[current_start:current_end]
-            placeholders = []
-            if self.config.extract_placeholders:
-                placeholders = self._extract_placeholders(fragment_text)
+            # Snap the display slice off mid-word cuts (the overlap start and
+            # the hard-limit end often land inside a word → "h Labs...", "ution.").
+            # Advancing still uses current_end, so overlap logic is untouched.
+            frag_start, frag_end = current_start, current_end
+            if frag_start > 0 and text[frag_start - 1].isalnum() and text[frag_start].isalnum():
+                sp = text.find(" ", frag_start, frag_end)
+                if sp != -1:
+                    frag_start = sp + 1
+            if frag_end < text_length and text[frag_end - 1].isalnum() and text[frag_end].isalnum():
+                sp = text.rfind(" ", frag_start, frag_end)
+                if sp != -1:
+                    frag_end = sp
 
-            total_estimate = max(1, (text_length // max(1, max_size - overlap)) + 1)
+            fragment_text = text[frag_start:frag_end].strip()
 
-            fragments.append(
-                SplitFragment(
-                    license_key=license_key,
-                    fragment_text=fragment_text,
-                    start_position=current_start,
-                    end_position=current_end,
-                    fragment_index=fragment_index,
-                    total_fragments=total_estimate,
-                    source=source,
-                    placeholders=placeholders,
-                    is_first=(fragment_index == 0),
-                    is_last=(current_end >= text_length),
+            if not self._is_junk_fragment(fragment_text):
+                placeholders = []
+                if self.config.extract_placeholders:
+                    placeholders = self._extract_placeholders(fragment_text)
+
+                fragments.append(
+                    SplitFragment(
+                        license_key=license_key,
+                        fragment_text=fragment_text,
+                        start_position=frag_start,
+                        end_position=frag_end,
+                        fragment_index=fragment_index,
+                        total_fragments=0,  # renumbered after filtering
+                        source=source,
+                        placeholders=placeholders,
+                        is_first=False,
+                        is_last=False,
+                    )
                 )
-            )
+                fragment_index += 1
 
             # Advance by (window - overlap), but guarantee at least 1 char of
             # progress so the loop can never stall or regress.
@@ -182,7 +223,6 @@ class LegalStructureSplitter:
             if next_start <= current_start:
                 next_start = current_end  # no overlap when window is tiny
             current_start = next_start
-            fragment_index += 1
 
             if current_start >= text_length:
                 break
@@ -258,3 +298,28 @@ def split_license_texts(
     )
     splitter = LegalStructureSplitter(config)
     return splitter.split_dataset(dataset)
+
+
+if __name__ == "__main__":  # self-check for junk filtering + boundary snapping
+    s = LegalStructureSplitter()
+    junk = [
+        "Date:", "----------------------------------------------*/",
+        "SDLC Personal ID:   Email Address:   Phone Number:", "*****",
+    ]
+    real = [
+        "without express or implied warranty of any kind.",
+        "Permission to copy, use, modify, sell and distribute this software is granted "
+        "provided this copyright notice appears in all copies.",
+    ]
+    for t in junk:
+        assert s._is_junk_fragment(t), f"should be junk: {t!r}"
+    for t in real:
+        assert not s._is_junk_fragment(t), f"should be kept: {t!r}"
+    # Boundary snapping: a long text windows without mid-word starts/ends.
+    long = ("This license permits redistribution and modification of the covered work "
+            "under the following conditions. " * 20)
+    frags = s._sliding_window_split(long, "test-1.0", "scancode")
+    assert len(frags) > 1, "expected multiple windows"
+    for f in frags:
+        assert not s._is_junk_fragment(f.fragment_text), f"junk leaked: {f.fragment_text[:40]!r}"
+    print(f"OK: junk filter + snapping work; {len(frags)} clean fragments from demo license")

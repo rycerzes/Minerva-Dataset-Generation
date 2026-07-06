@@ -430,6 +430,24 @@ class AugmentedMerger:
                 len(nirjas),
             )
 
+        # Near-dedup removes far more license_related samples (overlapping
+        # sliding-window fragments + GPL/MIT variants) than not_license samples
+        # (diverse code comments / hard negatives), destroying the 50/50 balance
+        # the class balancer worked to achieve. Restore it by downsampling the
+        # majority class back to match the minority class.
+        n_pos = sum(1 for s in nirjas if s.label == "license_related")
+        n_neg = sum(1 for s in nirjas if s.label == "not_license_related")
+        if n_neg > n_pos:
+            pos = [s for s in nirjas if s.label == "license_related"]
+            neg = [s for s in nirjas if s.label == "not_license_related"]
+            neg = self._rng.sample(neg, n_pos)
+            nirjas = pos + neg
+            self._rng.shuffle(nirjas)
+            logger.info(
+                "Nirjas rebalanced after dedup: %d license / %d not_license",
+                n_pos, n_pos,
+            )
+
         return atarashi, nirjas
 
     @staticmethod

@@ -1,93 +1,105 @@
 {
   "splits": {
     "train": {
-      "samples": 58103,
+      "samples": 55610,
       "by_label": {
-        "license_related": 27246,
-        "not_license_related": 30857
+        "not_license_related": 25378,
+        "license_related": 30232
       },
       "by_source": {
-        "scancode": 16262,
-        "generated": 13642,
-        "code_corpus": 17215,
-        "synthetic": 4205,
-        "augmented": 513,
-        "fossology": 1473,
-        "shortform": 4793
+        "generated": 19054,
+        "scancode": 18931,
+        "code_corpus": 6324,
+        "synthetic": 4262,
+        "fossology": 1681,
+        "augmented": 538,
+        "shortform": 4820
       },
       "by_negative_type": {
-        "todo_fixme": 4139,
-        "generic_code_comment": 17215,
-        "copyright_discussion": 2617,
-        "license_discussion": 4246,
-        "commented_code": 2640
+        "copyright_discussion": 2769,
+        "generic_code_comment": 6324,
+        "todo_fixme": 4264,
+        "same_register_notice": 5177,
+        "commented_code": 2612,
+        "license_discussion": 4232
       }
     },
     "validation": {
-      "samples": 6945,
+      "samples": 6877,
       "by_label": {
-        "not_license_related": 3857,
-        "license_related": 3088
+        "license_related": 3707,
+        "not_license_related": 3170
       },
       "by_source": {
-        "generated": 1752,
-        "scancode": 2010,
-        "code_corpus": 2105,
-        "augmented": 73,
-        "fossology": 211,
-        "synthetic": 513,
-        "shortform": 281
+        "synthetic": 489,
+        "scancode": 2348,
+        "generated": 2354,
+        "fossology": 217,
+        "code_corpus": 816,
+        "augmented": 67,
+        "shortform": 586
       },
       "by_negative_type": {
-        "todo_fixme": 504,
-        "license_discussion": 544,
-        "generic_code_comment": 2105,
-        "copyright_discussion": 374,
-        "commented_code": 330
+        "license_discussion": 510,
+        "commented_code": 346,
+        "generic_code_comment": 816,
+        "same_register_notice": 628,
+        "copyright_discussion": 357,
+        "todo_fixme": 513
       }
     },
     "test": {
-      "samples": 6950,
+      "samples": 6895,
       "by_label": {
-        "license_related": 3094,
-        "not_license_related": 3856
+        "not_license_related": 3125,
+        "license_related": 3770
       },
       "by_source": {
-        "scancode": 1992,
-        "generated": 1649,
-        "code_corpus": 2207,
-        "fossology": 205,
-        "synthetic": 558,
-        "augmented": 52,
-        "shortform": 287
+        "generated": 2331,
+        "code_corpus": 794,
+        "scancode": 2340,
+        "fossology": 214,
+        "synthetic": 523,
+        "augmented": 63,
+        "shortform": 630
       },
       "by_negative_type": {
-        "copyright_discussion": 345,
-        "generic_code_comment": 2207,
-        "license_discussion": 507,
-        "todo_fixme": 499,
-        "commented_code": 298
+        "same_register_notice": 641,
+        "generic_code_comment": 794,
+        "license_discussion": 521,
+        "copyright_discussion": 349,
+        "todo_fixme": 508,
+        "commented_code": 312
       }
     }
   },
-  "total_samples": 71998,
-  "by_source": {
-    "scancode": 20264,
-    "generated": 17043,
-    "code_corpus": 21527,
-    "synthetic": 5276,
-    "augmented": 638,
-    "fossology": 1889,
-    "shortform": 5361
+  "split_policy": {
+    "train_ratio": 0.8,
+    "validation_ratio": 0.1,
+    "test_ratio": 0.09999999999999995,
+    "stratify_by": "label",
+    "assignment": "content_hash_frozen"
   },
-  "cross_split_dedup": {
-    "method": "MinHashLSH char-3gram, threshold 0.8 (matches src/utils.py)",
-    "policy": "no fragment text appears in >1 split; train kept whole, leaked val/test rows dropped",
-    "dropped": {
-      "train": 0,
-      "validation": 318,
-      "test": 314
-    },
-    "script": "fix_nirjas_leakage.py --near"
+  "total_samples": 69382,
+  "by_label": {
+    "not_license_related": 31673,
+    "license_related": 37709
+  },
+  "by_source": {
+    "generated": 23739,
+    "scancode": 23619,
+    "code_corpus": 7934,
+    "synthetic": 5274,
+    "fossology": 2112,
+    "augmented": 668,
+    "shortform": 6036
+  },
+  "by_negative_type": {
+    "copyright_discussion": 3475,
+    "generic_code_comment": 7934,
+    "todo_fixme": 5285,
+    "same_register_notice": 6446,
+    "commented_code": 3270,
+    "license_discussion": 5263
   }
 }

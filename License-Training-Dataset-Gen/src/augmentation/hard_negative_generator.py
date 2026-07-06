@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 from typing import Optional, Literal
+import hashlib
 import logging
 import re
 import sys
@@ -9,6 +10,45 @@ import time
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
+
+# same_register_notice diversity: these notices are largely license-INDEPENDENT
+# (a patent/warranty/export notice reads the same for GPL or MIT), so generating
+# per-license produced near-identical boilerplate that near-dedup then deleted
+# (~15k raw collapsed to ~700 unique). Rotate a concrete industry + subtype
+# focus per license — chosen deterministically from the license-key hash — so
+# outputs decorrelate across licenses and far more survive dedup.
+_SRN_DOMAINS = [
+    "aerospace and defense systems",
+    "medical devices and healthcare software",
+    "automotive and embedded control units",
+    "fintech and payment processing",
+    "telecommunications and networking equipment",
+    "consumer electronics and mobile devices",
+    "industrial automation and robotics",
+    "video games and 3D graphics engines",
+    "cloud infrastructure and databases",
+    "scientific and high-performance computing",
+    "semiconductor and hardware IP",
+    "cybersecurity and cryptography",
+]
+
+_SRN_SUBTYPES = [
+    ("patent notices", 'e.g. "This product is protected by U.S. Pat. No. 7,123,456 and other patents pending."'),
+    ("export-control statements", 'e.g. "Subject to the U.S. Export Administration Regulations; diversion contrary to law prohibited."'),
+    ("third-party attribution notices", 'e.g. "This product includes software developed by the Acme Foundation (https://acme.example)."'),
+    ("trademark notices", 'e.g. "FooBar is a registered trademark of Example Corp. in the United States and other countries."'),
+    ("warranty and liability disclaimers outside a license", 'e.g. "Provided \'as is\' without warranty; the manufacturer assumes no liability for damages."'),
+    ("NOTICE-file component entries", 'e.g. "Component: libwidget v2.3. Copyright 2019 Example Inc. Used under separate terms."'),
+]
+
+
+def _srn_focus(license_key: str) -> tuple[str, list[tuple[str, str]]]:
+    """Deterministically pick an industry + 3 emphasized subtypes for a license."""
+    h = int(hashlib.md5(license_key.encode("utf-8")).hexdigest(), 16)
+    domain = _SRN_DOMAINS[h % len(_SRN_DOMAINS)]
+    start = (h // len(_SRN_DOMAINS)) % len(_SRN_SUBTYPES)
+    subs = [_SRN_SUBTYPES[(start + i) % len(_SRN_SUBTYPES)] for i in range(3)]
+    return domain, subs
 
 try:
     from ..config import LLMConfig, RateLimiter
@@ -58,15 +98,20 @@ class HardNegativeGenerator:
     """
 
     # Category weights for distribution across negative types
-    LICENSE_DISCUSSION_WEIGHT: float = 0.3
-    TODO_FIXME_WEIGHT: float = 0.3
-    COMMENTED_CODE_WEIGHT: float = 0.2
-    COPYRIGHT_DISCUSSION_WEIGHT: float = 0.2
+    # ponytail: weight differences only resolve at samples_per_category >= 7
+    LICENSE_DISCUSSION_WEIGHT: float = 0.20
+    TODO_FIXME_WEIGHT: float = 0.30
+    COMMENTED_CODE_WEIGHT: float = 0.20
+    COPYRIGHT_DISCUSSION_WEIGHT: float = 0.30
 
     MAX_RETRIES: int = 3
     RETRY_BACKOFF_BASE: float = 2.0
 
     CACHE_NAMESPACE: str = "hard_negatives"
+    # v2: diversity-rotated prompt (see _srn_focus). New namespace so the old
+    # low-diversity cache is left intact as a fallback.
+    SAME_REGISTER_NOTICE_CACHE_NS: str = "same_register_notices_v2"
+    SAME_REGISTER_SAMPLES: int = 10
 
     def __init__(
         self,
@@ -219,6 +264,63 @@ Do NOT write actual license text — only discussions. Mix comment styles."""
             f"LLM API call failed after {self.MAX_RETRIES} attempts: {last_error}"
         ) from last_error
 
+    # same_register_notice — separate prompt + separate cache namespace
+
+    def _build_same_register_prompt(self, license_key: str, n: int) -> str:
+        domain, subs = _srn_focus(license_key)
+        bullets = "\n".join(f"- {name} ({ex})" for name, ex in subs)
+        return f"""Generate {n} realistic code-comment / file-header notices from the {domain} industry that LOOK like license text but are NOT licenses. These are hard-negative examples for a binary license classifier.
+
+Output exactly {n} items, one per line, no numbering or bullets. Emphasize these notice types:
+{bullets}
+
+Requirements:
+- Invent specific, varied, realistic company names, product names, patent numbers, and jurisdictions. Do NOT reuse generic boilerplate like "may be covered by one or more patents".
+- Vary sentence structure and length across the {n} items.
+- Do NOT write actual open-source license text or SPDX identifiers.
+- Formal, legal-adjacent tone."""
+
+    def _generate_same_register_notices(
+        self, license_key: str
+    ) -> list[HardNegativeSample]:
+        """Generate same-register notices using a separate cache namespace."""
+        if self._cache is not None:
+            cached = self._cache.get(self.SAME_REGISTER_NOTICE_CACHE_NS, license_key)
+            if cached is not None:
+                return [HardNegativeSample(**s) for s in cached]
+
+        n = self.SAME_REGISTER_SAMPLES
+        prompt = self._build_same_register_prompt(license_key, n)
+        try:
+            raw = self._call_llm(prompt)
+        except HardNegativeGeneratorError:
+            logger.warning(
+                "same_register_notice generation failed for %s — skipping", license_key
+            )
+            return []
+
+        lines = [re.sub(r"^\d+[\.\)]\s*", "", ln.strip()) for ln in raw.split("\n")]
+        samples = [
+            HardNegativeSample(
+                text=ln,
+                negative_type="same_register_notice",
+                generation_method="llm_generated",
+                source_license=license_key,
+                llm_model_used=self.config.model,
+            )
+            for ln in lines
+            if len(ln) > 10
+        ][:n]
+
+        if self._cache is not None:
+            self._cache.set(
+                self.SAME_REGISTER_NOTICE_CACHE_NS,
+                license_key,
+                [s.model_dump() for s in samples],
+            )
+
+        return samples
+
     # Per-license generation (combined prompt + cache)
 
     def generate_for_license(
@@ -232,7 +334,7 @@ Do NOT write actual license text — only discussions. Mix comment styles."""
         if self._cache is not None:
             cached = self._cache.get(self.CACHE_NAMESPACE, license_key)
             if cached is not None:
-                return [HardNegativeSample(**s) for s in cached]
+                return [HardNegativeSample(**s) for s in cached] + self._generate_same_register_notices(license_key)
 
         # --- LLM call (single combined prompt) ---
         prompt = self._build_combined_prompt(license_key, context)
@@ -263,7 +365,7 @@ Do NOT write actual license text — only discussions. Mix comment styles."""
                 [s.model_dump() for s in trimmed],
             )
 
-        return trimmed
+        return trimmed + self._generate_same_register_notices(license_key)
 
     # Legacy single-category helpers (backward compat for tests)
 

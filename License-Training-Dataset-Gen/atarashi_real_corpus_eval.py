@@ -207,12 +207,24 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--method", choices=["lexical", "model2vec", "st", "all"], default="all")
     ap.add_argument("--model", default=None)
+    ap.add_argument("--refs", choices=["fulltext", "notices", "both"], default="fulltext",
+                    help="reference index units: full license texts, ScanCode notice/short-form "
+                         "rules, or both. NOTE: 'notices'/'both' share ScanCode provenance with the "
+                         "ScanCode-labeled corpus -> optimistic (see docs). Use the SPDX-tag eval "
+                         "for an independent read.")
     args = ap.parse_args()
 
     ref = load_references()
-    print(f"reference index: {len(ref)} licenses")
-    ref_keys = sorted(ref)
-    ref_texts = [ref[k] for k in ref_keys]
+    # reference units: (key, text). Full texts are one unit/license; notices add many.
+    units = []
+    if args.refs in ("fulltext", "both"):
+        units += [(k, ref[k]) for k in sorted(ref)]
+    if args.refs in ("notices", "both"):
+        from notice_refs import load_notice_refs
+        units += [(k, t) for k, t in load_notice_refs() if k in ref]
+    ref_keys = [k for k, _ in units]
+    ref_texts = [t for _, t in units]
+    print(f"reference index: {len(ref)} licenses, {len(units)} units (refs={args.refs})")
     queries = load_queries(ref)
     print(f"distinct ground-truth licenses in eval: "
           f"{len(set(sorted(q['gt'])[0] for q in queries))}")

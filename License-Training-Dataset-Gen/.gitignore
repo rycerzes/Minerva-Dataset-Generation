@@ -1,3 +1,5 @@
+# local-only reference notes (never part of the PR)
+docs/
 # regenerable fetch caches (large; not part of PR)
 cache/
 .venv/

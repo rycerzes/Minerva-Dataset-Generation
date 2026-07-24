@@ -1,0 +1,64 @@
+{
+  "n_refs": 3016,
+  "results": {
+    "st:BAAI/bge-small-en-v1.5": {
+      "n": 86,
+      "recall_at_1": 0.19767441860465115,
+      "recall_at_5": 0.29069767441860467,
+      "mrr": 0.2255813953488372,
+      "macro_recall_at_1": 0.30303030303030304,
+      "per_license": {
+        "agpl-3.0-plus": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apache-2.0": {
+          "hit1": 0,
+          "n": 34
+        },
+        "bootloader-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-new": {
+          "hit1": 0,
+          "n": 18
+        },
+        "bsd-simplified": {
+          "hit1": 0,
+          "n": 3
+        },
+        "gpl-3.0-plus": {
+          "hit1": 0,
+          "n": 1
+        },
+        "lgpl-2.1": {
+          "hit1": 0,
+          "n": 2
+        },
+        "lgpl-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "lgpl-3.0-plus": {
+          "hit1": 0,
+          "n": 1
+        },
+        "mit": {
+          "hit1": 14,
+          "n": 22
+        },
+        "mit-0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mpl-2.0": {
+          "hit1": 0,
+          "n": 1
+        }
+      },
+      "encode_s": 142.3,
+      "throughput_qps": 0.6
+    }
+  }
+}

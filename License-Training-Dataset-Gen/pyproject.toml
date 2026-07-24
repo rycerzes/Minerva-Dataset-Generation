@@ -12,4 +12,9 @@ dependencies = [
     "pytest>=9.0.2",
     "datasets>=4.5.0",
     "datasketch>=1.9.0",
+    "sentence-transformers>=5.6.0",
+    "scikit-learn>=1.9.0",
+    "model2vec[distill,train]>=0.8.2",
+    "accelerate>=1.14.0",
+    "scancode-toolkit",
 ]

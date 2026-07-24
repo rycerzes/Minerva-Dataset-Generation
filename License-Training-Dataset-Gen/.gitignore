@@ -1,0 +1,6 @@
+# regenerable fetch caches (large; not part of PR)
+cache/
+.venv/
+.env
+__pycache__/
+*.pyc

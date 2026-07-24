@@ -74,6 +74,39 @@ def dedup_across_splits(ds, priority=("train", "validation", "test")):
     return DatasetDict(out), dropped
 
 
+def drop_short_unattributable(ds, min_chars, protect_train=True):
+    """Quarantine very-short, low-signal fragments (< min_chars after normalization).
+
+    These are generic legal boilerplate windows ("without express or implied
+    warranty of any kind.") sliced from a longer license and labeled with that one
+    license, even though the phrase appears across many licenses — the ground truth
+    is not inferable from the text, so they are noise for both training and eval.
+
+    Learnability guard: never drop a license's *last* remaining train row, so every
+    label stays present in train (matches the exporter's invariant).
+    """
+    from collections import Counter
+    if not min_chars:
+        return ds, {s: 0 for s in ds}
+    train_counts = Counter(ds["train"]["license_key"]) if protect_train and "train" in ds else Counter()
+    out, dropped = {}, {}
+    for split in ds:
+        keep_idx, d = [], 0
+        for i, (t, lk) in enumerate(zip(ds[split]["text"], ds[split]["license_key"])):
+            if len(norm(t)) >= min_chars:
+                keep_idx.append(i)
+                continue
+            if split == "train" and protect_train and train_counts[lk] <= 1:
+                keep_idx.append(i)          # last train row for this label -> keep
+                continue
+            if split == "train":
+                train_counts[lk] -= 1
+            d += 1
+        out[split] = ds[split].select(keep_idx)
+        dropped[split] = d
+    return DatasetDict(out), dropped
+
+
 def save_clean(clean, dataset_path, out_path, in_place):
     """HF can't overwrite a dataset in place, so write to a temp dir then swap."""
     import os, shutil
@@ -96,10 +129,13 @@ def main():
     ap.add_argument("--in-place", action="store_true")
     ap.add_argument("--near", action="store_true", help="MinHash near-dedup across splits (subsumes exact)")
     ap.add_argument("--threshold", type=float, default=0.8, help="Jaccard threshold for --near")
+    ap.add_argument("--min-chars", type=int, default=0,
+                    help="Quarantine fragments shorter than this (normalized chars); 0 = off. Try 60.")
     args = ap.parse_args()
 
     ds = load_from_disk(args.dataset)
     before = {s: len(ds[s]) for s in ds}
+    ds, short_dropped = drop_short_unattributable(ds, args.min_chars)
     clean, dropped = (dedup_near_across_splits(ds, args.threshold) if args.near
                       else dedup_across_splits(ds))
     after = {s: len(clean[s]) for s in clean}
@@ -117,7 +153,8 @@ def main():
     lost = set(ds["train"]["license_key"]) - train_labels
 
     print("before:", before)
-    print("dropped:", dropped)
+    print("short-fragment quarantine dropped:", short_dropped)
+    print("cross-split dedup dropped:", dropped)
     print("after :", after)
     print("residual cross-split exact overlap:", leak)
     print("labels lost from train:", len(lost))

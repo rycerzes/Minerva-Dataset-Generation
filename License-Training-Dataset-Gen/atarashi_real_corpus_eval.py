@@ -143,13 +143,50 @@ def encode_embeddings(model_name, is_model2vec, ref_texts, q_texts):
     return enc(q_texts), enc(ref_texts)
 
 
-def topk_keys(Q, R, r_keys, k=5):
+def build_loo_mask(mode, ref_texts, q_texts):
+    """Per-query reference units to exclude — leave-one-out against label circularity.
+
+    Ground truth for these queries comes from ScanCode's matcher, and the notice
+    layer is built from the very rules that matcher used. A query can therefore be
+    "identified" by regurgitating the exact rule that produced its label, which
+    inflates the score without demonstrating identification.
+
+      exact    drop units whose normalized text equals the query  (the regurgitation
+               case; conservative, removes only provable self-matches)
+      contain  additionally drop units whose text is contained in the query — the
+               rule text often *is* a span of the matched region. Stricter, and
+               slightly pessimistic: a legitimately short notice for the right
+               license can also be contained in a longer one.
+    """
+    if mode == "off":
+        return None
+    by_text = defaultdict(list)
+    for i, t in enumerate(ref_texts):
+        by_text[norm(t)].append(i)
+    mask = []
+    for q in q_texts:
+        nq = norm(q)
+        drop = set(by_text.get(nq, ()))
+        if mode == "contain":
+            drop |= {i for t, idxs in by_text.items() if t and t in nq for i in idxs}
+        mask.append(drop)
+    dropped = sum(len(m) for m in mask)
+    print(f"leave-one-out ({mode}): masked {dropped} query-unit pairs; "
+          f"{sum(1 for m in mask if m)}/{len(mask)} queries lost >=1 unit")
+    return mask
+
+
+def topk_keys(Q, R, r_keys, k=5, mask=None):
     """Top-k reference keys per query by cosine. Works for dense or sparse rows."""
     r_keys = np.asarray(r_keys)
     sims = Q @ R.T
     if hasattr(sims, "toarray"):
         sims = sims.toarray()
-    sims = np.asarray(sims)
+    sims = np.asarray(sims, dtype=float)
+    if mask:
+        for i, drop in enumerate(mask):
+            if drop:
+                sims[i, list(drop)] = -np.inf
     k = min(k, R.shape[0])
     part = np.argpartition(-sims, range(k), axis=1)[:, :k]
     rows = np.arange(Q.shape[0])[:, None]
@@ -179,7 +216,7 @@ def metrics(topk, gts):
                 per_license={k: dict(hit1=h, n=c) for k, (h, c) in sorted(per_lic_hit.items())})
 
 
-def run_method(name, model, is_m2v, ref_keys, ref_texts, queries):
+def run_method(name, model, is_m2v, ref_keys, ref_texts, queries, mask=None):
     q_texts = [q["text"] for q in queries]
     gts = [q["gt"] for q in queries]
     t0 = time.time()
@@ -188,7 +225,7 @@ def run_method(name, model, is_m2v, ref_keys, ref_texts, queries):
     else:
         Q, R = encode_embeddings(model, is_m2v, ref_texts, q_texts)
     dt = time.time() - t0
-    tk = topk_keys(Q, R, ref_keys, k=5)
+    tk = topk_keys(Q, R, ref_keys, k=5, mask=mask)
     m = metrics(tk, gts)
     m["encode_s"] = round(dt, 1)
     m["throughput_qps"] = round(len(q_texts) / dt, 1) if dt else None
@@ -212,6 +249,10 @@ def main():
                          "rules, or both. NOTE: 'notices'/'both' share ScanCode provenance with the "
                          "ScanCode-labeled corpus -> optimistic (see docs). Use the SPDX-tag eval "
                          "for an independent read.")
+    ap.add_argument("--loo", choices=["off", "exact", "contain"], default="off",
+                    help="leave-one-out masking against label circularity: exclude the "
+                         "reference unit(s) that trivially reproduce a query's own "
+                         "ScanCode-derived label. Meaningful with --refs notices/both.")
     args = ap.parse_args()
 
     ref = load_references()
@@ -229,6 +270,8 @@ def main():
     print(f"distinct ground-truth licenses in eval: "
           f"{len(set(sorted(q['gt'])[0] for q in queries))}")
 
+    mask = build_loo_mask(args.loo, ref_texts, [q["text"] for q in queries])
+
     jobs = []
     if args.method in ("lexical", "all"):
         jobs.append(("lexical", None, False))
@@ -240,7 +283,7 @@ def main():
     results = {}
     for name, model, is_m2v in jobs:
         try:
-            label, m = run_method(name, model, is_m2v, ref_keys, ref_texts, queries)
+            label, m = run_method(name, model, is_m2v, ref_keys, ref_texts, queries, mask=mask)
             results[label] = m
         except Exception as e:
             print(f"\n!! {name} failed: {type(e).__name__}: {e}")

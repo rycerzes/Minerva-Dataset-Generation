@@ -1,0 +1,3726 @@
+{
+  "config": {
+    "query_mode": "head",
+    "head_chars": 1200,
+    "refs": "fulltext"
+  },
+  "n_queries": 452,
+  "tiers": {
+    "substring": 112,
+    "divergent": 136,
+    "identical": 204
+  },
+  "results": {
+    "overall": {
+      "n": 452,
+      "recall_at_1": 0.7765486725663717,
+      "recall_at_5": 0.9203539823008849,
+      "mrr": 0.8349926253687313,
+      "macro_recall_at_1": 0.7765486725663717,
+      "per_license": {
+        "389-exception": {
+          "hit1": 0,
+          "n": 1
+        },
+        "abstyles": {
+          "hit1": 1,
+          "n": 1
+        },
+        "adacore-doc": {
+          "hit1": 1,
+          "n": 1
+        },
+        "adobe-glyph": {
+          "hit1": 1,
+          "n": 1
+        },
+        "adobe-utopia": {
+          "hit1": 1,
+          "n": 1
+        },
+        "adsl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "afl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "afl-1.2": {
+          "hit1": 1,
+          "n": 1
+        },
+        "afl-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "afl-2.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "afl-3.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "afmparse": {
+          "hit1": 1,
+          "n": 1
+        },
+        "amdplpa": {
+          "hit1": 1,
+          "n": 1
+        },
+        "aml": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ampas": {
+          "hit1": 1,
+          "n": 1
+        },
+        "antlr-pd": {
+          "hit1": 0,
+          "n": 1
+        },
+        "antlr-pd-fallback": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apache-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apache-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apache-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apafml": {
+          "hit1": 1,
+          "n": 1
+        },
+        "app-s2p": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apsl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apsl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apsl-1.2": {
+          "hit1": 1,
+          "n": 1
+        },
+        "apsl-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "aptana-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "artistic-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "artistic-1.0-cl8": {
+          "hit1": 0,
+          "n": 1
+        },
+        "artistic-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ascender-eula": {
+          "hit1": 1,
+          "n": 1
+        },
+        "asterisk-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "aswf-digital-assets-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "aswf-digital-assets-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ati-eula": {
+          "hit1": 1,
+          "n": 1
+        },
+        "autoconf-exception-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "autoconf-exception-3.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bahyph": {
+          "hit1": 1,
+          "n": 1
+        },
+        "beerware": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bison-exception-2.2": {
+          "hit1": 0,
+          "n": 1
+        },
+        "bitstream": {
+          "hit1": 0,
+          "n": 1
+        },
+        "bittorrent-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bittorrent-1.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "blessing": {
+          "hit1": 1,
+          "n": 1
+        },
+        "blueoak-1.0.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bootloader-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "borceux": {
+          "hit1": 1,
+          "n": 1
+        },
+        "brian-gladman-3-clause": {
+          "hit1": 0,
+          "n": 1
+        },
+        "bsd-1-clause": {
+          "hit1": 0,
+          "n": 1
+        },
+        "bsd-2-clause-freebsd": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-2-clause-netbsd": {
+          "hit1": 0,
+          "n": 1
+        },
+        "bsd-2-clause-views": {
+          "hit1": 0,
+          "n": 1
+        },
+        "bsd-3-clause-hp": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-3-clause-no-nuclear-warranty": {
+          "hit1": 0,
+          "n": 1
+        },
+        "bsd-3-clause-open-mpi": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-3-clause-sun": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-4-clause-shortened": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-advertising-acknowledgement": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-inferno-nettverk": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-protection": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-source-code": {
+          "hit1": 0,
+          "n": 1
+        },
+        "bsd-systemics": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsl-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "c-uda-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cal-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cal-1.0-combined-work-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "caldera": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-2.5": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-2.5-au": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-3.0-at": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-3.0-de": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-3.0-igo": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-3.0-nl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-3.0-us": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-4.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nc-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-2.5": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-3.0-de": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-4.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nc-nd-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nc-nd-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-nd-2.5": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-nd-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-nd-3.0-de": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-nd-3.0-igo": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nc-nd-4.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nc-sa-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-sa-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-sa-2.0-de": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-sa-2.0-fr": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nc-sa-2.0-uk": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-sa-2.5": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-sa-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-sa-3.0-de": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-sa-3.0-igo": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nc-sa-4.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nd-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nd-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nd-2.5": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nd-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-nd-3.0-de": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-nd-4.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-sa-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-sa-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-sa-2.0-uk": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-sa-2.1-jp": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc-by-sa-2.5": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-sa-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-sa-3.0-at": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-sa-3.0-de": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-sa-3.0-igo": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc-by-sa-4.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cc0-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cclrc": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cddl-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cddl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cdla-permissive-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cdla-permissive-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cdla-sharing-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cecill-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cecill-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cecill-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cecill-2.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cecill-b": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cecill-c": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cern-ohl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cern-ohl-1.2": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cern-ohl-p-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cern-ohl-s-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cern-ohl-w-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cfitsio": {
+          "hit1": 1,
+          "n": 1
+        },
+        "check-cvs": {
+          "hit1": 1,
+          "n": 1
+        },
+        "checkmk": {
+          "hit1": 1,
+          "n": 1
+        },
+        "classpath-exception-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "clisp-exception-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cnri-jython": {
+          "hit1": 0,
+          "n": 1
+        },
+        "coil-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "condor-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "copyleft-next-0.3.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "copyleft-next-0.3.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cornell-lossless-jpeg": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cpal-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cpl-0.5": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cpl-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cpol-1.02": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cronyx": {
+          "hit1": 1,
+          "n": 1
+        },
+        "crossword": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cua-opl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "cube": {
+          "hit1": 1,
+          "n": 1
+        },
+        "curl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "diffmark": {
+          "hit1": 1,
+          "n": 1
+        },
+        "digirule-foss-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "dl-de-zero-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "docbook": {
+          "hit1": 0,
+          "n": 1
+        },
+        "dotseqn": {
+          "hit1": 1,
+          "n": 1
+        },
+        "drl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "dsdp": {
+          "hit1": 1,
+          "n": 1
+        },
+        "dvipdfm": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ecl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ecl-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ecos-exception-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "efl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "efl-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "epics": {
+          "hit1": 1,
+          "n": 1
+        },
+        "epl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "epl-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "etalab-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "eupl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "eupl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "eupl-1.2": {
+          "hit1": 1,
+          "n": 1
+        },
+        "eurosym": {
+          "hit1": 1,
+          "n": 1
+        },
+        "fair": {
+          "hit1": 1,
+          "n": 1
+        },
+        "fawkes-runtime-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "fbm": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ferguson-twofish": {
+          "hit1": 1,
+          "n": 1
+        },
+        "flora-1.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "frameworx-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "freebsd-doc": {
+          "hit1": 0,
+          "n": 1
+        },
+        "freertos-exception-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "furuseth": {
+          "hit1": 1,
+          "n": 1
+        },
+        "fwlw": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gcc-exception-2.0-note": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gcc-exception-3.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "gfdl-1.1-invariants-or-later": {
+          "hit1": 0,
+          "n": 1
+        },
+        "gfdl-1.2-invariants-or-later": {
+          "hit1": 0,
+          "n": 1
+        },
+        "gfdl-1.2-no-invariants-or-later": {
+          "hit1": 0,
+          "n": 1
+        },
+        "gl2ps": {
+          "hit1": 1,
+          "n": 1
+        },
+        "glide": {
+          "hit1": 1,
+          "n": 1
+        },
+        "glulxe": {
+          "hit1": 1,
+          "n": 1
+        },
+        "glwtpl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gnu-javamail-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gnuplot": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gpl-3.0-interface-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gpl-3.0-linking-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gpl-3.0-linking-source-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "graphics-gems": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gsoap-1.3b": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gstreamer-exception-2005": {
+          "hit1": 1,
+          "n": 1
+        },
+        "gstreamer-exception-2008": {
+          "hit1": 1,
+          "n": 1
+        },
+        "h2-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "hippocratic-2.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hp": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hp-1986": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hpnd-doc": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hpnd-doc-sell": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hpnd-export-us": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hpnd-pbmplus": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hpnd-sell-regexpr": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hpnd-sell-variant-mit-disclaimer": {
+          "hit1": 1,
+          "n": 1
+        },
+        "hpnd-uc": {
+          "hit1": 1,
+          "n": 1
+        },
+        "i2p-gpl-java-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ibm-pibs": {
+          "hit1": 1,
+          "n": 1
+        },
+        "iec-code-components-eula": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ijg": {
+          "hit1": 0,
+          "n": 1
+        },
+        "ijg-short": {
+          "hit1": 1,
+          "n": 1
+        },
+        "imagemagick": {
+          "hit1": 1,
+          "n": 1
+        },
+        "imlib2": {
+          "hit1": 1,
+          "n": 1
+        },
+        "info-zip": {
+          "hit1": 0,
+          "n": 1
+        },
+        "inner-net-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "intel": {
+          "hit1": 0,
+          "n": 1
+        },
+        "intel-acpi": {
+          "hit1": 1,
+          "n": 1
+        },
+        "interbase-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "isc": {
+          "hit1": 1,
+          "n": 1
+        },
+        "jam": {
+          "hit1": 1,
+          "n": 1
+        },
+        "jasper-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "jpl-image": {
+          "hit1": 1,
+          "n": 1
+        },
+        "json": {
+          "hit1": 1,
+          "n": 1
+        },
+        "kastrup": {
+          "hit1": 1,
+          "n": 1
+        },
+        "kazlib": {
+          "hit1": 1,
+          "n": 1
+        },
+        "kicad-libraries-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "knuth-ctan": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lal-1.2": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lal-1.3": {
+          "hit1": 1,
+          "n": 1
+        },
+        "latex2e": {
+          "hit1": 1,
+          "n": 1
+        },
+        "latex2e-translated-notice": {
+          "hit1": 1,
+          "n": 1
+        },
+        "leptonica": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lgpl-3.0-linking-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lgpllr": {
+          "hit1": 1,
+          "n": 1
+        },
+        "libpng": {
+          "hit1": 1,
+          "n": 1
+        },
+        "libpri-openh323-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "libtool-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "libutil-david-nugent": {
+          "hit1": 1,
+          "n": 1
+        },
+        "liliq-p-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "liliq-r-1.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "liliq-rplus-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "linux-man-pages-1-para": {
+          "hit1": 1,
+          "n": 1
+        },
+        "linux-man-pages-copyleft-var": {
+          "hit1": 1,
+          "n": 1
+        },
+        "linux-openib": {
+          "hit1": 1,
+          "n": 1
+        },
+        "llgpl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "llvm-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "loop": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lppl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lppl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lppl-1.2": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lppl-1.3a": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lppl-1.3b": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lppl-1.3c": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lzma-sdk-9.11-to-9.20": {
+          "hit1": 1,
+          "n": 1
+        },
+        "lzma-sdk-9.22": {
+          "hit1": 1,
+          "n": 1
+        },
+        "magaz": {
+          "hit1": 1,
+          "n": 1
+        },
+        "makeindex": {
+          "hit1": 1,
+          "n": 1
+        },
+        "martin-birgmeier": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mcphee-slideshow": {
+          "hit1": 1,
+          "n": 1
+        },
+        "metamail": {
+          "hit1": 1,
+          "n": 1
+        },
+        "metrolink-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mif-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "minpack": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mit": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mit-0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mit-testregex": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mmixware": {
+          "hit1": 1,
+          "n": 1
+        },
+        "motorola": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mpeg-ssg": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mpi-permissive": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mpl-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "mpl-1.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "mpl-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mpl-2.0-no-copyleft-exception": {
+          "hit1": 0,
+          "n": 1
+        },
+        "ms-lpl": {
+          "hit1": 0,
+          "n": 1
+        },
+        "ms-pl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ms-rl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mtll": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mulanpsl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mulanpsl-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "multics": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mup": {
+          "hit1": 1,
+          "n": 1
+        },
+        "mx4j": {
+          "hit1": 0,
+          "n": 1
+        },
+        "naist-2003": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nasa-1.3": {
+          "hit1": 1,
+          "n": 1
+        },
+        "naumen": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nbpl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ncgl-uk-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "net-snmp": {
+          "hit1": 0,
+          "n": 1
+        },
+        "netcdf": {
+          "hit1": 1,
+          "n": 1
+        },
+        "newsletr": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ngpl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nist-pd": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nist-pd-fallback": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nist-software": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nlod-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nlod-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "nlpl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nokia-qt-exception-1.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "noweb": {
+          "hit1": 1,
+          "n": 1
+        },
+        "npl-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "npl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "nrl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ntp-0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "nvidia": {
+          "hit1": 1,
+          "n": 1
+        },
+        "o-uda-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ocaml-lgpl-linking-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "occt-exception-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "occt-pl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "oclc-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "odbl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "odc-by-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "offis": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ofl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ofl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ofl-1.1-no-rfn": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ogc-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ogdl-taiwan-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "ogl-uk-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "ogl-uk-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "ogl-uk-3.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "olfl-1.3": {
+          "hit1": 1,
+          "n": 1
+        },
+        "opengroup": {
+          "hit1": 0,
+          "n": 1
+        },
+        "openjdk-assembly-exception-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "openmap": {
+          "hit1": 1,
+          "n": 1
+        },
+        "openpbs-2.3": {
+          "hit1": 1,
+          "n": 1
+        },
+        "openssl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "openvpn-openssl-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "opl-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "opl-uk-3.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "oset-pl-2.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "osl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "osl-1.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "osl-2.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "osl-2.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "osl-3.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "padl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "parity-6.0.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "parity-7.0.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "pddl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "phorum-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "php-3.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "php-3.01": {
+          "hit1": 1,
+          "n": 1
+        },
+        "pnmstitch": {
+          "hit1": 1,
+          "n": 1
+        },
+        "polyform-noncommercial-1.0.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "polyform-small-business-1.0.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "postgresql": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ps-or-pdf-font-exception-20170817": {
+          "hit1": 1,
+          "n": 1
+        },
+        "psf-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "psfrag": {
+          "hit1": 1,
+          "n": 1
+        },
+        "psutils": {
+          "hit1": 1,
+          "n": 1
+        },
+        "python-2.0.1": {
+          "hit1": 0,
+          "n": 1
+        },
+        "python-ldap": {
+          "hit1": 1,
+          "n": 1
+        },
+        "qhull": {
+          "hit1": 1,
+          "n": 1
+        },
+        "qpl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "qpl-1.0-inria-2004": {
+          "hit1": 1,
+          "n": 1
+        },
+        "qt-gpl-exception-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "qt-lgpl-exception-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "qwt-exception-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "rdisc": {
+          "hit1": 1,
+          "n": 1
+        },
+        "rpl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "rpl-1.5": {
+          "hit1": 1,
+          "n": 1
+        },
+        "rpsl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "rsa-cryptoki": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ruby": {
+          "hit1": 1,
+          "n": 1
+        },
+        "sax-pd": {
+          "hit1": 1,
+          "n": 1
+        },
+        "saxpath": {
+          "hit1": 1,
+          "n": 1
+        },
+        "schemereport": {
+          "hit1": 1,
+          "n": 1
+        },
+        "sendmail": {
+          "hit1": 1,
+          "n": 1
+        },
+        "sendmail-8.23": {
+          "hit1": 1,
+          "n": 1
+        },
+        "sgp4": {
+          "hit1": 1,
+          "n": 1
+        },
+        "shl-0.5": {
+          "hit1": 1,
+          "n": 1
+        },
+        "shl-0.51": {
+          "hit1": 1,
+          "n": 1
+        },
+        "shl-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "shl-2.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "simpl-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "sl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "sleepycat": {
+          "hit1": 1,
+          "n": 1
+        },
+        "smppl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "snia": {
+          "hit1": 0,
+          "n": 1
+        },
+        "snprintf": {
+          "hit1": 1,
+          "n": 1
+        },
+        "soundex": {
+          "hit1": 1,
+          "n": 1
+        },
+        "spl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ssh-keyscan": {
+          "hit1": 1,
+          "n": 1
+        },
+        "stunnel-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "sugarcrm-1.1.3": {
+          "hit1": 1,
+          "n": 1
+        },
+        "sunpro": {
+          "hit1": 1,
+          "n": 1
+        },
+        "swi-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "swl": {
+          "hit1": 0,
+          "n": 1
+        },
+        "swrule": {
+          "hit1": 1,
+          "n": 1
+        },
+        "symlinks": {
+          "hit1": 1,
+          "n": 1
+        },
+        "tapr-ohl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "tcl": {
+          "hit1": 0,
+          "n": 1
+        },
+        "tcp-wrappers": {
+          "hit1": 1,
+          "n": 1
+        },
+        "tmate": {
+          "hit1": 1,
+          "n": 1
+        },
+        "torque-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "tosl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "tpdl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "tpl-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "ttwl": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ttyp0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "tu-berlin-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "u-boot-exception-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ucar": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ucl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ulem": {
+          "hit1": 1,
+          "n": 1
+        },
+        "unicode": {
+          "hit1": 0,
+          "n": 1
+        },
+        "unicode-dfs-2015": {
+          "hit1": 1,
+          "n": 1
+        },
+        "unicode-dfs-2016": {
+          "hit1": 1,
+          "n": 1
+        },
+        "unicode-tou": {
+          "hit1": 1,
+          "n": 1
+        },
+        "universal-foss-exception-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "unixcrypt": {
+          "hit1": 1,
+          "n": 1
+        },
+        "unlicense": {
+          "hit1": 1,
+          "n": 1
+        },
+        "upl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "urt-rle": {
+          "hit1": 1,
+          "n": 1
+        },
+        "vim": {
+          "hit1": 1,
+          "n": 1
+        },
+        "vostrom": {
+          "hit1": 1,
+          "n": 1
+        },
+        "vsftpd-openssl-exception": {
+          "hit1": 1,
+          "n": 1
+        },
+        "vsl-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "w3c": {
+          "hit1": 1,
+          "n": 1
+        },
+        "w3m": {
+          "hit1": 1,
+          "n": 1
+        },
+        "widget-workshop": {
+          "hit1": 1,
+          "n": 1
+        },
+        "wsuipa": {
+          "hit1": 1,
+          "n": 1
+        },
+        "wxwindows": {
+          "hit1": 1,
+          "n": 1
+        },
+        "wxwindows-exception-3.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "x11": {
+          "hit1": 0,
+          "n": 1
+        },
+        "xdebug-1.03": {
+          "hit1": 1,
+          "n": 1
+        },
+        "xfree86-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "xinetd": {
+          "hit1": 1,
+          "n": 1
+        },
+        "xnet": {
+          "hit1": 1,
+          "n": 1
+        },
+        "xskat": {
+          "hit1": 1,
+          "n": 1
+        },
+        "ypl-1.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "ypl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zed": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zeeff": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zend-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zimbra-1.3": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zimbra-1.4": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zlib": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zlib-acknowledgement": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zpl-1.1": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zpl-2.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zpl-2.1": {
+          "hit1": 1,
+          "n": 1
+        }
+      }
+    },
+    "per_tier": {
+      "divergent": {
+        "n": 136,
+        "recall_at_1": 0.5955882352941176,
+        "recall_at_5": 0.7941176470588235,
+        "mrr": 0.6664215686274512,
+        "macro_recall_at_1": 0.5955882352941176,
+        "per_license": {
+          "abstyles": {
+            "hit1": 1,
+            "n": 1
+          },
+          "afl-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "antlr-pd": {
+            "hit1": 0,
+            "n": 1
+          },
+          "apache-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "apache-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "apsl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "apsl-1.2": {
+            "hit1": 1,
+            "n": 1
+          },
+          "apsl-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "aptana-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ascender-eula": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bitstream": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bootloader-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "brian-gladman-3-clause": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bsd-1-clause": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bsd-2-clause-freebsd": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bsd-2-clause-views": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bsd-3-clause-sun": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bsd-source-code": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bsl-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cal-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cal-1.0-combined-work-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "caldera": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-2.5": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-3.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-4.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-nc-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-2.5": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-3.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-4.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-nc-nd-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-nc-nd-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-nd-2.5": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-nd-3.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-nd-4.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-nc-sa-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-sa-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-sa-2.5": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-sa-3.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-sa-4.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-nd-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-nd-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nd-2.5": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nd-3.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nd-4.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-sa-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-sa-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-sa-2.5": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-sa-3.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-sa-4.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cclrc": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cddl-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cecill-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cecill-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cecill-b": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cecill-c": {
+            "hit1": 0,
+            "n": 1
+          },
+          "condor-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cpl-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cpol-1.02": {
+            "hit1": 1,
+            "n": 1
+          },
+          "docbook": {
+            "hit1": 0,
+            "n": 1
+          },
+          "ecl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ecl-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "epics": {
+            "hit1": 1,
+            "n": 1
+          },
+          "epl-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "eupl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "eupl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "freebsd-doc": {
+            "hit1": 0,
+            "n": 1
+          },
+          "freertos-exception-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gcc-exception-3.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "gl2ps": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gsoap-1.3b": {
+            "hit1": 1,
+            "n": 1
+          },
+          "h2-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "i2p-gpl-java-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ibm-pibs": {
+            "hit1": 1,
+            "n": 1
+          },
+          "imagemagick": {
+            "hit1": 1,
+            "n": 1
+          },
+          "info-zip": {
+            "hit1": 0,
+            "n": 1
+          },
+          "inner-net-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "intel": {
+            "hit1": 0,
+            "n": 1
+          },
+          "isc": {
+            "hit1": 1,
+            "n": 1
+          },
+          "libpng": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lppl-1.3b": {
+            "hit1": 1,
+            "n": 1
+          },
+          "makeindex": {
+            "hit1": 1,
+            "n": 1
+          },
+          "motorola": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mpl-1.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "ms-lpl": {
+            "hit1": 0,
+            "n": 1
+          },
+          "mtll": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mulanpsl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mulanpsl-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mx4j": {
+            "hit1": 0,
+            "n": 1
+          },
+          "nasa-1.3": {
+            "hit1": 1,
+            "n": 1
+          },
+          "net-snmp": {
+            "hit1": 0,
+            "n": 1
+          },
+          "ngpl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "nist-pd": {
+            "hit1": 1,
+            "n": 1
+          },
+          "nist-pd-fallback": {
+            "hit1": 1,
+            "n": 1
+          },
+          "nlod-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "npl-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "ntp-0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "nvidia": {
+            "hit1": 1,
+            "n": 1
+          },
+          "o-uda-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "oclc-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "odbl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ofl-1.1-no-rfn": {
+            "hit1": 1,
+            "n": 1
+          },
+          "opengroup": {
+            "hit1": 0,
+            "n": 1
+          },
+          "openssl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "opl-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "osl-2.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "osl-3.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "parity-6.0.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "parity-7.0.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "pddl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "postgresql": {
+            "hit1": 1,
+            "n": 1
+          },
+          "psf-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "qpl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "rpl-1.5": {
+            "hit1": 1,
+            "n": 1
+          },
+          "rpsl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "sax-pd": {
+            "hit1": 1,
+            "n": 1
+          },
+          "saxpath": {
+            "hit1": 1,
+            "n": 1
+          },
+          "sendmail": {
+            "hit1": 1,
+            "n": 1
+          },
+          "sendmail-8.23": {
+            "hit1": 1,
+            "n": 1
+          },
+          "shl-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "shl-2.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "sleepycat": {
+            "hit1": 1,
+            "n": 1
+          },
+          "sugarcrm-1.1.3": {
+            "hit1": 1,
+            "n": 1
+          },
+          "sunpro": {
+            "hit1": 1,
+            "n": 1
+          },
+          "tmate": {
+            "hit1": 1,
+            "n": 1
+          },
+          "tpl-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "tu-berlin-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "u-boot-exception-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ucl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "unicode": {
+            "hit1": 0,
+            "n": 1
+          },
+          "unicode-tou": {
+            "hit1": 1,
+            "n": 1
+          },
+          "wxwindows": {
+            "hit1": 1,
+            "n": 1
+          },
+          "x11": {
+            "hit1": 0,
+            "n": 1
+          },
+          "xinetd": {
+            "hit1": 1,
+            "n": 1
+          }
+        }
+      },
+      "substring": {
+        "n": 112,
+        "recall_at_1": 0.8482142857142857,
+        "recall_at_5": 0.9732142857142857,
+        "mrr": 0.900595238095238,
+        "macro_recall_at_1": 0.8482142857142857,
+        "per_license": {
+          "389-exception": {
+            "hit1": 0,
+            "n": 1
+          },
+          "adobe-glyph": {
+            "hit1": 1,
+            "n": 1
+          },
+          "adsl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "afl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "afl-3.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "afmparse": {
+            "hit1": 1,
+            "n": 1
+          },
+          "amdplpa": {
+            "hit1": 1,
+            "n": 1
+          },
+          "aml": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ampas": {
+            "hit1": 1,
+            "n": 1
+          },
+          "apafml": {
+            "hit1": 1,
+            "n": 1
+          },
+          "artistic-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "artistic-1.0-cl8": {
+            "hit1": 0,
+            "n": 1
+          },
+          "aswf-digital-assets-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bison-exception-2.2": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bittorrent-1.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bsd-2-clause-netbsd": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bsd-3-clause-no-nuclear-warranty": {
+            "hit1": 0,
+            "n": 1
+          },
+          "bsd-4-clause-shortened": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bsd-advertising-acknowledgement": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bsd-inferno-nettverk": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bsd-systemics": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-3.0-at": {
+            "hit1": 0,
+            "n": 1
+          },
+          "checkmk": {
+            "hit1": 1,
+            "n": 1
+          },
+          "clisp-exception-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cornell-lossless-jpeg": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cronyx": {
+            "hit1": 1,
+            "n": 1
+          },
+          "curl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "dotseqn": {
+            "hit1": 1,
+            "n": 1
+          },
+          "eupl-1.2": {
+            "hit1": 1,
+            "n": 1
+          },
+          "eurosym": {
+            "hit1": 1,
+            "n": 1
+          },
+          "fair": {
+            "hit1": 1,
+            "n": 1
+          },
+          "fbm": {
+            "hit1": 1,
+            "n": 1
+          },
+          "furuseth": {
+            "hit1": 1,
+            "n": 1
+          },
+          "fwlw": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gfdl-1.1-invariants-or-later": {
+            "hit1": 0,
+            "n": 1
+          },
+          "gfdl-1.2-invariants-or-later": {
+            "hit1": 0,
+            "n": 1
+          },
+          "gfdl-1.2-no-invariants-or-later": {
+            "hit1": 0,
+            "n": 1
+          },
+          "glulxe": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gnuplot": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hippocratic-2.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hp-1986": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hpnd-doc": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hpnd-doc-sell": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hpnd-export-us": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hpnd-pbmplus": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hpnd-sell-regexpr": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hpnd-sell-variant-mit-disclaimer": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hpnd-uc": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ijg": {
+            "hit1": 0,
+            "n": 1
+          },
+          "interbase-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "json": {
+            "hit1": 1,
+            "n": 1
+          },
+          "kastrup": {
+            "hit1": 1,
+            "n": 1
+          },
+          "kazlib": {
+            "hit1": 1,
+            "n": 1
+          },
+          "latex2e": {
+            "hit1": 1,
+            "n": 1
+          },
+          "latex2e-translated-notice": {
+            "hit1": 1,
+            "n": 1
+          },
+          "leptonica": {
+            "hit1": 1,
+            "n": 1
+          },
+          "libutil-david-nugent": {
+            "hit1": 1,
+            "n": 1
+          },
+          "llgpl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "magaz": {
+            "hit1": 1,
+            "n": 1
+          },
+          "martin-birgmeier": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mcphee-slideshow": {
+            "hit1": 1,
+            "n": 1
+          },
+          "metamail": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mit": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mit-0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mmixware": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mpeg-ssg": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mpi-permissive": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mpl-2.0-no-copyleft-exception": {
+            "hit1": 0,
+            "n": 1
+          },
+          "multics": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mup": {
+            "hit1": 1,
+            "n": 1
+          },
+          "naist-2003": {
+            "hit1": 1,
+            "n": 1
+          },
+          "netcdf": {
+            "hit1": 1,
+            "n": 1
+          },
+          "newsletr": {
+            "hit1": 1,
+            "n": 1
+          },
+          "noweb": {
+            "hit1": 1,
+            "n": 1
+          },
+          "npl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ocaml-lgpl-linking-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "odc-by-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ogdl-taiwan-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "ogl-uk-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "ogl-uk-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "ogl-uk-3.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "openjdk-assembly-exception-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "osl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "padl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "pnmstitch": {
+            "hit1": 1,
+            "n": 1
+          },
+          "psfrag": {
+            "hit1": 1,
+            "n": 1
+          },
+          "rdisc": {
+            "hit1": 1,
+            "n": 1
+          },
+          "simpl-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "snprintf": {
+            "hit1": 1,
+            "n": 1
+          },
+          "soundex": {
+            "hit1": 1,
+            "n": 1
+          },
+          "spl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ssh-keyscan": {
+            "hit1": 1,
+            "n": 1
+          },
+          "tcp-wrappers": {
+            "hit1": 1,
+            "n": 1
+          },
+          "tpdl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ttwl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ucar": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ulem": {
+            "hit1": 1,
+            "n": 1
+          },
+          "unixcrypt": {
+            "hit1": 1,
+            "n": 1
+          },
+          "upl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "vim": {
+            "hit1": 1,
+            "n": 1
+          },
+          "vsl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "w3c": {
+            "hit1": 1,
+            "n": 1
+          },
+          "w3m": {
+            "hit1": 1,
+            "n": 1
+          },
+          "widget-workshop": {
+            "hit1": 1,
+            "n": 1
+          },
+          "xfree86-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "xnet": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zed": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zeeff": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zlib": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zlib-acknowledgement": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zpl-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zpl-2.1": {
+            "hit1": 1,
+            "n": 1
+          }
+        }
+      },
+      "identical": {
+        "n": 204,
+        "recall_at_1": 0.8578431372549019,
+        "recall_at_5": 0.9754901960784313,
+        "mrr": 0.9113562091503269,
+        "macro_recall_at_1": 0.8578431372549019,
+        "per_license": {
+          "adacore-doc": {
+            "hit1": 1,
+            "n": 1
+          },
+          "adobe-utopia": {
+            "hit1": 1,
+            "n": 1
+          },
+          "afl-1.2": {
+            "hit1": 1,
+            "n": 1
+          },
+          "afl-2.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "antlr-pd-fallback": {
+            "hit1": 1,
+            "n": 1
+          },
+          "apache-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "app-s2p": {
+            "hit1": 1,
+            "n": 1
+          },
+          "apsl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "artistic-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "asterisk-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "aswf-digital-assets-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ati-eula": {
+            "hit1": 1,
+            "n": 1
+          },
+          "autoconf-exception-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "autoconf-exception-3.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bahyph": {
+            "hit1": 1,
+            "n": 1
+          },
+          "beerware": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bittorrent-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "blessing": {
+            "hit1": 1,
+            "n": 1
+          },
+          "blueoak-1.0.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "borceux": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bsd-3-clause-hp": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bsd-3-clause-open-mpi": {
+            "hit1": 1,
+            "n": 1
+          },
+          "bsd-protection": {
+            "hit1": 1,
+            "n": 1
+          },
+          "c-uda-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-2.5-au": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-3.0-de": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-3.0-igo": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-3.0-nl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-3.0-us": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-3.0-de": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-nd-3.0-de": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-nd-3.0-igo": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-nc-sa-2.0-de": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-sa-2.0-fr": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-nc-sa-2.0-uk": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-sa-3.0-de": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nc-sa-3.0-igo": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-nd-3.0-de": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-sa-2.0-uk": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-sa-2.1-jp": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cc-by-sa-3.0-at": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-sa-3.0-de": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc-by-sa-3.0-igo": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cc0-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cddl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cdla-permissive-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cdla-permissive-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cdla-sharing-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cecill-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cecill-2.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cern-ohl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cern-ohl-1.2": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cern-ohl-p-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cern-ohl-s-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cern-ohl-w-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "cfitsio": {
+            "hit1": 1,
+            "n": 1
+          },
+          "check-cvs": {
+            "hit1": 1,
+            "n": 1
+          },
+          "classpath-exception-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cnri-jython": {
+            "hit1": 0,
+            "n": 1
+          },
+          "coil-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "copyleft-next-0.3.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "copyleft-next-0.3.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cpal-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cpl-0.5": {
+            "hit1": 1,
+            "n": 1
+          },
+          "crossword": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cua-opl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "cube": {
+            "hit1": 1,
+            "n": 1
+          },
+          "diffmark": {
+            "hit1": 1,
+            "n": 1
+          },
+          "digirule-foss-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "dl-de-zero-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "drl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "dsdp": {
+            "hit1": 1,
+            "n": 1
+          },
+          "dvipdfm": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ecos-exception-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "efl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "efl-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "epl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "etalab-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "fawkes-runtime-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ferguson-twofish": {
+            "hit1": 1,
+            "n": 1
+          },
+          "flora-1.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "frameworx-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gcc-exception-2.0-note": {
+            "hit1": 1,
+            "n": 1
+          },
+          "glide": {
+            "hit1": 1,
+            "n": 1
+          },
+          "glwtpl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gnu-javamail-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gpl-3.0-interface-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gpl-3.0-linking-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gpl-3.0-linking-source-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "graphics-gems": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gstreamer-exception-2005": {
+            "hit1": 1,
+            "n": 1
+          },
+          "gstreamer-exception-2008": {
+            "hit1": 1,
+            "n": 1
+          },
+          "hp": {
+            "hit1": 1,
+            "n": 1
+          },
+          "iec-code-components-eula": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ijg-short": {
+            "hit1": 1,
+            "n": 1
+          },
+          "imlib2": {
+            "hit1": 1,
+            "n": 1
+          },
+          "intel-acpi": {
+            "hit1": 1,
+            "n": 1
+          },
+          "jam": {
+            "hit1": 1,
+            "n": 1
+          },
+          "jasper-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "jpl-image": {
+            "hit1": 1,
+            "n": 1
+          },
+          "kicad-libraries-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "knuth-ctan": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lal-1.2": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lal-1.3": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lgpl-3.0-linking-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lgpllr": {
+            "hit1": 1,
+            "n": 1
+          },
+          "libpri-openh323-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "libtool-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "liliq-p-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "liliq-r-1.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "liliq-rplus-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "linux-man-pages-1-para": {
+            "hit1": 1,
+            "n": 1
+          },
+          "linux-man-pages-copyleft-var": {
+            "hit1": 1,
+            "n": 1
+          },
+          "linux-openib": {
+            "hit1": 1,
+            "n": 1
+          },
+          "llvm-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "loop": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lppl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lppl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lppl-1.2": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lppl-1.3a": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lppl-1.3c": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lzma-sdk-9.11-to-9.20": {
+            "hit1": 1,
+            "n": 1
+          },
+          "lzma-sdk-9.22": {
+            "hit1": 1,
+            "n": 1
+          },
+          "metrolink-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mif-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "minpack": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mit-testregex": {
+            "hit1": 1,
+            "n": 1
+          },
+          "mpl-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "mpl-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ms-pl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ms-rl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "naumen": {
+            "hit1": 1,
+            "n": 1
+          },
+          "nbpl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ncgl-uk-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "nist-software": {
+            "hit1": 1,
+            "n": 1
+          },
+          "nlod-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "nlpl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "nokia-qt-exception-1.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "nrl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "occt-exception-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "occt-pl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "offis": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ofl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ofl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ogc-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "olfl-1.3": {
+            "hit1": 1,
+            "n": 1
+          },
+          "openmap": {
+            "hit1": 1,
+            "n": 1
+          },
+          "openpbs-2.3": {
+            "hit1": 1,
+            "n": 1
+          },
+          "openvpn-openssl-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "opl-uk-3.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "oset-pl-2.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "osl-1.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "osl-2.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "phorum-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "php-3.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "php-3.01": {
+            "hit1": 1,
+            "n": 1
+          },
+          "polyform-noncommercial-1.0.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "polyform-small-business-1.0.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ps-or-pdf-font-exception-20170817": {
+            "hit1": 1,
+            "n": 1
+          },
+          "psutils": {
+            "hit1": 1,
+            "n": 1
+          },
+          "python-2.0.1": {
+            "hit1": 0,
+            "n": 1
+          },
+          "python-ldap": {
+            "hit1": 1,
+            "n": 1
+          },
+          "qhull": {
+            "hit1": 1,
+            "n": 1
+          },
+          "qpl-1.0-inria-2004": {
+            "hit1": 1,
+            "n": 1
+          },
+          "qt-gpl-exception-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "qt-lgpl-exception-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "qwt-exception-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "rpl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "rsa-cryptoki": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ruby": {
+            "hit1": 1,
+            "n": 1
+          },
+          "schemereport": {
+            "hit1": 1,
+            "n": 1
+          },
+          "sgp4": {
+            "hit1": 1,
+            "n": 1
+          },
+          "shl-0.5": {
+            "hit1": 1,
+            "n": 1
+          },
+          "shl-0.51": {
+            "hit1": 1,
+            "n": 1
+          },
+          "sl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "smppl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "snia": {
+            "hit1": 0,
+            "n": 1
+          },
+          "stunnel-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "swi-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "swl": {
+            "hit1": 0,
+            "n": 1
+          },
+          "swrule": {
+            "hit1": 1,
+            "n": 1
+          },
+          "symlinks": {
+            "hit1": 1,
+            "n": 1
+          },
+          "tapr-ohl-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "tcl": {
+            "hit1": 0,
+            "n": 1
+          },
+          "torque-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "tosl": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ttyp0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "unicode-dfs-2015": {
+            "hit1": 1,
+            "n": 1
+          },
+          "unicode-dfs-2016": {
+            "hit1": 1,
+            "n": 1
+          },
+          "universal-foss-exception-1.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "unlicense": {
+            "hit1": 1,
+            "n": 1
+          },
+          "urt-rle": {
+            "hit1": 1,
+            "n": 1
+          },
+          "vostrom": {
+            "hit1": 1,
+            "n": 1
+          },
+          "vsftpd-openssl-exception": {
+            "hit1": 1,
+            "n": 1
+          },
+          "wsuipa": {
+            "hit1": 1,
+            "n": 1
+          },
+          "wxwindows-exception-3.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "xdebug-1.03": {
+            "hit1": 1,
+            "n": 1
+          },
+          "xskat": {
+            "hit1": 1,
+            "n": 1
+          },
+          "ypl-1.0": {
+            "hit1": 0,
+            "n": 1
+          },
+          "ypl-1.1": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zend-2.0": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zimbra-1.3": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zimbra-1.4": {
+            "hit1": 1,
+            "n": 1
+          },
+          "zpl-1.1": {
+            "hit1": 1,
+            "n": 1
+          }
+        }
+      }
+    },
+    "divergent_misses": [
+      "antlr-pd",
+      "bitstream",
+      "brian-gladman-3-clause",
+      "bsd-1-clause",
+      "bsd-2-clause-views",
+      "bsd-source-code",
+      "bsl-1.0",
+      "cal-1.0",
+      "cc-by-1.0",
+      "cc-by-2.0",
+      "cc-by-2.5",
+      "cc-by-3.0",
+      "cc-by-nc-1.0",
+      "cc-by-nc-2.0",
+      "cc-by-nc-2.5",
+      "cc-by-nc-3.0",
+      "cc-by-nc-nd-2.0",
+      "cc-by-nc-nd-2.5",
+      "cc-by-nc-nd-3.0",
+      "cc-by-nc-sa-1.0",
+      "cc-by-nc-sa-2.0",
+      "cc-by-nc-sa-2.5",
+      "cc-by-nc-sa-3.0",
+      "cc-by-nd-2.0",
+      "cc-by-nd-2.5",
+      "cc-by-nd-3.0",
+      "cc-by-sa-1.0",
+      "cc-by-sa-2.0",
+      "cc-by-sa-2.5",
+      "cc-by-sa-3.0",
+      "cddl-1.0",
+      "cecill-b",
+      "cecill-c",
+      "cpl-1.0",
+      "docbook",
+      "epl-2.0",
+      "freebsd-doc",
+      "gcc-exception-3.1",
+      "h2-1.0",
+      "info-zip",
+      "inner-net-2.0",
+      "intel",
+      "mpl-1.1",
+      "ms-lpl",
+      "mx4j",
+      "net-snmp",
+      "npl-1.0",
+      "ntp-0",
+      "oclc-2.0",
+      "opengroup",
+      "opl-1.0",
+      "osl-2.1",
+      "tpl-1.0",
+      "unicode",
+      "x11"
+    ]
+  }
+}

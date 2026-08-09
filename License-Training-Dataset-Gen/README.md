@@ -41,6 +41,13 @@ FOSSology licenseRef ─┘
    duplicate fragments within and across sources before export.
 6. **Class balancing** (`NirjasClassBalancer`) - balances the Nirjas binary
    classes; use `--max-nirjas-samples` to cap total size.
+7. **Split hygiene** (`exporter/cleaning.py`) - runs inside the export, so what
+   the pipeline writes is what ships. Quarantines sub-60-character fragments
+   (generic boilerplate whose label is not inferable from the text), then removes
+   cross-split leakage with MinHash near-dedup. Train is never dropped from, so
+   every validation/test label stays present in train. Previously this was a
+   manual post-pass; the documented pipeline emitted a leaky dataset and only an
+   undocumented script produced the usable one.
 
 ### Output
 
@@ -149,5 +156,61 @@ src/
     llm_cache.py                 Persistent LLM response cache
   exporter/
     dataset_export.py        Exports HF DatasetDicts
+    cleaning.py              Split hygiene: junk quarantine + cross-split dedup
   utils.py                   Near-dedup (MinHashLSH)
+  run_eval.py                Evaluation entry point (counterpart to main.py)
+  evaluation/
+    retrieval.py             Encoders, top-k, metrics (shared machinery)
+    references.py            Reference index + license-key mapping
+    corpus.py                Query corpora from real source files
+    crossref.py              Cross-rendering eval (non-circular)
+    spdx_tag.py              SPDX-tag eval, regime-split (non-circular)
+    cascade.py               precision@coverage with abstention
+    real_corpus.py           ScanCode-labelled corpus eval (optimistic)
+    nirjas_gate.py           Binary gate vs real source files
+    nomos.py                 Binary gate vs FOSSology nomos testdata
+tests/                       Split-hygiene and evaluation invariants
 ```
+
+## Evaluation
+
+Evaluation is a separate entry point, not a pipeline stage: it reads build outputs
+plus a real-code corpus, runs on a different cadence, and needs heavier optional
+dependencies that a dataset regeneration should not have to install.
+
+```
+uv sync --extra eval
+uv run src/run_eval.py --list
+```
+
+| suite | measures | trust |
+|---|---|---|
+| `crossref` | ScanCode index vs FOSSology's independent text for the same license | **non-circular** |
+| `spdx-tag` | real headers, author-declared SPDX labels, split by regime | **non-circular** |
+| `cascade` | precision@coverage with abstention | non-circular corpus |
+| `real-corpus` | broad ScanCode-labelled corpus | *optimistic* — shares label provenance with its own notice layer |
+| `nirjas-gate`, `nomos` | the binary gate against real code / nomos testdata | — |
+
+Two rules for reading the output:
+
+- **Prefer macro over micro.** apache-2.0 is ~64% of real-world license
+  occurrences, so micro tracks the class mix rather than quality — it swings
+  0.605 → 0.782 on the SPDX-tag suite purely with the stratification cap, while
+  macro holds at ~0.65.
+- **Watch the regime split.** ~72% of real SPDX-tagged files carry no license
+  prose once the tag is stripped, and the correct answer for those is UNKNOWN.
+  Scoring them as misses understates the engine; the suite reports them
+  separately and prints the similarity distribution used to calibrate an
+  abstention threshold.
+
+`crossref` runs from the cached license JSONs alone. The others need the
+the-stack-smol snapshot; set `STACK_SNAPSHOT` or let it find the HuggingFace cache.
+
+### Datasets on the Hub
+
+- [`rycerzes/atarashi-dataset`](https://huggingface.co/datasets/rycerzes/atarashi-dataset)
+- [`rycerzes/nirjas-dataset`](https://huggingface.co/datasets/rycerzes/nirjas-dataset)
+
+The Atarashi split is **training data, not a benchmark** — ~86% of its fragments
+are verbatim substrings of the reference texts they would be scored against, so
+Recall@k there measures substring lookup. Use `crossref` or `spdx-tag` instead.

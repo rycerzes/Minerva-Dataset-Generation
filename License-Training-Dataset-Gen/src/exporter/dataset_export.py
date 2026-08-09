@@ -104,6 +104,31 @@ class ExportConfig(BaseModel):
         default=True,
         description="Write a ``statistics.json`` alongside each exported dataset.",
     )
+    clean_splits: bool = Field(
+        default=True,
+        description=(
+            "Quarantine junk fragments and remove cross-split leakage before "
+            "writing. The sliding-window splitter emits overlapping fragments of "
+            "one license which the content-hash split scatters across "
+            "train/validation/test; without this the export leaks and evaluation "
+            "measures memorisation. Disable only to reproduce a pre-cleaning build."
+        ),
+    )
+    clean_min_chars: int = Field(
+        default=60,
+        ge=0,
+        description=(
+            "Drop fragments shorter than this many normalized characters. These "
+            "are generic boilerplate windows labelled to one license though the "
+            "phrasing recurs across many, so the label is not inferable. 0 disables."
+        ),
+    )
+    clean_near_threshold: float = Field(
+        default=0.8,
+        ge=0.0,
+        le=1.0,
+        description="Jaccard threshold for MinHash cross-split near-dedup.",
+    )
 
 
 # Export result
@@ -412,6 +437,29 @@ class DatasetExporter:
         stats["by_negative_type"] = neg_type_counts
         return stats
 
+    # -- Split hygiene ------------------------------------------------------
+
+    def _clean(self, ds_dict, label_column: str | None):
+        """Quarantine junk and de-leak splits before writing. See ``cleaning``."""
+        if not self.config.clean_splits or len(ds_dict) < 2:
+            return ds_dict
+        try:
+            from exporter.cleaning import clean
+        except ImportError:  # running as a script, package root not on sys.path
+            from src.exporter.cleaning import clean  # type: ignore[no-redef]
+        cleaned, report = clean(
+            ds_dict,
+            min_chars=self.config.clean_min_chars,
+            near=True,
+            threshold=self.config.clean_near_threshold,
+            label_column=label_column,
+        )
+        logger.info(
+            "split hygiene: quarantined %s, deduped %s, %s -> %s",
+            report["quarantined"], report["deduped"], report["before"], report["after"],
+        )
+        return cleaned
+
     # -- Main export --------------------------------------------------------
 
     def export(
@@ -443,6 +491,7 @@ class DatasetExporter:
             ds_dict = self._build_atarashi_dataset(atarashi_samples)
             if isinstance(ds_dict, Dataset):
                 ds_dict = DatasetDict({"train": ds_dict})
+            ds_dict = self._clean(ds_dict, label_column="license_key")
             ds_dict.save_to_disk(str(atarashi_path))
             result.atarashi_path = str(atarashi_path)
             result.atarashi_total = len(atarashi_samples)
@@ -472,6 +521,8 @@ class DatasetExporter:
             ds_dict = self._build_nirjas_dataset(nirjas_samples)
             if isinstance(ds_dict, Dataset):
                 ds_dict = DatasetDict({"train": ds_dict})
+            # No per-class guard: the binary classes both have ample samples.
+            ds_dict = self._clean(ds_dict, label_column=None)
             ds_dict.save_to_disk(str(nirjas_path))
             result.nirjas_path = str(nirjas_path)
             result.nirjas_total = len(nirjas_samples)

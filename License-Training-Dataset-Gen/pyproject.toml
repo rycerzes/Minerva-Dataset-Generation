@@ -1,20 +1,38 @@
 [project]
 name = "minerva-dataset-pipeline"
 version = "0.1.0"
-description = "Add your description here"
+description = "Training-dataset generation and evaluation for FOSSology's Atarashi and Nirjas ML components"
 readme = "README.md"
 requires-python = ">=3.12"
+
+# Building the datasets. Deliberately free of ML/retrieval libraries: regenerating
+# a dataset should not require torch. Everything eval-only lives in the `eval`
+# extra below.
 dependencies = [
     "httpx>=0.28.1",
     "pydantic>=2.12.5",
     "pyarrow>=20.0.0",
     "litellm>=1.81.15",
-    "pytest>=9.0.2",
     "datasets>=4.5.0",
     "datasketch>=1.9.0",
-    "sentence-transformers>=5.6.0",
-    "scikit-learn>=1.9.0",
-    "model2vec[distill,train]>=0.8.2",
-    "accelerate>=1.14.0",
-    "scancode-toolkit",
 ]
+
+[project.optional-dependencies]
+# Running the evaluation suites (`uv run src/run_eval.py ...`):
+#   scancode-toolkit   licensedcode index — notice reference layer + corpus labels
+#   scikit-learn/scipy TF-IDF and BM25 scoring
+#   sentence-transformers/model2vec  embedding baselines, measured not deployed
+eval = [
+    "scancode-toolkit>=32.0.0",
+    "scikit-learn>=1.9.0",
+    "scipy>=1.14.0",
+    "numpy>=1.26.0",
+    "sentence-transformers>=5.6.0",
+    "model2vec[distill,train]>=0.8.2",
+]
+
+[dependency-groups]
+dev = ["pytest>=9.0.2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

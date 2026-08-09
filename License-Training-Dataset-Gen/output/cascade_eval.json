@@ -1,0 +1,180 @@
+{
+  "config": {
+    "tau": 0.3,
+    "per_lang": 0,
+    "max_per_license": 150
+  },
+  "n_notice": 266,
+  "n_no_signal": 2145,
+  "cosine": {
+    "n": 266,
+    "recall_at_1": 0.6052631578947368,
+    "recall_at_5": 0.7105263157894737,
+    "mrr": 0.6365914786967419,
+    "macro_recall_at_1": 0.6445061728395063,
+    "per_license": {
+      "agpl-3.0": {
+        "hit1": 0,
+        "n": 1
+      },
+      "apache-2.0": {
+        "hit1": 66,
+        "n": 150
+      },
+      "boost-1.0": {
+        "hit1": 1,
+        "n": 1
+      },
+      "bsd-new": {
+        "hit1": 10,
+        "n": 18
+      },
+      "bsd-simplified": {
+        "hit1": 5,
+        "n": 5
+      },
+      "cc-by-4.0": {
+        "hit1": 0,
+        "n": 1
+      },
+      "cc0-1.0": {
+        "hit1": 4,
+        "n": 5
+      },
+      "classpath-exception-2.0": {
+        "hit1": 9,
+        "n": 9
+      },
+      "epl-1.0": {
+        "hit1": 2,
+        "n": 3
+      },
+      "epl-2.0": {
+        "hit1": 18,
+        "n": 18
+      },
+      "gpl-2.0": {
+        "hit1": 1,
+        "n": 4
+      },
+      "lgpl-2.1-plus": {
+        "hit1": 0,
+        "n": 1
+      },
+      "linux-syscall-exception-gpl": {
+        "hit1": 0,
+        "n": 1
+      },
+      "mit": {
+        "hit1": 32,
+        "n": 36
+      },
+      "mit-0": {
+        "hit1": 1,
+        "n": 1
+      },
+      "mpl-2.0": {
+        "hit1": 7,
+        "n": 7
+      },
+      "unlicense": {
+        "hit1": 1,
+        "n": 1
+      },
+      "zlib": {
+        "hit1": 4,
+        "n": 4
+      }
+    }
+  },
+  "bm25": {
+    "n": 266,
+    "recall_at_1": 0.518796992481203,
+    "recall_at_5": 0.7030075187969925,
+    "mrr": 0.5926691729323308,
+    "macro_recall_at_1": 0.5881128747795414,
+    "per_license": {
+      "agpl-3.0": {
+        "hit1": 1,
+        "n": 1
+      },
+      "apache-2.0": {
+        "hit1": 66,
+        "n": 150
+      },
+      "boost-1.0": {
+        "hit1": 1,
+        "n": 1
+      },
+      "bsd-new": {
+        "hit1": 6,
+        "n": 18
+      },
+      "bsd-simplified": {
+        "hit1": 3,
+        "n": 5
+      },
+      "cc-by-4.0": {
+        "hit1": 0,
+        "n": 1
+      },
+      "cc0-1.0": {
+        "hit1": 4,
+        "n": 5
+      },
+      "classpath-exception-2.0": {
+        "hit1": 0,
+        "n": 9
+      },
+      "epl-1.0": {
+        "hit1": 2,
+        "n": 3
+      },
+      "epl-2.0": {
+        "hit1": 17,
+        "n": 18
+      },
+      "gpl-2.0": {
+        "hit1": 1,
+        "n": 4
+      },
+      "lgpl-2.1-plus": {
+        "hit1": 0,
+        "n": 1
+      },
+      "linux-syscall-exception-gpl": {
+        "hit1": 0,
+        "n": 1
+      },
+      "mit": {
+        "hit1": 25,
+        "n": 36
+      },
+      "mit-0": {
+        "hit1": 1,
+        "n": 1
+      },
+      "mpl-2.0": {
+        "hit1": 6,
+        "n": 7
+      },
+      "unlicense": {
+        "hit1": 1,
+        "n": 1
+      },
+      "zlib": {
+        "hit1": 4,
+        "n": 4
+      }
+    }
+  },
+  "precision_at_coverage": {
+    "tau": 0.3,
+    "answered": 157,
+    "total": 266,
+    "coverage": 0.5902,
+    "precision_at_answered": 0.9236,
+    "no_signal_answered": 23,
+    "no_signal_false_answer_rate": 0.0107
+  }
+}

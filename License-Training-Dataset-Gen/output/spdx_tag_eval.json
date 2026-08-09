@@ -1,97 +1,26 @@
 {
-  "n_queries": 445,
+  "n_queries": 266,
+  "n_no_signal": 2145,
+  "n_licenses": 18,
+  "config": {
+    "per_lang": 0,
+    "max_per_license": 150
+  },
   "results": {
     "fulltext": {
-      "n": 445,
-      "recall_at_1": 0.0044943820224719105,
-      "recall_at_5": 0.07865168539325842,
-      "mrr": 0.030711610486891375,
-      "macro_recall_at_1": 0.0023529411764705885,
+      "n": 266,
+      "recall_at_1": 0.16165413533834586,
+      "recall_at_5": 0.48120300751879697,
+      "mrr": 0.26842105263157906,
+      "macro_recall_at_1": 0.2682098765432099,
       "per_license": {
+        "agpl-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
         "apache-2.0": {
           "hit1": 0,
-          "n": 286
-        },
-        "artistic-2.0": {
-          "hit1": 0,
-          "n": 1
-        },
-        "boost-1.0": {
-          "hit1": 0,
-          "n": 1
-        },
-        "bsd-new": {
-          "hit1": 0,
-          "n": 49
-        },
-        "bsd-plus-patent": {
-          "hit1": 0,
-          "n": 4
-        },
-        "bsd-simplified": {
-          "hit1": 0,
-          "n": 10
-        },
-        "cc0-1.0": {
-          "hit1": 0,
-          "n": 1
-        },
-        "classpath-exception-2.0": {
-          "hit1": 0,
-          "n": 1
-        },
-        "epl-2.0": {
-          "hit1": 0,
-          "n": 3
-        },
-        "gpl-2.0": {
-          "hit1": 0,
-          "n": 24
-        },
-        "gpl-2.0-plus": {
-          "hit1": 0,
-          "n": 1
-        },
-        "gpl-3.0": {
-          "hit1": 0,
-          "n": 1
-        },
-        "gpl-3.0-plus": {
-          "hit1": 0,
-          "n": 1
-        },
-        "lgpl-2.1": {
-          "hit1": 0,
-          "n": 2
-        },
-        "mit": {
-          "hit1": 2,
-          "n": 50
-        },
-        "mit-0": {
-          "hit1": 0,
-          "n": 2
-        },
-        "mpl-2.0": {
-          "hit1": 0,
-          "n": 8
-        }
-      }
-    },
-    "both": {
-      "n": 445,
-      "recall_at_1": 0.31685393258426964,
-      "recall_at_5": 0.42921348314606744,
-      "mrr": 0.35722846441947564,
-      "macro_recall_at_1": 0.2022398749709674,
-      "per_license": {
-        "apache-2.0": {
-          "hit1": 111,
-          "n": 286
-        },
-        "artistic-2.0": {
-          "hit1": 0,
-          "n": 1
+          "n": 150
         },
         "boost-1.0": {
           "hit1": 0,
@@ -99,61 +28,155 @@
         },
         "bsd-new": {
           "hit1": 4,
-          "n": 49
-        },
-        "bsd-plus-patent": {
-          "hit1": 0,
-          "n": 4
+          "n": 18
         },
         "bsd-simplified": {
-          "hit1": 1,
-          "n": 10
+          "hit1": 4,
+          "n": 5
+        },
+        "cc-by-4.0": {
+          "hit1": 0,
+          "n": 1
         },
         "cc0-1.0": {
           "hit1": 0,
-          "n": 1
+          "n": 5
         },
         "classpath-exception-2.0": {
+          "hit1": 0,
+          "n": 9
+        },
+        "epl-1.0": {
+          "hit1": 0,
+          "n": 3
+        },
+        "epl-2.0": {
+          "hit1": 0,
+          "n": 18
+        },
+        "gpl-2.0": {
+          "hit1": 0,
+          "n": 4
+        },
+        "lgpl-2.1-plus": {
+          "hit1": 0,
+          "n": 1
+        },
+        "linux-syscall-exception-gpl": {
+          "hit1": 0,
+          "n": 1
+        },
+        "mit": {
+          "hit1": 29,
+          "n": 36
+        },
+        "mit-0": {
           "hit1": 1,
           "n": 1
         },
-        "epl-2.0": {
-          "hit1": 3,
+        "mpl-2.0": {
+          "hit1": 0,
+          "n": 7
+        },
+        "unlicense": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zlib": {
+          "hit1": 4,
+          "n": 4
+        }
+      }
+    },
+    "both": {
+      "n": 266,
+      "recall_at_1": 0.6052631578947368,
+      "recall_at_5": 0.7105263157894737,
+      "mrr": 0.6365914786967419,
+      "macro_recall_at_1": 0.6445061728395063,
+      "per_license": {
+        "agpl-3.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "apache-2.0": {
+          "hit1": 66,
+          "n": 150
+        },
+        "boost-1.0": {
+          "hit1": 1,
+          "n": 1
+        },
+        "bsd-new": {
+          "hit1": 10,
+          "n": 18
+        },
+        "bsd-simplified": {
+          "hit1": 5,
+          "n": 5
+        },
+        "cc-by-4.0": {
+          "hit1": 0,
+          "n": 1
+        },
+        "cc0-1.0": {
+          "hit1": 4,
+          "n": 5
+        },
+        "classpath-exception-2.0": {
+          "hit1": 9,
+          "n": 9
+        },
+        "epl-1.0": {
+          "hit1": 2,
           "n": 3
         },
+        "epl-2.0": {
+          "hit1": 18,
+          "n": 18
+        },
         "gpl-2.0": {
-          "hit1": 11,
-          "n": 24
+          "hit1": 1,
+          "n": 4
         },
-        "gpl-2.0-plus": {
+        "lgpl-2.1-plus": {
           "hit1": 0,
           "n": 1
         },
-        "gpl-3.0": {
+        "linux-syscall-exception-gpl": {
           "hit1": 0,
           "n": 1
-        },
-        "gpl-3.0-plus": {
-          "hit1": 0,
-          "n": 1
-        },
-        "lgpl-2.1": {
-          "hit1": 0,
-          "n": 2
         },
         "mit": {
-          "hit1": 8,
-          "n": 50
+          "hit1": 32,
+          "n": 36
         },
         "mit-0": {
-          "hit1": 0,
-          "n": 2
+          "hit1": 1,
+          "n": 1
         },
         "mpl-2.0": {
-          "hit1": 2,
-          "n": 8
+          "hit1": 7,
+          "n": 7
+        },
+        "unlicense": {
+          "hit1": 1,
+          "n": 1
+        },
+        "zlib": {
+          "hit1": 4,
+          "n": 4
         }
       }
     }
+  },
+  "no_signal": {
+    "n": 2145,
+    "top1_mean": 0.1346,
+    "p50": 0.1252,
+    "p75": 0.1559,
+    "p90": 0.1921,
+    "p95": 0.2186,
+    "p99": 0.3032
   }
 }

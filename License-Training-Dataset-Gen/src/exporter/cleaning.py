@@ -4,9 +4,9 @@
 This used to live in two root-level scripts (``fix_atarashi_leakage.py``,
 ``fix_nirjas_leakage.py``) run by hand *after* an export. That made the documented
 pipeline emit a dataset that was not the one actually shipped: ``output/atarashi``
-carried cross-split leakage, and only the undocumented post-pass produced the
-usable ``output/atarashi_clean``. The export is now cleaned in-process, so what
-``main.py`` writes is what ships.
+carried cross-split leakage, and only an undocumented post-pass produced a usable
+copy alongside it. The export is now cleaned in-process, so what ``main.py``
+writes is what ships, and ``output/atarashi`` is the canonical build.
 
 Two defects are removed, in this order:
 
@@ -26,7 +26,7 @@ seen in train) is preserved.
 
 Also usable standalone, to clean an export produced before this was wired in:
 
-    uv run src/exporter/cleaning.py --dataset output/atarashi --out output/atarashi_clean \
+    uv run src/exporter/cleaning.py --dataset output/atarashi --out output/atarashi.cleaned \
         --near --min-chars 60
 """
 from __future__ import annotations
@@ -195,7 +195,7 @@ def _main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dataset", default="output/atarashi")
-    ap.add_argument("--out", default="output/atarashi_clean")
+    ap.add_argument("--out", default="output/atarashi.cleaned")
     ap.add_argument("--in-place", action="store_true")
     ap.add_argument("--near", action="store_true", help="MinHash near-dedup (subsumes exact)")
     ap.add_argument("--threshold", type=float, default=DEFAULT_NEAR_THRESHOLD)

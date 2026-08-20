@@ -35,6 +35,7 @@ SUITES = {
     "nomos": ("evaluation.nomos", "binary gate against FOSSology nomos testdata"),
     "build-corpus": ("evaluation.corpus", "(re)build the ScanCode-labelled query corpus"),
     "notice-refs": ("evaluation.references", "summarize the notice reference layer"),
+    "debian-dep5": ("evaluation.debian", "Debian DEP-5: independent labels and the licence tail"),
 }
 
 

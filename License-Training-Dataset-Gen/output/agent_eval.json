@@ -5,7 +5,7 @@
     "snapshot": "None",
     "limit": "0",
     "no_scancode": "False",
-    "dump_residual": "output/residual.json"
+    "dump_residual": "None"
   },
   "n_notice": 266,
   "n_scored": 246,
@@ -13,63 +13,63 @@
   "unreachable_gt": 20,
   "agent": {
     "n": 246,
-    "answered": 147,
-    "coverage": 0.5976,
-    "correct": 128,
-    "precision_at_answered": 0.8707,
-    "recall_at_1": 0.5203,
+    "answered": 239,
+    "coverage": 0.9715,
+    "correct": 222,
+    "precision_at_answered": 0.9289,
+    "recall_at_1": 0.9024,
     "unmapped_answers": 0
   },
-  "no_signal_answered": 28,
+  "no_signal_answered": 26,
   "sweep": [
     {
       "strong_run": 8,
-      "answered": 151,
-      "coverage": 0.6138,
-      "precision": 0.8477,
-      "recall_at_1": 0.5203
+      "answered": 242,
+      "coverage": 0.9837,
+      "precision": 0.9132,
+      "recall_at_1": 0.8984
     },
     {
       "strong_run": 12,
-      "answered": 148,
-      "coverage": 0.6016,
-      "precision": 0.8649,
-      "recall_at_1": 0.5203
+      "answered": 240,
+      "coverage": 0.9756,
+      "precision": 0.9208,
+      "recall_at_1": 0.8984
     },
     {
       "strong_run": 16,
-      "answered": 147,
-      "coverage": 0.5976,
-      "precision": 0.8707,
-      "recall_at_1": 0.5203
+      "answered": 239,
+      "coverage": 0.9715,
+      "precision": 0.9247,
+      "recall_at_1": 0.8984
     },
     {
       "strong_run": 20,
-      "answered": 147,
-      "coverage": 0.5976,
-      "precision": 0.8707,
-      "recall_at_1": 0.5203
+      "answered": 239,
+      "coverage": 0.9715,
+      "precision": 0.9289,
+      "recall_at_1": 0.9024
     },
     {
       "strong_run": 24,
-      "answered": 146,
-      "coverage": 0.5935,
-      "precision": 0.8767,
-      "recall_at_1": 0.5203
+      "answered": 238,
+      "coverage": 0.9675,
+      "precision": 0.9328,
+      "recall_at_1": 0.9024
     },
     {
       "strong_run": 30,
-      "answered": 146,
-      "coverage": 0.5935,
-      "precision": 0.8767,
-      "recall_at_1": 0.5203
+      "answered": 238,
+      "coverage": 0.9675,
+      "precision": 0.9328,
+      "recall_at_1": 0.9024
     },
     {
       "strong_run": 40,
-      "answered": 145,
-      "coverage": 0.5894,
-      "precision": 0.8828,
-      "recall_at_1": 0.5203
+      "answered": 237,
+      "coverage": 0.9634,
+      "precision": 0.9367,
+      "recall_at_1": 0.9024
     }
   ],
   "scancode": {

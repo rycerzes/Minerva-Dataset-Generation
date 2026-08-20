@@ -1,0 +1,83 @@
+{
+  "config": {
+    "per_lang": "0",
+    "max_per_license": "150",
+    "snapshot": "None",
+    "limit": "0",
+    "no_scancode": "False",
+    "dump_residual": "output/residual.json"
+  },
+  "n_notice": 266,
+  "n_scored": 246,
+  "n_no_signal": 2145,
+  "unreachable_gt": 20,
+  "agent": {
+    "n": 246,
+    "answered": 147,
+    "coverage": 0.5976,
+    "correct": 128,
+    "precision_at_answered": 0.8707,
+    "recall_at_1": 0.5203,
+    "unmapped_answers": 0
+  },
+  "no_signal_answered": 28,
+  "sweep": [
+    {
+      "strong_run": 8,
+      "answered": 151,
+      "coverage": 0.6138,
+      "precision": 0.8477,
+      "recall_at_1": 0.5203
+    },
+    {
+      "strong_run": 12,
+      "answered": 148,
+      "coverage": 0.6016,
+      "precision": 0.8649,
+      "recall_at_1": 0.5203
+    },
+    {
+      "strong_run": 16,
+      "answered": 147,
+      "coverage": 0.5976,
+      "precision": 0.8707,
+      "recall_at_1": 0.5203
+    },
+    {
+      "strong_run": 20,
+      "answered": 147,
+      "coverage": 0.5976,
+      "precision": 0.8707,
+      "recall_at_1": 0.5203
+    },
+    {
+      "strong_run": 24,
+      "answered": 146,
+      "coverage": 0.5935,
+      "precision": 0.8767,
+      "recall_at_1": 0.5203
+    },
+    {
+      "strong_run": 30,
+      "answered": 146,
+      "coverage": 0.5935,
+      "precision": 0.8767,
+      "recall_at_1": 0.5203
+    },
+    {
+      "strong_run": 40,
+      "answered": 145,
+      "coverage": 0.5894,
+      "precision": 0.8828,
+      "recall_at_1": 0.5203
+    }
+  ],
+  "scancode": {
+    "n": 246,
+    "answered": 236,
+    "coverage": 0.9593,
+    "correct": 230,
+    "precision_at_answered": 0.9746,
+    "recall_at_1": 0.935
+  }
+}

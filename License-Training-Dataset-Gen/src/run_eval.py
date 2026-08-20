@@ -9,6 +9,7 @@ sentence-transformers) that a dataset regeneration should not have to install.
     uv run src/run_eval.py crossref --query-mode full
     uv run src/run_eval.py spdx-tag --per-lang 0 --max-per-license 150
     uv run src/run_eval.py cascade --tau 0.30
+    uv run src/run_eval.py agent --per-lang 0 --max-per-license 150
     uv run src/run_eval.py real-corpus --refs both --loo contain
     uv run src/run_eval.py --list
 
@@ -28,6 +29,7 @@ SUITES = {
     "crossref": ("evaluation.crossref", "cross-rendering eval (non-circular, verbatim regime)"),
     "spdx-tag": ("evaluation.spdx_tag", "author-declared SPDX labels, regime-split (non-circular)"),
     "cascade": ("evaluation.cascade", "precision@coverage with abstention"),
+    "agent": ("evaluation.agent", "score Cascade.scan itself, vs ScanCode (non-circular)"),
     "real-corpus": ("evaluation.real_corpus", "broad ScanCode-labelled corpus (optimistic)"),
     "nirjas-gate": ("evaluation.nirjas_gate", "binary gate against real source files"),
     "nomos": ("evaluation.nomos", "binary gate against FOSSology nomos testdata"),

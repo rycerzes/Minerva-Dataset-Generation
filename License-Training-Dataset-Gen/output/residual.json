@@ -1,0 +1,1070 @@
+[
+  {
+    "text": "/* ********************************************************************************************************* * uC/OS-III * The Real-Time Kernel * * Copyright 2009-2021 Silicon Laboratories Inc. www.silabs.com * * * This software is subject to an open source license and is distributed by * Silicon Laboratories Inc. pursuant to the terms of the Apache License, * Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. * ********************************************************************************************************* */ /* ********************************************************************************************************* * * Generic ColdFire Port * * File : os_cpu_a.asm * Version : V3.08.01 ********************************************************************************************************* * Note(s) : 1) This port uses the MOVEM.L (A7),D0-D7/A0-A6, LEA 60(A7)A7 construct instead of * the traditional 68xxx MOVEM.L (A7)+,D0-D7/A0-A6. It is perfectly in order to * push/pop individual registers using MOVEM.L (A7)+,D2, etc. but it's a bit slower * (and more verbose). * * 2) The LEA instruction is required because the ColdFire cannot push multiple *",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "assembly",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": ";******************************************************************************************************** ; uC/OS-II ; The Real-Time Kernel ; ; Copyright 1992-2020 Silicon Laboratories Inc. www.silabs.com ; ; ; This software is subject to an open source license and is distributed by ; Silicon Laboratories Inc. pursuant to the terms of the Apache License, ; Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. ; ;******************************************************************************************************** ;******************************************************************************************************** ; ; ARMv6-M Port ; ; Filename : os_cpu_a.asm ; Version : V2.93.00 ;******************************************************************************************************** ; For : ARMv6-M Cortex-M0 or Cortex-M0+ ; Mode : Thumb2 ; Toolchain : IAR EWARM ;********************************************************************************************************* ; Note(s) : (1) This port supports the ARM Cortex-M0 and Cortex-M0+ architectures. ;********************************************************************************************************* ;********************************",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "assembly",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": ";******************************************************************************************************** ; uC/OS-II ; The Real-Time Kernel ; ; Copyright 1992-2020 Silicon Laboratories Inc. www.silabs.com ; ; ; This software is subject to an open source license and is distributed by ; Silicon Laboratories Inc. pursuant to the terms of the Apache License, ; Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. ; ;******************************************************************************************************** ;******************************************************************************************************** ; ; ARMv7-R Port ; ; Filename : os_cpu_a_vfp-none.asm ; Version : V2.93.00 ;******************************************************************************************************** ; For : ARMv7-R Cortex-R ; Mode : ARM or Thumb ; Toolchain : IAR EWARM V5.xx and higher ;******************************************************************************************************** ; Note(s) : (1) See Note #2 of os_cpu.h for important informations about this file. ;******************************************************************************************************** ;***************",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "assembly",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": ";******************************************************************************************************** ; uC/OS-II ; The Real-Time Kernel ; ; Copyright 1992-2021 Silicon Laboratories Inc. www.silabs.com ; ; ; This software is subject to an open source license and is distributed by ; Silicon Laboratories Inc. pursuant to the terms of the Apache License, ; Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. ; ;******************************************************************************************************** ;******************************************************************************************************** ; ; Renesas RL78 Port ; ; Filename : os_cpu_a.asm ; Version : V2.93.01 ;******************************************************************************************************** ; For : Renesas RL78 ; Toolchain : E2Studios v2.x GNURL78 Compiler v1.x ;******************************************************************************************************** #include \"os_cpu_a.inc\" ;******************************************************************************************************** ; PUBLIC AND EXTERNAL DECLARATIONS ;************************************",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "assembly",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": ";******************************************************************************************************** ; uC/OS-III ; The Real-Time Kernel ; ; Copyright 2009-2020 Silicon Laboratories Inc. www.silabs.com ; ; ; This software is subject to an open source license and is distributed by ; Silicon Laboratories Inc. pursuant to the terms of the Apache License, ; Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. ; ;******************************************************************************************************** ;******************************************************************************************************** ; ; ARMv7-M Port ; ; File : os_cpu_a.asm ; Version : V3.08.00 ;******************************************************************************************************** ; For : ARMv7-M Cortex-M ; Mode : Thumb-2 ISA ; Toolchain : ARM C Compiler ;******************************************************************************************************** ; Note(s) : (1) This port supports the ARM Cortex-M3, Cortex-M4 and Cortex-M7 architectures. ; (2) It has been tested with the following Hardware Floating Point Unit. ; (a) Single-precision: FPv4-SP-D1",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "assembly",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "/* ********************************************************************************************************* * uC/OS-II * The Real-Time Kernel * * Copyright 1992-2021 Silicon Laboratories Inc. www.silabs.com * * * This software is subject to an open source license and is distributed by * Silicon Laboratories Inc. pursuant to the terms of the Apache License, * Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. * ********************************************************************************************************* */ /* ********************************************************************************************************* * * uCOS-II port for Analog Device's Blackfin 533 * Visual DSP++ 5.0 * * This port was made with a large contribution from the Analog Devices Inc development team * * Filename : os_cpu_a.asm * Version : V2.93.01 ********************************************************************************************************* */ /* ********************************************************************************************************* * INCLUDE FILES ******************************************************************",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "assembly",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- Target.h ------------------------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef LLDB_TARGET_TARGET_H #define LLDB_TARGET_TARGET_H #include <list> #include <map> #include <memory> #include <string> #include <unordered_set> #include <vector> #include \"lldb/Breakpoint/BreakpointList.h\" #include \"lldb/Breakpoint/BreakpointName.h\" #include \"lldb/Breakpoint/WatchpointList.h\" #include \"lldb/Core/Architecture.h\" #include \"lldb/Core/Disassembler.h\" #include \"lldb/Core/ModuleList.h\" #include \"lldb/Core/StructuredDataImpl.h\" #include \"lldb/Core/UserSettingsController.h\" #include \"lldb/Core/SwiftScratchContextReader.h\" #include \"lldb/Expression/Expression.h\" #include \"lldb/Host/ProcessLaunchInfo.h\" #include \"lldb/Interpreter/OptionValueBoolean.h\" #include \"lldb/Interpreter/OptionValueEnumeration.h\" #include \"lldb/Interpreter/OptionValueFileSpec.h\" #include \"lldb/Symbol/SymbolContext.h\" #include \"lldb/Symbol/TypeSystem.h\" #include \"lldb/Target/ABI.h\" #include \"lldb/Target/ExecutionContextScope.h\" #include \"lldb/Target/PathMappingList.h\" #include \"lldb/Target/SectionLoadHistory.h\" #include \"lldb/Target/Statistics.h\" #include \"lldb/Target/ThreadSpec.h\" #include \"lldb/Utility/ArchSpec.h\" #include",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- ThreadPlanStepRange.h -----------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef LLDB_TARGET_THREADPLANSTEPRANGE_H #define LLDB_TARGET_THREADPLANSTEPRANGE_H #include \"lldb/Core/AddressRange.h\" #include \"lldb/Target/StackID.h\" #include \"lldb/Target/Thread.h\" #include \"lldb/Target/ThreadPlan.h\" #include \"lldb/Target/ThreadPlanShouldStopHere.h\" namespace lldb_private { class ThreadPlanStepRange : public ThreadPlan { public: ThreadPlanStepRange(ThreadPlanKind kind, const char *name, Thread &thread, const AddressRange &range, const SymbolContext &addr_context, lldb::RunMode stop_others, bool given_ranges_only = false); ~ThreadPlanStepRange() override; void GetDescription(Stream *s, lldb::DescriptionLevel level) override = 0; bool ValidatePlan(Stream *error) override; bool ShouldStop(Event *event_ptr) override = 0; Vote ShouldReportStop(Event *event_ptr) override; bool StopOthers() override; lldb::StateType GetPlanRunState() override; bool WillStop() override; bool MischiefManaged() override; void DidPush() override; bool IsPlanStale() override; void AddRange(const Address",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- DWARFUnit.h ---------------------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef LLDB_SOURCE_PLUGINS_SYMBOLFILE_DWARF_DWARFUNIT_H #define LLDB_SOURCE_PLUGINS_SYMBOLFILE_DWARF_DWARFUNIT_H #include \"DWARFDIE.h\" #include \"DWARFDebugInfoEntry.h\" #include \"lldb/lldb-enumerations.h\" #include \"lldb/Utility/XcodeSDK.h\" #include \"llvm/Support/RWMutex.h\" #include <atomic> class DWARFUnit; class DWARFCompileUnit; class NameToDIE; class SymbolFileDWARF; class SymbolFileDWARFDwo; typedef std::shared_ptr<DWARFUnit> DWARFUnitSP; enum DWARFProducer { eProducerInvalid = 0, eProducerClang, eProducerGCC, eProducerLLVMGCC, eProcucerOther }; /// Base class describing the header of any kind of \"unit.\" Some information /// is specific to certain unit types. We separate this class out so we can /// parse the header before deciding what specific kind of unit to construct. class DWARFUnitHeader { dw_offset_t m_offset = 0; dw_offset_t m_length = 0; uint16_t m_version = 0; dw_offset_t m_abbr_offset = 0; const llvm::DWARFUnitIndex::Entry *m_index_entry = nullptr; uint8_t m_unit_type = 0; uint8_t m_addr_size = 0; uint64_t m_type_hash = 0; uint32_t m_type_offset = 0; uint64_",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "/* * strtolower.h * Ansilove 4.1.6 * https://www.ansilove.org * * Copyright (c) 2011-2022 Stefan Vogt, Brian Cassidy, and Frederic Cambus * All rights reserved. * * Ansilove is licensed under the BSD 2-Clause license. * See LICENSE file for details. * */ #ifndef STRTOLOWER_H #define STRTOLOWER_H /* In-place modification of a string to be all lower case. */ char *strtolower(char *); #endif /* STRTOLOWER_H */",
+    "gt": [
+      "bsd-simplified"
+    ],
+    "tag": "BSD-2-Clause",
+    "lang": "c",
+    "scancode": "bsd-simplified",
+    "residual": "A"
+  },
+  {
+    "text": "// Copyright 2020 The IREE Authors // // Licensed under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. #include \"iree/hal/semaphore.h\" #include <stddef.h> #include \"iree/base/tracing.h\" #include \"iree/hal/detail.h\" #include \"iree/hal/device.h\" #include \"iree/hal/resource.h\" #define _VTABLE_DISPATCH(semaphore, method_name) \\ IREE_HAL_VTABLE_DISPATCH(semaphore, iree_hal_semaphore, method_name) IREE_HAL_API_RETAIN_RELEASE(semaphore); IREE_API_EXPORT iree_status_t iree_hal_semaphore_create(iree_hal_device_t* device, uint64_t initial_value, iree_hal_semaphore_t** out_semaphore) { IREE_ASSERT_ARGUMENT(device); IREE_ASSERT_ARGUMENT(out_semaphore); *out_semaphore = NULL; IREE_TRACE_ZONE_BEGIN(z0); iree_status_t status = IREE_HAL_VTABLE_DISPATCH(device, iree_hal_device, create_semaphore)( device, initial_value, out_semaphore); IREE_TRACE_ZONE_END(z0); return status; } IREE_API_EXPORT iree_status_t iree_hal_semaphore_query(iree_hal_semaphore_t* semaphore, uint64_t* out_value) { IREE_ASSERT_ARGUMENT(semaphore); IREE_ASSERT_ARGUMENT(out_value); *out_value = 0; IREE_TRACE_ZONE_BEGIN(z0); iree_status_t status = _VTABLE_DISPATCH(semaphore, query)(semaphore, out_value); IREE_TRACE_ZONE_END(z0); return status; } IREE_API_EXPORT iree_status_t iree_hal_semaphore_signal(iree_hal_semaphore_t* se",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- lib/semantics/check-deallocate.h ------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //----------------------------------------------------------------------------// #ifndef FORTRAN_SEMANTICS_CHECK_DEALLOCATE_H_ #define FORTRAN_SEMANTICS_CHECK_DEALLOCATE_H_ #include \"semantics.h\" namespace Fortran::parser { struct DeallocateStmt; } namespace Fortran::semantics { class DeallocateChecker : public virtual BaseChecker { public: DeallocateChecker(SemanticsContext &context) : context_{context} {} void Leave(const parser::DeallocateStmt &); private: SemanticsContext &context_; }; } #endif // FORTRAN_SEMANTICS_CHECK_DEALLOCATE_H_",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- ClangExpressionDeclMap.h --------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef liblldb_ClangExpressionDeclMap_h_ #define liblldb_ClangExpressionDeclMap_h_ #include <signal.h> #include <stdint.h> #include <vector> #include \"ClangASTSource.h\" #include \"ClangExpressionVariable.h\" #include \"lldb/Core/Value.h\" #include \"lldb/Expression/Materializer.h\" #include \"lldb/Symbol/SymbolContext.h\" #include \"lldb/Symbol/TaggedASTType.h\" #include \"lldb/Target/ExecutionContext.h\" #include \"lldb/lldb-public.h\" #include \"clang/AST/Decl.h\" #include \"llvm/ADT/DenseMap.h\" namespace lldb_private { class ClangPersistentVariables; /// \\class ClangExpressionDeclMap ClangExpressionDeclMap.h /// \"lldb/Expression/ClangExpressionDeclMap.h\" Manages named entities that are /// defined in LLDB's debug information. /// /// The Clang parser uses the ClangASTSource as an interface to request named /// entities from outside an expression. The ClangASTSource reports back, /// listing all possible objects corresponding to a particular name. But it /// in turn relies on ClangExpressionDeclMap, which performs several important /// functions. /// /// First, it records what variables and functions were looked up an",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//=- VectorToSPIRV.h - Vector to SPIR-V Patterns ------------------*- C++ -*-=// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // Provides patterns to convert Vector dialect to SPIR-V dialect. // //===----------------------------------------------------------------------===// #ifndef MLIR_INCLUDE_MLIR_CONVERSION_VECTORTOSPIRV_VECTORTOSPIRV_H #define MLIR_INCLUDE_MLIR_CONVERSION_VECTORTOSPIRV_VECTORTOSPIRV_H #include \"mlir/Transforms/DialectConversion.h\" namespace mlir { class SPIRVTypeConverter; /// Appends to a pattern list additional patterns for translating Vector Ops to /// SPIR-V ops. void populateVectorToSPIRVPatterns(MLIRContext *context, SPIRVTypeConverter &typeConverter, OwningRewritePatternList &patterns); } // namespace mlir #endif // MLIR_INCLUDE_MLIR_CONVERSION_VECTORTOSPIRV_VECTORTOSPIRV_H",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "// Copyright 2019 The IREE Authors // // Licensed under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. #ifndef IREE_BASE_STATUS_H_ #define IREE_BASE_STATUS_H_ #include <errno.h> #include <memory.h> #include <stdarg.h> #include <stdbool.h> #include <stddef.h> #include <stdint.h> #include <stdio.h> #include <stdlib.h> #include <string.h> #include \"iree/base/attributes.h\" #include \"iree/base/config.h\" #include \"iree/base/string_view.h\" #ifdef __cplusplus extern \"C\" { #endif // __cplusplus //===----------------------------------------------------------------------===// // IREE_STATUS_FEATURE flags and IREE_STATUS_MODE setting //===----------------------------------------------------------------------===// // Captures origin source information on a call to iree_make_status. // Status storage will be allocated and reference the __FILE__ and __LINE__ // of where it is invoked. #define IREE_STATUS_FEATURE_SOURCE_LOCATION (1 << 0) // Captures annotation messages provided via iree_make_status or // iree_status_annotate. // Status storage will be allocated. #define IREE_STATUS_FEATURE_ANNOTATIONS (1 << 1) // Captures the current callstack on a call to iree_make_status. // Status storage will be allocated. #define IREE_STATUS_FEATURE_STACK_TRACE (1 << 2) // Set IREE_STATUS_FEATURES based on IREE_STATUS_MODE if the user hasn't // overridden it with more specific",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "/* ********************************************************************************************************* * uC/TCP-IP * The Embedded TCP/IP Suite * * Copyright 2004-2020 Silicon Laboratories Inc. www.silabs.com * * * This software is subject to an open source license and is distributed by * Silicon Laboratories Inc. pursuant to the terms of the Apache License, * Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. * ********************************************************************************************************* */ /* ********************************************************************************************************* * * NETWORK DEVICE DRIVER * * WinPcap * * Filename : net_dev_winpcap.c * Version : V3.06.00 ********************************************************************************************************* */ /* ********************************************************************************************************* * INCLUDE FILES ********************************************************************************************************* */ #define MICRIUM_SOURCE #define NET_DEV_WINPCAP_MODULE #inc",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "c",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "/* * This file is part of the optimized implementation of the Picnic signature scheme. * See the accompanying documentation for complete details. * * The code is provided under the MIT license, see LICENSE for * more details. */ #ifndef CPU_H #define CPU_H #include \"macros.h\" #if !defined(OQS) #if defined(__GNUC__) && !(defined(__APPLE__) && (__clang_major__ <= 8)) && \\ !defined(__MINGW32__) && !defined(__MINGW64__) #define BUILTIN_CPU_SUPPORTED #endif #if defined(BUILTIN_CPU_SUPPORTED) && GNUC_CHECK(4, 9) && !GNUC_CHECK(5, 0) /* gcc 4.9's __builtin_cpu_support does not support \"bmi2\" */ #define BUILTIN_CPU_SUPPORTED_BROKEN_BMI2 #endif #if !defined(BUILTIN_CPU_SUPPORTED) || defined(BUILTIN_CPU_SUPPORTED_BROKEN_BMI2) #include <stdbool.h> /* CPU supports SSE2 */ #define CPU_CAP_SSE2 0x00000001 /* CPU supports AVX2 */ #define CPU_CAP_AVX2 0x00000004 /* CPU supports BMI2 */ #define CPU_CAP_BMI2 0x00000010 /* CPU supports NEON */ #define CPU_CAP_NEON 0x00000008 /** * Helper function in case __builtin_cpu_supports is not available. */ bool cpu_supports(unsigned int caps); #endif /* Use __builtin_cpu_support or our fallback function to determine supported CPU features */ #if defined(__x86_64__) || defined(_M_X64) || defined(__i386__) || defined(_M_IX86) #if defined(BUILTIN_CPU_SUPPORTED) && !defined(BUILTIN_CPU_SUPPORTED_BROKEN_BMI2) #define CPU_SUPPORTS_AVX2 (__builtin_cpu_supports(\"avx2\") && __builtin_",
+    "gt": [
+      "mit"
+    ],
+    "tag": "MIT",
+    "lang": "c",
+    "scancode": "mit",
+    "residual": "A"
+  },
+  {
+    "text": "//===------ ISLTools.h ------------------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // Tools, utilities, helpers and extensions useful in conjunction with the // Integer Set Library (isl). // //===----------------------------------------------------------------------===// #ifndef POLLY_ISLTOOLS_H #define POLLY_ISLTOOLS_H #include \"llvm/ADT/Sequence.h\" #include \"llvm/ADT/iterator.h\" #include \"isl/isl-noexceptions.h\" #include <cassert> /// In debug builds assert that the @p Size is valid, in non-debug builds /// disable the mandatory state checking but do not enforce the error checking. inline void islAssert(const isl::size &Size) { #ifdef NDEBUG // Calling is_error() marks that the error status has been checked which // disables the error-status-not-checked errors that would otherwise occur // when using the value. (void)Size.is_error(); #else // Assert on error in debug builds. assert(!Size.is_error()); #endif } /// Check that @p Size is valid (only on debug builds) and cast it to unsigned. /// Cast the @p Size to unsigned. If the @p Size is not valid (Size.is_error() /// == true) then an assert and an abort are triggered. inline unsigned unsignedFromIslSize(const isl::size &Si",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-------- BasicOrcV2CBindings.c - Basic OrcV2 C Bindings Demo ---------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"llvm-c/Core.h\" #include \"llvm-c/Error.h\" #include \"llvm-c/Initialization.h\" #include \"llvm-c/Orc.h\" #include \"llvm-c/Support.h\" #include \"llvm-c/Target.h\" #include <assert.h> #include <stdio.h> int handleError(LLVMErrorRef Err) { char *ErrMsg = LLVMGetErrorMessage(Err); fprintf(stderr, \"Error: %s\\n\", ErrMsg); LLVMDisposeErrorMessage(ErrMsg); return 1; } int32_t add(int32_t X, int32_t Y) { return X + Y; } int32_t mul(int32_t X, int32_t Y) { return X * Y; } int allowedSymbols(LLVMOrcSymbolStringPoolEntryRef Sym, void *Ctx) { assert(Ctx && \"Cannot call allowedSymbols with a null context\"); LLVMOrcSymbolStringPoolEntryRef *AllowList = (LLVMOrcSymbolStringPoolEntryRef *)Ctx; // If Sym appears in the allowed list then return true. LLVMOrcSymbolStringPoolEntryRef *P = AllowList; while (*P) { if (Sym == *P) return 1; ++P; } // otherwise return false. return 0; } LLVMOrcThreadSafeModuleRef createDemoModule() { // Create a new ThreadSafeContext and underlying LLVMContext. LLVMOrcThreadSafeContextRef TSCtx = LLVMOrcCreateNewThreadSafeContext(); // Get a r",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- JITLoader.h ---------------------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef LLDB_TARGET_JITLOADER_H #define LLDB_TARGET_JITLOADER_H #include <vector> #include \"lldb/Core/PluginInterface.h\" #include \"lldb/Target/JITLoaderList.h\" namespace lldb_private { /// \\class JITLoader JITLoader.h \"lldb/Target/JITLoader.h\" /// A plug-in interface definition class for JIT loaders. /// /// Plugins of this kind listen for code generated at runtime in the target. /// They are very similar to dynamic loader, with the difference that they do /// not have information about the target's dyld and that there may be /// multiple JITLoader plugins per process, while there is at most one /// DynamicLoader. class JITLoader : public PluginInterface { public: /// Find a JIT loader plugin for a given process. /// /// Scans the installed DynamicLoader plug-ins and tries to find all /// applicable instances for the current process. /// /// \\param[in] process /// The process for which to try and locate a JIT loader /// plug-in instance. /// static void LoadPlugins(Process *process, lldb_private::JITLoaderList &list); /// Construct with a process. JITLoader(Process *process);",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- Process.h -----------------------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef LLDB_TARGET_PROCESS_H #define LLDB_TARGET_PROCESS_H #include \"lldb/Host/Config.h\" #include <climits> #include <chrono> #include <list> #include <memory> #include <mutex> #include <string> #include <unordered_set> #include <vector> #include \"lldb/Breakpoint/BreakpointSiteList.h\" #include \"lldb/Core/Communication.h\" #include \"lldb/Core/LoadedModuleInfoList.h\" #include \"lldb/Core/PluginInterface.h\" #include \"lldb/Core/ThreadSafeValue.h\" #include \"lldb/Core/UserSettingsController.h\" #include \"lldb/Host/HostThread.h\" #include \"lldb/Host/ProcessLaunchInfo.h\" #include \"lldb/Host/ProcessRunLock.h\" #include \"lldb/Symbol/ObjectFile.h\" #include \"lldb/Target/ExecutionContextScope.h\" #include \"lldb/Target/InstrumentationRuntime.h\" #include \"lldb/Target/Memory.h\" #include \"lldb/Target/MemoryTagManager.h\" #include \"lldb/Target/QueueList.h\" #include \"lldb/Target/ThreadList.h\" #include \"lldb/Target/ThreadPlanStack.h\" #include \"lldb/Target/Trace.h\" #include \"lldb/Utility/ArchSpec.h\" #include \"lldb/Utility/Broadcaster.h\" #include \"lldb/Utility/Event.h\" #include \"lldb/Utility/Listener.h\" #include \"lldb/Utility/NameMatche",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "/* * Copyright 2019 Google LLC * * Licensed under both the 3-Clause BSD License and the GPLv2, found in the * LICENSE and LICENSE.GPL-2.0 files, respectively, in the root directory. * */ #include <linux/module.h> #include <linux/proc_fs.h> #include <linux/slab.h> #include <linux/uaccess.h> MODULE_LICENSE(\"Dual BSD/GPL\"); MODULE_AUTHOR(\"Google\"); MODULE_DESCRIPTION(\"\"); MODULE_VERSION(\"0.1\"); #ifndef __aarch64__ # error Unsupported CPU. ARM64 required. #endif // Provides an endpoint on // /proc/safeside_eret_hvc_smc/address // to which userspace programs can send their addresses that will be // fetched due to speculation over ERET, HVC and SMC instructions. // Currently should be accessible only by root, because there is no checking of // those addresses. // Directory record. Must be available on unloading the module. struct proc_dir_entry *safeside_eret_hvc_smc; static ssize_t address_store(struct file *f, const char __user *buf, size_t length, loff_t *off) { ptrdiff_t userspace_address; int res; int *kernel_memory; // Enable kernel access to userspace memory. __uaccess_enable(ARM64_ALT_PAN_NOT_UAO); res = kstrtoul(buf, 0, &userspace_address); if (res != 0) { // Incorrectly formatted address was provided. pr_err( \"kstrtol failed with input %s and return value %d,\" \"correct format is 0xHHHHHHHHHHHHHHHH\\n\", buf, res); return length; } k",
+    "gt": [
+      "bsd-new",
+      "gpl-2.0"
+    ],
+    "tag": "BSD-3-Clause OR GPL-2.0",
+    "lang": "c",
+    "scancode": "bsd-new",
+    "residual": "A"
+  },
+  {
+    "text": "//==- llvm/CodeGen/TargetLoweringObjectFileImpl.h - Object Info --*- C++ -*-==// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements classes used to handle lowerings specific to common // object file formats. // //===----------------------------------------------------------------------===// #ifndef LLVM_CODEGEN_TARGETLOWERINGOBJECTFILEIMPL_H #define LLVM_CODEGEN_TARGETLOWERINGOBJECTFILEIMPL_H #include \"llvm/BinaryFormat/XCOFF.h\" #include \"llvm/IR/Module.h\" #include \"llvm/MC/MCExpr.h\" #include \"llvm/Target/TargetLoweringObjectFile.h\" namespace llvm { class GlobalValue; class MachineModuleInfo; class Mangler; class MCContext; class MCSection; class MCSymbol; class TargetMachine; class TargetLoweringObjectFileELF : public TargetLoweringObjectFile { bool UseInitArray = false; mutable unsigned NextUniqueID = 1; // ID 0 is reserved for execute-only sections protected: MCSymbolRefExpr::VariantKind PLTRelativeVariantKind = MCSymbolRefExpr::VK_None; const TargetMachine *TM = nullptr; public: TargetLoweringObjectFileELF() = default; ~TargetLoweringObjectFileELF() override = default; void Initialize(MCContext &Ctx, const TargetMachine &TM) override; /// Emit Obj-C garbage collection and linker op",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "// -*- C++ -*- //===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef _LIBCPP___MEMORY_ALLOCATOR_H #define _LIBCPP___MEMORY_ALLOCATOR_H #include <__config> #include <__memory/allocator_traits.h> #include <__utility/forward.h> #include <cstddef> #include <new> #include <stdexcept> #include <type_traits> #if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER) #pragma GCC system_header #endif _LIBCPP_BEGIN_NAMESPACE_STD template <class _Tp> class allocator; #if _LIBCPP_STD_VER <= 17 || defined(_LIBCPP_ENABLE_CXX20_REMOVED_ALLOCATOR_MEMBERS) template <> class _LIBCPP_TEMPLATE_VIS allocator<void> { public: _LIBCPP_DEPRECATED_IN_CXX17 typedef void* pointer; _LIBCPP_DEPRECATED_IN_CXX17 typedef const void* const_pointer; _LIBCPP_DEPRECATED_IN_CXX17 typedef void value_type; template <class _Up> struct _LIBCPP_DEPRECATED_IN_CXX17 rebind {typedef allocator<_Up> other;}; }; template <> class _LIBCPP_TEMPLATE_VIS allocator<const void> { public: _LIBCPP_DEPRECATED_IN_CXX17 typedef const void* pointer; _LIBCPP_DEPRECATED_IN_CXX17 typedef const void* const_pointer; _LIBCPP_DEPRECATED_IN_CXX17 typedef con",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "// -*- C++ -*- //===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef _PSTL_UNSEQ_BACKEND_SIMD_H #define _PSTL_UNSEQ_BACKEND_SIMD_H #include <type_traits> #include \"pstl_config.h\" #include \"utils.h\" // This header defines the minimum set of vector routines required // to support parallel STL. _PSTL_HIDE_FROM_ABI_PUSH namespace __pstl { namespace __unseq_backend { // Expect vector width up to 64 (or 512 bit) const std::size_t __lane_size = 64; template <class _Iterator, class _DifferenceType, class _Function> _Iterator __simd_walk_1(_Iterator __first, _DifferenceType __n, _Function __f) noexcept { _PSTL_PRAGMA_SIMD for (_DifferenceType __i = 0; __i < __n; ++__i) __f(__first[__i]); return __first + __n; } template <class _Iterator1, class _DifferenceType, class _Iterator2, class _Function> _Iterator2 __simd_walk_2(_Iterator1 __first1, _DifferenceType __n, _Iterator2 __first2, _Function __f) noexcept { _PSTL_PRAGMA_SIMD for (_DifferenceType __i = 0; __i < __n; ++__i) __f(__first1[__i], __first2[__i]); return __first2 + __n; } template <class _Iterator1, class _DifferenceType, class _Iterator2, class _Iterator3, c",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===---- llvm/Analysis/ScalarEvolutionExpander.h - SCEV Exprs --*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file defines the classes used to generate code from scalar expressions. // //===----------------------------------------------------------------------===// #ifndef LLVM_ANALYSIS_SCALAREVOLUTIONEXPANDER_H #define LLVM_ANALYSIS_SCALAREVOLUTIONEXPANDER_H #include \"llvm/ADT/DenseMap.h\" #include \"llvm/ADT/DenseSet.h\" #include \"llvm/ADT/Optional.h\" #include \"llvm/ADT/SmallVector.h\" #include \"llvm/Analysis/ScalarEvolutionExpressions.h\" #include \"llvm/Analysis/ScalarEvolutionNormalization.h\" #include \"llvm/Analysis/TargetFolder.h\" #include \"llvm/Analysis/TargetTransformInfo.h\" #include \"llvm/IR/IRBuilder.h\" #include \"llvm/IR/ValueHandle.h\" #include \"llvm/Support/CommandLine.h\" namespace llvm { extern cl::opt<unsigned> SCEVCheapExpansionBudget; /// Return true if the given expression is safe to expand in the sense that /// all materialized values are safe to speculate anywhere their operands are /// defined. bool isSafeToExpand(const SCEV *S, ScalarEvolution &SE); /// Return true if the given expression is safe to expand in the sense that /// all materialized values are defined and safe to spe",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- ClangUtilityFunction.h ----------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef LLDB_SOURCE_PLUGINS_EXPRESSIONPARSER_CLANG_CLANGUTILITYFUNCTION_H #define LLDB_SOURCE_PLUGINS_EXPRESSIONPARSER_CLANG_CLANGUTILITYFUNCTION_H #include <map> #include <string> #include <vector> #include \"ClangExpressionHelper.h\" #include \"lldb/Expression/UtilityFunction.h\" #include \"lldb/lldb-forward.h\" #include \"lldb/lldb-private.h\" namespace lldb_private { /// \\class ClangUtilityFunction ClangUtilityFunction.h /// \"lldb/Expression/ClangUtilityFunction.h\" Encapsulates a single expression /// for use with Clang /// /// LLDB uses expressions for various purposes, notably to call functions /// and as a backend for the expr command. ClangUtilityFunction encapsulates /// a self-contained function meant to be used from other code. Utility /// functions can perform error-checking for ClangUserExpressions, or can /// simply provide a way to push a function into the target for the debugger /// to call later on. class ClangUtilityFunction : public UtilityFunction { // LLVM RTTI support static char ID; public: bool isA(const void *ClassID) const override { return ClassID == &ID || UtilityFunction::is",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "/* * Equalizer Load-balancer for serial network interfaces. * * (c) Copyright 1995 Simon \"Guru Aleph-Null\" Janes * NCM: Network and Communications Management, Inc. * * * This software may be used and distributed according to the terms * of the GNU General Public License, incorporated herein by reference. * * The author may be reached as simon@ncm.com, or C/O * NCM * Attn: Simon Janes * 6803 Whittier Ave * McLean VA 22101 * Phone: 1-703-847-0040 ext 103 */ #ifndef _LINUX_IF_EQL_H #define _LINUX_IF_EQL_H #define EQL_DEFAULT_SLAVE_PRIORITY 28800 #define EQL_DEFAULT_MAX_SLAVES 4 #define EQL_DEFAULT_MTU 576 #define EQL_DEFAULT_RESCHED_IVAL HZ #define EQL_ENSLAVE (SIOCDEVPRIVATE) #define EQL_EMANCIPATE (SIOCDEVPRIVATE + 1) #define EQL_GETSLAVECFG (SIOCDEVPRIVATE + 2) #define EQL_SETSLAVECFG (SIOCDEVPRIVATE + 3) #define EQL_GETMASTRCFG (SIOCDEVPRIVATE + 4) #define EQL_SETMASTRCFG (SIOCDEVPRIVATE + 5) typedef struct master_config { char master_name[16]; int max_slaves; int min_slaves; } master_config_t; typedef struct slave_config { char slave_name[16]; long priority; } slave_config_t; typedef struct slaving_request { char slave_name[16]; long priority; } slaving_request_t; #endif /* _LINUX_IF_EQL_H */",
+    "gt": [
+      "gpl-2.0",
+      "linux-syscall-exception-gpl"
+    ],
+    "tag": "GPL-2.0 WITH Linux-syscall-note",
+    "lang": "c",
+    "scancode": "gpl-1.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "// RUN: %clang_builtins %s %librt -o %t && %run %t //===-- lshrdi3_test.c - Test __lshrdi3 -----------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file tests __lshrdi3 for the compiler_rt library. // //===----------------------------------------------------------------------===// #include \"int_lib.h\" #include <stdio.h> // Returns: logical a >> b // Precondition: 0 <= b < bits_in_dword COMPILER_RT_ABI di_int __lshrdi3(di_int a, si_int b); int test__lshrdi3(di_int a, si_int b, di_int expected) { di_int x = __lshrdi3(a, b); if (x != expected) printf(\"error in __lshrdi3: %llX >> %d = %llX, expected %llX\\n\", a, b, __lshrdi3(a, b), expected); return x != expected; } char assumption_1[sizeof(di_int) == 2*sizeof(si_int)] = {0}; int main() { if (test__lshrdi3(0x0123456789ABCDEFLL, 0, 0x123456789ABCDEFLL)) return 1; if (test__lshrdi3(0x0123456789ABCDEFLL, 1, 0x91A2B3C4D5E6F7LL)) return 1; if (test__lshrdi3(0x0123456789ABCDEFLL, 2, 0x48D159E26AF37BLL)) return 1; if (test__lshrdi3(0x0123456789ABCDEFLL, 3, 0x2468ACF13579BDLL)) return 1; if (test__lshrdi3(0x0123456789ABCDEFLL, 4, 0x123456789ABCDELL)) return 1;",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- HWTypes.h - Types for the HW dialect ---------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // Types for the HW dialect are mostly in tablegen. This file should contain // C++ types used in MLIR type parameters. // //===----------------------------------------------------------------------===// #ifndef CIRCT_DIALECT_HW_TYPES_H #define CIRCT_DIALECT_HW_TYPES_H #include \"circt/Support/LLVM.h\" #include \"mlir/IR/Types.h\" namespace circt { namespace hw { class TypedeclOp; namespace detail { /// Struct defining a field. Used in structs and unions. struct FieldInfo { mlir::StringRef name; mlir::Type type; FieldInfo allocateInto(mlir::TypeStorageAllocator &alloc) const; }; } // namespace detail } // namespace hw } // namespace circt #define GET_TYPEDEF_CLASSES #include \"circt/Dialect/HW/HWTypes.h.inc\" namespace circt { namespace hw { /// Return true if the specified type is a value HW Integer type. This checks /// that it is a signless standard dialect type and that it isn't zero bits. bool isHWIntegerType(mlir::Type type); /// Return true if the specified type can be used as an HW value type, that is /// the set of types that can be composed together to represent synthesized, /// hardware but n",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "/* ********************************************************************************************************* * uC/OS-II * The Real-Time Kernel * * Copyright 1992-2020 Silicon Laboratories Inc. www.silabs.com * * * This software is subject to an open source license and is distributed by * Silicon Laboratories Inc. pursuant to the terms of the Apache License, * Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. * ********************************************************************************************************* */ /* ********************************************************************************************************* * * Renesas M16C Port * * Filename : os_cpu.h * Version : V2.93.00 ********************************************************************************************************* * For : Renesas M16C * Toolchain : Renesas HEW IDE with the NC30 compiler ********************************************************************************************************* */ #ifdef OS_CPU_GLOBALS #define OS_CPU_EXT #else #define OS_CPU_EXT extern #endif /* ********************************************************************************************************* *",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "c",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "// Copyright 2020 The IREE Authors // // Licensed under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. #include \"iree/base/internal/arena.h\" #include <stdint.h> #include <string.h> #include \"iree/base/tracing.h\" //===----------------------------------------------------------------------===// // iree_arena_block_pool_t //===----------------------------------------------------------------------===// void iree_arena_block_pool_initialize(iree_host_size_t total_block_size, iree_allocator_t block_allocator, iree_arena_block_pool_t* out_block_pool) { memset(out_block_pool, 0, sizeof(*out_block_pool)); out_block_pool->total_block_size = total_block_size; out_block_pool->usable_block_size = total_block_size - sizeof(iree_arena_block_t); out_block_pool->block_allocator = block_allocator; iree_atomic_arena_block_slist_initialize(&out_block_pool->available_slist); } void iree_arena_block_pool_deinitialize(iree_arena_block_pool_t* block_pool) { // Since all blocks must have been released we can just reuse trim (today) as // it doesn't retain any blocks. iree_arena_block_pool_trim(block_pool); iree_atomic_arena_block_slist_deinitialize(&block_pool->available_slist); } void iree_arena_block_pool_trim(iree_arena_block_pool_t* block_pool) { iree_arena_block_t* head =",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- include/flang/Parser/dump-parse-tree.h ------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef FORTRAN_PARSER_DUMP_PARSE_TREE_H_ #define FORTRAN_PARSER_DUMP_PARSE_TREE_H_ #include \"format-specification.h\" #include \"parse-tree-visitor.h\" #include \"parse-tree.h\" #include \"tools.h\" #include \"unparse.h\" #include \"flang/Common/idioms.h\" #include \"flang/Common/indirection.h\" #include \"llvm/Support/raw_ostream.h\" #include <string> #include <type_traits> namespace Fortran::parser { // // Dump the Parse Tree hierarchy of any node 'x' of the parse tree. // class ParseTreeDumper { public: explicit ParseTreeDumper(llvm::raw_ostream &out, const AnalyzedObjectsAsFortran *asFortran = nullptr) : out_(out), asFortran_{asFortran} {} static constexpr const char *GetNodeName(const char *) { return \"char *\"; } #define NODE_NAME(T, N) \\ static constexpr const char *GetNodeName(const T &) { return N; } #define NODE_ENUM(T, E) \\ static std::string GetNodeName(const T::E &x) { \\ return #E \" = \"s + T::EnumToString(x); \\ } #define NODE(T1, T2) NODE_NAME(T1::T2, #T2) NODE_NAME(bool, \"bool\") NODE_NAME(int, \"int\") NODE(std, string) NODE(std, int64_t) NODE(std, uint64_t) NODE(format, Co",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- MCAssembler.h - Object File Generation -------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef LLVM_MC_MCASSEMBLER_H #define LLVM_MC_MCASSEMBLER_H #include \"llvm/ADT/ArrayRef.h\" #include \"llvm/ADT/STLExtras.h\" #include \"llvm/ADT/SmallPtrSet.h\" #include \"llvm/ADT/StringRef.h\" #include \"llvm/ADT/iterator.h\" #include \"llvm/ADT/iterator_range.h\" #include \"llvm/BinaryFormat/MachO.h\" #include \"llvm/MC/MCDirectives.h\" #include \"llvm/MC/MCDwarf.h\" #include \"llvm/MC/MCFixup.h\" #include \"llvm/MC/MCFragment.h\" #include \"llvm/MC/MCLinkerOptimizationHint.h\" #include \"llvm/MC/MCSymbol.h\" #include \"llvm/Support/VersionTuple.h\" #include <cassert> #include <cstddef> #include <cstdint> #include <string> #include <utility> #include <vector> namespace llvm { class MCAsmBackend; class MCAsmLayout; class MCContext; class MCCodeEmitter; class MCFragment; class MCObjectWriter; class MCSection; class MCValue; // FIXME: This really doesn't belong here. See comments below. struct IndirectSymbolData { MCSymbol *Symbol; MCSection *Section; }; // FIXME: Ditto this. Purely so the Streamer and the ObjectWriter can talk // to one another. struct DataRegionData { // This enum should be kept in sync w/ the mach-o definiti",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "/******************************************************************************* * DISCLAIMER * This software is supplied by Renesas Electronics Corporation and is only * intended for use with Renesas products. No other uses are authorized. This * software is owned by Renesas Electronics Corporation and is protected under * all applicable laws, including copyright laws. * THIS SOFTWARE IS PROVIDED \"AS IS\" AND RENESAS MAKES NO WARRANTIES REGARDING * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE * AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. * Renesas reserves the right, without notice, to make changes to this software * and to discontinue the availability of this software. By using this software, * you agree to the additional terms and conditions found by accessing the * following link: * http://www.renesas.com/disclaimer * Copyright (C) 2018-2020 Renesas Electronics Corporation. All rights reserved. *******************************************************************************/ /* Copyright (c) 2018-2",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "c",
+    "scancode": "proprietary-license",
+    "residual": "B"
+  },
+  {
+    "text": "//===- LoopUnrollAndJamPass.h -----------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef LLVM_TRANSFORMS_SCALAR_LOOPUNROLLANDJAMPASS_H #define LLVM_TRANSFORMS_SCALAR_LOOPUNROLLANDJAMPASS_H #include \"llvm/Analysis/LoopAnalysisManager.h\" #include \"llvm/Analysis/LoopInfo.h\" #include \"llvm/IR/PassManager.h\" namespace llvm { class Loop; struct LoopStandardAnalysisResults; class LPMUpdater; /// A simple loop rotation transformation. class LoopUnrollAndJamPass : public PassInfoMixin<LoopUnrollAndJamPass> { const int OptLevel; public: explicit LoopUnrollAndJamPass(int OptLevel = 2) : OptLevel(OptLevel) {} PreservedAnalyses run(Loop &L, LoopAnalysisManager &AM, LoopStandardAnalysisResults &AR, LPMUpdater &U); }; } // end namespace llvm #endif // LLVM_TRANSFORMS_SCALAR_LOOPUNROLLANDJAMPASS_H",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "/* ********************************************************************************************************* * uC/OS-II * The Real-Time Kernel * * Copyright 1992-2020 Silicon Laboratories Inc. www.silabs.com * * * This software is subject to an open source license and is distributed by * Silicon Laboratories Inc. pursuant to the terms of the Apache License, * Version 2.0 available at www.apache.org/licenses/LICENSE-2.0. * ********************************************************************************************************* */ /* ********************************************************************************************************* * * Microsoft Win32 Specific code * * Filename : os_cpu_c.c * Version : V2.93.00 ********************************************************************************************************* */ #define OS_CPU_GLOBALS /* ********************************************************************************************************* * INCLUDE FILES ********************************************************************************************************* */ #include <lib_def.h> #include <ucos_ii.h> #define _WIN32_WINNT 0x0600 #define WIN32_LEAN_AND_M",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "APACHE-2.0",
+    "lang": "c",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "//===- GPUCommonPass.h - MLIR GPU runtime support -------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #ifndef MLIR_CONVERSION_GPUCOMMON_GPUCOMMONPASS_H_ #define MLIR_CONVERSION_GPUCOMMON_GPUCOMMONPASS_H_ #include \"mlir/Support/LLVM.h\" #include <functional> #include <memory> #include <string> #include <vector> namespace mlir { class Location; class ModuleOp; template <typename T> class OperationPass; /// Creates a pass to convert a gpu.launch_func operation into a sequence of /// GPU runtime calls. /// /// This pass does not generate code to call GPU runtime APIs directly but /// instead uses a small wrapper library that exports a stable and conveniently /// typed ABI on top of GPU runtimes such as CUDA or ROCm (HIP). std::unique_ptr<OperationPass<ModuleOp>> createConvertGpuLaunchFuncToGpuRuntimeCallsPass(); } // namespace mlir #endif // MLIR_CONVERSION_GPUCOMMON_GPUCOMMONPASS_H_",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- QuantOps.cpp - Quantization Type and Ops Implementation --*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"mlir/Dialect/Quant/QuantTypes.h\" #include \"TypeDetail.h\" #include \"mlir/Dialect/Quant/QuantOps.h\" #include \"mlir/IR/BuiltinTypes.h\" #include \"mlir/IR/MLIRContext.h\" #include \"llvm/ADT/StringRef.h\" #include \"llvm/ADT/Twine.h\" #include \"llvm/Support/MathExtras.h\" using namespace mlir; using namespace mlir::quant; using namespace mlir::quant::detail; unsigned QuantizedType::getFlags() const { return static_cast<ImplType *>(impl)->flags; } bool QuantizedType::classof(Type type) { return llvm::isa<QuantizationDialect>(type.getDialect()); } LogicalResult QuantizedType::verify(function_ref<InFlightDiagnostic()> emitError, unsigned flags, Type storageType, Type expressedType, int64_t storageTypeMin, int64_t storageTypeMax) { // Verify that the storage type is integral. // This restriction may be lifted at some point in favor of using bf16 // or f16 as exact representations on hardware where that is advantageous. auto intStorageType = storageType.dyn_cast<IntegerType>(); if (!intStorageType) return emitError() << \"storage type must be integral\";",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- AppleObjCDeclVendor.cpp -------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"AppleObjCDeclVendor.h\" #include \"Plugins/ExpressionParser/Clang/ClangASTMetadata.h\" #include \"Plugins/ExpressionParser/Clang/ClangUtil.h\" #include \"Plugins/LanguageRuntime/ObjC/ObjCLanguageRuntime.h\" #include \"lldb/Core/Module.h\" #include \"lldb/Target/Process.h\" #include \"lldb/Target/Target.h\" #include \"lldb/Utility/LLDBLog.h\" #include \"lldb/Utility/Log.h\" #include \"clang/AST/ASTContext.h\" #include \"clang/AST/DeclObjC.h\" #include \"clang/AST/ExternalASTSource.h\" using namespace lldb_private; class lldb_private::AppleObjCExternalASTSource : public clang::ExternalASTSource { public: AppleObjCExternalASTSource(AppleObjCDeclVendor &decl_vendor) : m_decl_vendor(decl_vendor) {} bool FindExternalVisibleDeclsByName(const clang::DeclContext *decl_ctx, clang::DeclarationName name) override { Log *log(GetLog( LLDBLog::Expressions)); // FIXME - a more appropriate log channel? if (log) { LLDB_LOGF(log, \"AppleObjCExternalASTSource::FindExternalVisibleDeclsByName\" \" on (ASTContext*)%p Looking for %s in (%sDe",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // UNSUPPORTED: c++03, c++11, c++14, c++17 // <string> // template<> struct char_traits<char8_t> // static constexpr const char_type* find(const char_type* s, size_t n, const char_type& a); #include <string> #include <cassert> #include \"test_macros.h\" #if defined(__cpp_lib_char8_t) && __cpp_lib_char8_t >= 201811L constexpr bool test_constexpr() { constexpr const char8_t *p = u8\"123\"; return std::char_traits<char8_t>::find(p, 3, u8'1') == p && std::char_traits<char8_t>::find(p, 3, u8'2') == p + 1 && std::char_traits<char8_t>::find(p, 3, u8'3') == p + 2 && std::char_traits<char8_t>::find(p, 3, u8'4') == nullptr; } int main(int, char**) { char8_t s1[] = {1, 2, 3}; assert(std::char_traits<char8_t>::find(s1, 3, char8_t(1)) == s1); assert(std::char_traits<char8_t>::find(s1, 3, char8_t(2)) == s1+1); assert(std::char_traits<char8_t>::find(s1, 3, char8_t(3)) == s1+2); assert(std::char_traits<char8_t>::find(s1, 3, char8_t(4)) == 0); assert(std::char_traits<char8_t>::find(s1, 3, char8_t(0)) == 0); assert(std::char_traits<char8_t>::find(NULL, 0, char8_t(0)) ==",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===------------------------- mutex.cpp ----------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"mutex\" #include \"limits\" #include \"system_error\" #if !defined(_LIBCPP_ABI_MICROSOFT) #include \"include/atomic_support.h\" #endif #include \"__undef_macros\" #ifndef _LIBCPP_HAS_NO_THREADS #if defined(__ELF__) && defined(_LIBCPP_LINK_PTHREAD_LIB) #pragma comment(lib, \"pthread\") #endif #endif _LIBCPP_BEGIN_NAMESPACE_STD #ifndef _LIBCPP_HAS_NO_THREADS const defer_lock_t defer_lock{}; const try_to_lock_t try_to_lock{}; const adopt_lock_t adopt_lock{}; // ~mutex is defined elsewhere void mutex::lock() { int ec = __libcpp_mutex_lock(&__m_); if (ec) __throw_system_error(ec, \"mutex lock failed\"); } bool mutex::try_lock() _NOEXCEPT { return __libcpp_mutex_trylock(&__m_); } void mutex::unlock() _NOEXCEPT { int ec = __libcpp_mutex_unlock(&__m_); (void)ec; _LIBCPP_ASSERT(ec == 0, \"call to mutex::unlock failed\"); } // recursive_mutex recursive_mutex::recursive_mutex() { int ec = __libcpp_recursive_mutex_init(&__m_); if (ec) __throw_system_error(ec, \"recursive_mutex constructor failed\"); } recursive_mutex::~recursive_mutex() { int e = __libcpp_recursive_mut",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===--- XRayInstr.cpp ------------------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This is part of XRay, a function call instrumentation system. // //===----------------------------------------------------------------------===// #include \"clang/Basic/XRayInstr.h\" #include \"llvm/ADT/StringSwitch.h\" namespace clang { XRayInstrMask parseXRayInstrValue(StringRef Value) { XRayInstrMask ParsedKind = llvm::StringSwitch<XRayInstrMask>(Value) .Case(\"all\", XRayInstrKind::All) .Case(\"custom\", XRayInstrKind::Custom) .Case(\"function\", XRayInstrKind::FunctionEntry | XRayInstrKind::FunctionExit) .Case(\"function-entry\", XRayInstrKind::FunctionEntry) .Case(\"function-exit\", XRayInstrKind::FunctionExit) .Case(\"typed\", XRayInstrKind::Typed) .Case(\"none\", XRayInstrKind::None) .Default(XRayInstrKind::None); return ParsedKind; } } // namespace clang",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // UNSUPPORTED: c++98, c++03, c++11, c++14 // XFAIL: c++17, c++2a, c++20 // <functional> // boyer_moore searcher // template<class RandomAccessIterator1, // class Hash = hash<typename iterator_traits<RandomAccessIterator1>::value_type>, // class BinaryPredicate = equal_to<>> // class boyer_moore_searcher { // public: // boyer_moore_searcher(RandomAccessIterator1 pat_first, RandomAccessIterator1 pat_last, // Hash hf = Hash(), BinaryPredicate pred = BinaryPredicate()); // // template<class RandomAccessIterator2> // pair<RandomAccessIterator2, RandomAccessIterator2> // operator()(RandomAccessIterator2 first, RandomAccessIterator2 last) const; // // private: // RandomAccessIterator1 pat_first_; // exposition only // RandomAccessIterator1 pat_last_; // exposition only // Hash hash_; // exposition only // BinaryPredicate pred_; // exposition only // }; #include <algorithm> #include <functional> #include <cassert> #include \"test_macros.h\" #include \"test_iterators.h\" template <typename T> struct MyHash { size_t operator (",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // UNSUPPORTED: c++98, c++03 // <vector> // vector(vector&& c, const allocator_type& a); #include <vector.hxx> #include <cassert.hxx> #include \"test_macros.h\" #include \"MoveOnly.h\" #include \"test_allocator.h\" #include \"min_allocator.h\" #include \"asan_testing.h\" int main(int, char**) { { std::vector<MoveOnly, test_allocator<MoveOnly> > l(test_allocator<MoveOnly>(5)); std::vector<MoveOnly, test_allocator<MoveOnly> > lo(test_allocator<MoveOnly>(5)); assert(is_contiguous_container_asan_correct(l)); assert(is_contiguous_container_asan_correct(lo)); for (int i = 1; i <= 3; ++i) { l.push_back(i); lo.push_back(i); } assert(is_contiguous_container_asan_correct(l)); assert(is_contiguous_container_asan_correct(lo)); std::vector<MoveOnly, test_allocator<MoveOnly> > l2(std::move(l), test_allocator<MoveOnly>(6)); assert(l2 == lo); assert(!l.empty()); assert(l2.get_allocator() == test_allocator<MoveOnly>(6)); assert(is_contiguous_container_asan_correct(l2)); } { std::vec",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // REQUIRES: modules-build // WARNING: This test was generated by 'generate_private_header_tests.py' // and should not be edited manually. // expected-error@*:* {{use of private header from outside its module: '__algorithm/shift_left.h'}} #include <__algorithm/shift_left.h>",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // UNSUPPORTED: libcpp-has-no-threads // This test is marked XFAIL and not UNSUPPORTED because the non-variadic // declaration of packaged_task is available in C++03. Therefore the test // should fail because the static_assert fires and not because std::packaged_task // in undefined. // XFAIL: c++03 // <future> // REQUIRES: c++11 || c++14 // packaged_task allocator support was removed in C++17 (LWG 2976) // class packaged_task<R(ArgTypes...)> // template <class Callable, class Alloc> // struct uses_allocator<packaged_task<Callable>, Alloc> // : true_type { }; #include <future> #include \"test_macros.h\" #include \"test_allocator.h\" int main(int, char**) { static_assert((std::uses_allocator<std::packaged_task<double(int, char)>, test_allocator<int> >::value), \"\"); return 0; }",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // UNSUPPORTED: c++03 // test that referencing at_quick_exit when TEST_HAS_QUICK_EXIT is not defined // results in a compile error. #include <cstdlib> #include \"test_macros.h\" void f() { } int main(int, char**) { #if !defined(TEST_HAS_QUICK_EXIT) std::at_quick_exit(f); #else # error #endif return 0; }",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- IncludeFixerPlugin.cpp - clang-include-fixer as a clang plugin -----===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"../IncludeFixer.h\" #include \"../YamlSymbolIndex.h\" #include \"clang/Frontend/CompilerInstance.h\" #include \"clang/Frontend/FrontendPluginRegistry.h\" #include \"clang/Parse/ParseAST.h\" #include \"clang/Sema/Sema.h\" #include \"llvm/Support/Path.h\" namespace clang { namespace include_fixer { /// The core include fixer plugin action. This just provides the AST consumer /// and command line flag parsing for using include fixer as a clang plugin. class ClangIncludeFixerPluginAction : public PluginASTAction { /// ASTConsumer to keep the symbol index alive. We don't really need an /// ASTConsumer for this plugin (everything is funneled on the side through /// Sema) but we have to keep the symbol index alive until sema is done. struct ASTConsumerManagerWrapper : public ASTConsumer { ASTConsumerManagerWrapper(std::shared_ptr<SymbolIndexManager> SIM) : SymbolIndexMgr(std::move(SIM)) {} std::shared_ptr<SymbolIndexManager> SymbolIndexMgr; }; public: explicit ClangIncludeFixerPluginAction() : SymbolIndexMgr(std::make_shared<SymbolIndexManager>()), SemaSource(new IncludeFixerSem",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "// -*- C++ -*- //===-- inplace_merge.pass.cpp --------------------------------------------===// // // Copyright (C) 2017-2020 Intel Corporation // // // This file incorporates work covered by the following copyright and permission // notice: // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"support/pstl_test_config.h\" #include _PSTL_TEST_HEADER(execution) #include _PSTL_TEST_HEADER(algorithm) #include \"support/utils.h\" using namespace TestUtils; template <typename Type> struct test_one_policy { // inplace_merge works with bidirectional iterators at least template <typename Policy, typename BiDirIt1, typename Size, typename Generator1, typename Generator2, typename Compare> typename ::std::enable_if<!is_same_iterator_category<BiDirIt1, ::std::forward_iterator_tag>::value, void>::type operator()(Policy&& exec, BiDirIt1 first1, BiDirIt1 last1, BiDirIt1 first2, BiDirIt1 last2, Size n, Size m, Generator1 generator1, Generator2 generator2, Compare comp) { const BiDirIt1 mid1 = ::std::next(first1, m); fill_data(first1, mid1, generator1); fill_data(mid1, last1, generator2); const BiDirIt1 mid2 = ::std::next(first2, m); fill_data(first2, mid2, gene",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "unknown-license-reference",
+    "residual": "B"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // <algorithm> // template<InputIterator Iter1, InputIterator Iter2> // requires HasLess<Iter1::value_type, Iter2::value_type> // && HasLess<Iter2::value_type, Iter1::value_type> // constexpr bool // constexpr after C++17 // includes(Iter1 first1, Iter1 last1, Iter2 first2, Iter2 last2); #include <algorithm> #include <cassert> #include \"test_macros.h\" #include \"test_iterators.h\" template <class Iter1, class Iter2> TEST_CONSTEXPR_CXX20 void test() { int ia[] = {1, 2, 2, 3, 3, 3, 4, 4, 4, 4}; const unsigned sa = sizeof(ia)/sizeof(ia[0]); int ib[] = {2, 4}; const unsigned sb = sizeof(ib)/sizeof(ib[0]); int ic[] = {1, 2}; const unsigned sc = sizeof(ic)/sizeof(ic[0]); ((void)sc); int id[] = {3, 3, 3, 3}; const unsigned sd = sizeof(id)/sizeof(id[0]); ((void)sd); assert(std::includes(Iter1(ia), Iter1(ia), Iter2(ib), Iter2(ib))); assert(!std::includes(Iter1(ia), Iter1(ia), Iter2(ib), Iter2(ib+1))); assert(std::includes(Iter1(ia), Iter1(ia+1), Iter2(ib), Iter2(ib))); assert(std::includes(Iter1(ia), Iter1(ia+sa), Iter2(ia), Iter2(ia+sa)));",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- Relocations.cpp ----------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file contains platform-independent functions to process relocations. // I'll describe the overview of this file here. // // Simple relocations are easy to handle for the linker. For example, // for R_X86_64_PC64 relocs, the linker just has to fix up locations // with the relative offsets to the target symbols. It would just be // reading records from relocation sections and applying them to output. // // But not all relocations are that easy to handle. For example, for // R_386_GOTOFF relocs, the linker has to create new GOT entries for // symbols if they don't exist, and fix up locations with GOT entry // offsets from the beginning of GOT section. So there is more than // fixing addresses in relocation processing. // // ELF defines a large number of complex relocations. // // The functions in this file analyze relocations and do whatever needs // to be done. It includes, but not limited to, the following. // // - create GOT/PLT entries // - create new relocations in .dynsym to let the dynamic linker resolve // them at runtime (since ELF supports dynamic linking, not all // relocations can be re",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- DeclCXX.cpp - C++ Declaration AST Node Implementation --------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements the C++ related Decl classes. // //===----------------------------------------------------------------------===// #include \"clang/AST/DeclCXX.h\" #include \"clang/AST/ASTContext.h\" #include \"clang/AST/ASTLambda.h\" #include \"clang/AST/ASTMutationListener.h\" #include \"clang/AST/ASTUnresolvedSet.h\" #include \"clang/AST/Attr.h\" #include \"clang/AST/CXXInheritance.h\" #include \"clang/AST/DeclBase.h\" #include \"clang/AST/DeclTemplate.h\" #include \"clang/AST/DeclarationName.h\" #include \"clang/AST/Expr.h\" #include \"clang/AST/ExprCXX.h\" #include \"clang/AST/LambdaCapture.h\" #include \"clang/AST/NestedNameSpecifier.h\" #include \"clang/AST/ODRHash.h\" #include \"clang/AST/Type.h\" #include \"clang/AST/TypeLoc.h\" #include \"clang/AST/UnresolvedSet.h\" #include \"clang/Basic/Diagnostic.h\" #include \"clang/Basic/IdentifierTable.h\" #include \"clang/Basic/LLVM.h\" #include \"clang/Basic/LangOptions.h\" #include \"clang/Basic/OperatorKinds.h\" #include \"clang/Basic/PartialDiagnostic.h\" #include \"clang/Basic/SourceLocation.h\" #include \"clang/Basic/Specifiers.h\" #include \"llvm/ADT/None.h\" #include \"llvm/ADT/SmallPtrSet.h\" #inclu",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- LLVMContext.cpp - Implement LLVMContext ---------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements LLVMContext, as a wrapper around the opaque // class LLVMContextImpl. // //===----------------------------------------------------------------------===// #include \"llvm/IR/LLVMContext.h\" #include \"LLVMContextImpl.h\" #include \"llvm/ADT/SmallVector.h\" #include \"llvm/ADT/StringMap.h\" #include \"llvm/ADT/StringRef.h\" #include \"llvm/ADT/Twine.h\" #include \"llvm/IR/DiagnosticInfo.h\" #include \"llvm/IR/DiagnosticPrinter.h\" #include \"llvm/IR/LLVMRemarkStreamer.h\" #include \"llvm/IR/Metadata.h\" #include \"llvm/IR/Module.h\" #include \"llvm/Remarks/RemarkStreamer.h\" #include \"llvm/Support/Casting.h\" #include \"llvm/Support/ErrorHandling.h\" #include \"llvm/Support/raw_ostream.h\" #include <cassert> #include <cstdlib> #include <string> #include <utility> using namespace llvm; LLVMContext::LLVMContext() : pImpl(new LLVMContextImpl(*this)) { // Create the fixed metadata kinds. This is done in the same order as the // MD_* enum values so that they correspond. std::pair<unsigned, StringRef> MDKinds[] = { #define LLVM_FIXED_MD_KIND(EnumID, Name, Value) {EnumID, Name}, #include \"llvm/IR/FixedMetadataKind",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- BackedgeBuilder.cpp - Support for building backedges ---------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file provide support for building backedges. // //===----------------------------------------------------------------------===// #include \"circt/Support/BackedgeBuilder.h\" #include \"circt/Support/LLVM.h\" #include \"mlir/IR/BuiltinOps.h\" #include \"mlir/IR/PatternMatch.h\" using namespace circt; Backedge::Backedge(mlir::Operation *op) : value(op->getResult(0)) {} void Backedge::setValue(mlir::Value newValue) { assert(value.getType() == newValue.getType()); assert(!set && \"backedge already set to a value!\"); value.replaceAllUsesWith(newValue); set = true; } BackedgeBuilder::~BackedgeBuilder() { (void)clearOrEmitError(); } LogicalResult BackedgeBuilder::clearOrEmitError() { unsigned numInUse = 0; for (Operation *op : edges) { if (!op->use_empty()) { op->emitError(\"backedge of type `\") << op->getResult(0).getType() << \"`still in use\"; ++numInUse; continue; } if (rewriter) rewriter->eraseOp(op); else op->erase(); } edges.clear(); if (numInUse > 0) mlir::emitRemark(loc, \"abandoned \") << numInUse << \" backedges\"; return success",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- GVNHoist.cpp - Hoist scalar and load expressions -------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This pass hoists expressions from branches to a common dominator. It uses // GVN (global value numbering) to discover expressions computing the same // values. The primary goals of code-hoisting are: // 1. To reduce the code size. // 2. In some cases reduce critical path (by exposing more ILP). // // The algorithm factors out the reachability of values such that multiple // queries to find reachability of values are fast. This is based on finding the // ANTIC points in the CFG which do not change during hoisting. The ANTIC points // are basically the dominance-frontiers in the inverse graph. So we introduce a // data structure (CHI nodes) to keep track of values flowing out of a basic // block. We only do this for values with multiple occurrences in the function // as they are the potential hoistable candidates. This approach allows us to // hoist instructions to a basic block with more than two successors, as well as // deal with infinite loops in a trivial way. // // Limitations: This pass does not hoist fully redundant expressions because // they are already handled by GVN-PRE. It is advisable to run gvn-",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- BenchmarkResult.cpp -------------------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"BenchmarkResult.h\" #include \"BenchmarkRunner.h\" #include \"Error.h\" #include \"llvm/ADT/STLExtras.h\" #include \"llvm/ADT/ScopeExit.h\" #include \"llvm/ADT/StringMap.h\" #include \"llvm/ADT/StringRef.h\" #include \"llvm/ADT/bit.h\" #include \"llvm/ObjectYAML/YAML.h\" #include \"llvm/Support/FileOutputBuffer.h\" #include \"llvm/Support/FileSystem.h\" #include \"llvm/Support/Format.h\" #include \"llvm/Support/raw_ostream.h\" static constexpr const char kIntegerPrefix[] = \"i_0x\"; static constexpr const char kDoublePrefix[] = \"f_\"; static constexpr const char kInvalidOperand[] = \"INVALID\"; static constexpr llvm::StringLiteral kNoRegister(\"%noreg\"); namespace llvm { namespace { // A mutable struct holding an LLVMState that can be passed through the // serialization process to encode/decode registers and instructions. struct YamlContext { YamlContext(const exegesis::LLVMState &State) : State(&State), ErrorStream(LastError), OpcodeNameToOpcodeIdx( generateOpcodeNameToOpcodeIdxMapping(State.getInstrInfo())), RegNameToRegNo(generateRegNameToRegNoMapping(State.getRegInfo())) {} static llvm::",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- DynamicLoaderDarwinKernel.cpp -----------------------------*- C++ //-*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"Plugins/Platform/MacOSX/PlatformDarwinKernel.h\" #include \"lldb/Breakpoint/StoppointCallbackContext.h\" #include \"lldb/Core/Debugger.h\" #include \"lldb/Core/Module.h\" #include \"lldb/Core/ModuleSpec.h\" #include \"lldb/Core/PluginManager.h\" #include \"lldb/Core/Section.h\" #include \"lldb/Core/StreamFile.h\" #include \"lldb/Interpreter/OptionValueProperties.h\" #include \"lldb/Symbol/LocateSymbolFile.h\" #include \"lldb/Symbol/ObjectFile.h\" #include \"lldb/Target/OperatingSystem.h\" #include \"lldb/Target/RegisterContext.h\" #include \"lldb/Target/StackFrame.h\" #include \"lldb/Target/Target.h\" #include \"lldb/Target/Thread.h\" #include \"lldb/Target/ThreadPlanRunToAddress.h\" #include \"lldb/Utility/DataBuffer.h\" #include \"lldb/Utility/DataBufferHeap.h\" #include \"lldb/Utility/Log.h\" #include \"lldb/Utility/State.h\" #include \"DynamicLoaderDarwinKernel.h\" #include <algorithm> #include <memory> //#define ENABLE_DEBUG_PRINTF // COMMENT THIS LINE OUT PRIOR TO CHECKIN #ifdef ENABLE_DEBUG_PRINTF #include <stdio.h> #define DEBUG_PRINTF(fmt, ...) printf(fmt, ##__VA_ARGS__) #else #define DEBUG_PRINTF(fmt, ...) #endif using namespac",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//=== MallocChecker.cpp - A malloc/free checker -------------------*- C++ -*--// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file defines a variety of memory management related checkers, such as // leak, double free, and use-after-free. // // The following checkers are defined here: // // * MallocChecker // Despite its name, it models all sorts of memory allocations and // de- or reallocation, including but not limited to malloc, free, // relloc, new, delete. It also reports on a variety of memory misuse // errors. // Many other checkers interact very closely with this checker, in fact, // most are merely options to this one. Other checkers may register // MallocChecker, but do not enable MallocChecker's reports (more details // to follow around its field, ChecksEnabled). // It also has a boolean \"Optimistic\" checker option, which if set to true // will cause the checker to model user defined memory management related // functions annotated via the attribute ownership_takes, ownership_holds // and ownership_returns. // // * NewDeleteChecker // Enables the modeling of new, new[], delete, delete[] in MallocChecker, // and checks for related",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- runtime/io-error.cpp ----------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"io-error.h\" #include \"config.h\" #include \"tools.h\" #include \"flang/Runtime/magic-numbers.h\" #include <cerrno> #include <cstdarg> #include <cstdio> #include <cstring> namespace Fortran::runtime::io { void IoErrorHandler::SignalError(int iostatOrErrno, const char *msg, ...) { if (iostatOrErrno == IostatEnd && (flags_ & hasEnd)) { if (ioStat_ == IostatOk || ioStat_ < IostatEnd) { ioStat_ = IostatEnd; } } else if (iostatOrErrno == IostatEor && (flags_ & hasEor)) { if (ioStat_ == IostatOk || ioStat_ < IostatEor) { ioStat_ = IostatEor; // least priority } } else if (iostatOrErrno != IostatOk) { if (flags_ & (hasIoStat | hasIoMsg | hasErr)) { if (ioStat_ <= 0) { ioStat_ = iostatOrErrno; // priority over END=/EOR= if (msg && (flags_ & hasIoMsg)) { char buffer[256]; va_list ap; va_start(ap, msg); std::vsnprintf(buffer, sizeof buffer, msg, ap); ioMsg_ = SaveDefaultCharacter(buffer, std::strlen(buffer) + 1, *this); va_end(ap); } } } else if (msg) { va_list ap; va_s",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- llvm/lib/Target/ARM/ARMCallLowering.cpp - Call lowering ------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // /// \\file /// This file implements the lowering of LLVM calls to machine code calls for /// GlobalISel. // //===----------------------------------------------------------------------===// #include \"ARMCallLowering.h\" #include \"ARMBaseInstrInfo.h\" #include \"ARMISelLowering.h\" #include \"ARMSubtarget.h\" #include \"Utils/ARMBaseInfo.h\" #include \"llvm/ADT/SmallVector.h\" #include \"llvm/CodeGen/Analysis.h\" #include \"llvm/CodeGen/CallingConvLower.h\" #include \"llvm/CodeGen/GlobalISel/MachineIRBuilder.h\" #include \"llvm/CodeGen/GlobalISel/Utils.h\" #include \"llvm/CodeGen/LowLevelType.h\" #include \"llvm/CodeGen/MachineBasicBlock.h\" #include \"llvm/CodeGen/MachineFrameInfo.h\" #include \"llvm/CodeGen/MachineFunction.h\" #include \"llvm/CodeGen/MachineInstrBuilder.h\" #include \"llvm/CodeGen/MachineMemOperand.h\" #include \"llvm/CodeGen/MachineOperand.h\" #include \"llvm/CodeGen/MachineRegisterInfo.h\" #include \"llvm/CodeGen/TargetRegisterInfo.h\" #include \"llvm/CodeGen/TargetSubtargetInfo.h\" #include \"llvm/CodeGen/ValueTypes.h\" #include \"llvm/IR/Attributes.h\" #include \"llvm/IR/DataLayout.h\" #include \"llvm/IR/DerivedTypes.h\" #include \"llvm",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "// MoveChecker.cpp - Check use of moved-from objects. - C++ ---------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This defines checker which checks for potential misuses of a moved-from // object. That means method calls on the object or copying it in moved-from // state. // //===----------------------------------------------------------------------===// #include \"clang/AST/Attr.h\" #include \"clang/AST/ExprCXX.h\" #include \"clang/Driver/DriverDiagnostic.h\" #include \"clang/StaticAnalyzer/Checkers/BuiltinCheckerRegistration.h\" #include \"clang/StaticAnalyzer/Core/BugReporter/BugType.h\" #include \"clang/StaticAnalyzer/Core/Checker.h\" #include \"clang/StaticAnalyzer/Core/CheckerManager.h\" #include \"clang/StaticAnalyzer/Core/PathSensitive/CallEvent.h\" #include \"clang/StaticAnalyzer/Core/PathSensitive/CheckerContext.h\" #include \"llvm/ADT/StringSet.h\" using namespace clang; using namespace ento; namespace { struct RegionState { private: enum Kind { Moved, Reported } K; RegionState(Kind InK) : K(InK) {} public: bool isReported() const { return K == Reported; } bool isMoved() const { return K == Moved; } static RegionState getReported() { return RegionState(Reported); } static RegionState getMoved() { return RegionSt",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // XFAIL: libcpp-has-no-wide-characters // <string> // wstring to_wstring(int val); // wstring to_wstring(unsigned val); // wstring to_wstring(long val); // wstring to_wstring(unsigned long val); // wstring to_wstring(long long val); // wstring to_wstring(unsigned long long val); // wstring to_wstring(float val); // wstring to_wstring(double val); // wstring to_wstring(long double val); #include <string> #include <cassert> #include <limits> #include \"parse_integer.h\" #include \"test_macros.h\" template <class T> void test_signed() { { std::wstring s = std::to_wstring(T(0)); assert(s.size() == 1); assert(s[s.size()] == 0); assert(s == L\"0\"); } { std::wstring s = std::to_wstring(T(12345)); assert(s.size() == 5); assert(s[s.size()] == 0); assert(s == L\"12345\"); } { std::wstring s = std::to_wstring(T(-12345)); assert(s.size() == 6); assert(s[s.size()] == 0); assert(s == L\"-12345\"); } { std::wstring s = std::to_wstring(std::numeric_limits<T>::max()); assert(s.size() == std::num",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "// -*- C++ -*- //===-- header_inclusion_order_numeric_0.pass.cpp -------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // UNSUPPORTED: c++98, c++03, c++11, c++14 #include \"support/pstl_test_config.h\" #include <execution> #include <numeric> int main() { return 0; }",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // UNSUPPORTED: libcpp-has-no-threads // UNSUPPORTED: c++03 // <future> // class promise<R> // void promise<R&>::set_value(R& r); #include <future> #include <cassert> #include \"test_macros.h\" int main(int, char**) { { typedef int& T; int i = 3; std::promise<T> p; std::future<T> f = p.get_future(); p.set_value(i); int& j = f.get(); assert(j == 3); ++i; assert(j == 4); #ifndef TEST_HAS_NO_EXCEPTIONS try { p.set_value(i); assert(false); } catch (const std::future_error& e) { assert(e.code() == make_error_code(std::future_errc::promise_already_satisfied)); } #endif } return 0; }",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- CallingConvEmitter.cpp - Generate calling conventions --------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This tablegen backend is responsible for emitting descriptions of the calling // conventions supported by this target. // //===----------------------------------------------------------------------===// #include \"CodeGenTarget.h\" #include \"llvm/TableGen/Error.h\" #include \"llvm/TableGen/Record.h\" #include \"llvm/TableGen/TableGenBackend.h\" #include <cassert> using namespace llvm; namespace { class CallingConvEmitter { RecordKeeper &Records; public: explicit CallingConvEmitter(RecordKeeper &R) : Records(R) {} void run(raw_ostream &o); private: void EmitCallingConv(Record *CC, raw_ostream &O); void EmitAction(Record *Action, unsigned Indent, raw_ostream &O); unsigned Counter; }; } // End anonymous namespace void CallingConvEmitter::run(raw_ostream &O) { std::vector<Record*> CCs = Records.getAllDerivedDefinitions(\"CallingConv\"); // Emit prototypes for all of the non-custom CC's so that they can forward ref // each other. for (Record *CC : CCs) { if (!CC->getValueAsBit(\"Custom\")) { unsigned Pad = CC->getName().size(); if (CC->getValueAsBit(\"Entry\")) { O << \"bool ll",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- Driver.cpp ---------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"Driver.h\" #include \"Config.h\" #include \"ICF.h\" #include \"InputFiles.h\" #include \"LTO.h\" #include \"MarkLive.h\" #include \"ObjC.h\" #include \"OutputSection.h\" #include \"OutputSegment.h\" #include \"SectionPriorities.h\" #include \"SymbolTable.h\" #include \"Symbols.h\" #include \"SyntheticSections.h\" #include \"Target.h\" #include \"UnwindInfoSection.h\" #include \"Writer.h\" #include \"lld/Common/Args.h\" #include \"lld/Common/Driver.h\" #include \"lld/Common/ErrorHandler.h\" #include \"lld/Common/LLVM.h\" #include \"lld/Common/Memory.h\" #include \"lld/Common/Reproduce.h\" #include \"lld/Common/Version.h\" #include \"llvm/ADT/DenseSet.h\" #include \"llvm/ADT/StringExtras.h\" #include \"llvm/ADT/StringRef.h\" #include \"llvm/BinaryFormat/MachO.h\" #include \"llvm/BinaryFormat/Magic.h\" #include \"llvm/Config/llvm-config.h\" #include \"llvm/LTO/LTO.h\" #include \"llvm/Object/Archive.h\" #include \"llvm/Option/ArgList.h\" #include \"llvm/Support/CommandLine.h\" #include \"llvm/Support/FileSystem.h\" #include \"llvm/Support/Host.h\" #include \"llvm/Support/MemoryBuffer.h\" #include \"llvm/Support/Parallel.h\" #include \"llvm/Support/Path.h\" #include \"llvm/Support/",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- AArch64InstructionSelector.cpp ----------------------------*- C++ -*-==// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// /// \\file /// This file implements the targeting of the InstructionSelector class for /// AArch64. /// \\todo This should be generated by TableGen. //===----------------------------------------------------------------------===// #include \"AArch64InstrInfo.h\" #include \"AArch64MachineFunctionInfo.h\" #include \"AArch64RegisterBankInfo.h\" #include \"AArch64RegisterInfo.h\" #include \"AArch64Subtarget.h\" #include \"AArch64TargetMachine.h\" #include \"MCTargetDesc/AArch64AddressingModes.h\" #include \"llvm/ADT/Optional.h\" #include \"llvm/CodeGen/GlobalISel/InstructionSelector.h\" #include \"llvm/CodeGen/GlobalISel/InstructionSelectorImpl.h\" #include \"llvm/CodeGen/GlobalISel/MachineIRBuilder.h\" #include \"llvm/CodeGen/GlobalISel/MIPatternMatch.h\" #include \"llvm/CodeGen/GlobalISel/Utils.h\" #include \"llvm/CodeGen/MachineBasicBlock.h\" #include \"llvm/CodeGen/MachineConstantPool.h\" #include \"llvm/CodeGen/MachineFunction.h\" #include \"llvm/CodeGen/MachineInstr.h\" #include \"llvm/CodeGen/MachineInstrBuilder.h\" #include \"llvm/CodeGen/MachineOperand.h\" #include \"llvm/CodeGen/MachineRegisterInfo.h\" #include \"llvm/IR/Type.h\" #include \"llvm/IR/Int",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- TestTensorTransforms.cpp - Test Tensor transformation patterns -----===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements logic for testing Tensor transformations. // //===----------------------------------------------------------------------===// #include \"mlir/Dialect/Arithmetic/IR/Arithmetic.h\" #include \"mlir/Dialect/SCF/SCF.h\" #include \"mlir/Dialect/Tensor/IR/Tensor.h\" #include \"mlir/Dialect/Tensor/Transforms/Transforms.h\" #include \"mlir/Pass/Pass.h\" #include \"mlir/Transforms/GreedyPatternRewriteDriver.h\" using namespace mlir; namespace { struct TestTensorTransforms : public PassWrapper<TestTensorTransforms, OperationPass<>> { MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(TestTensorTransforms) TestTensorTransforms() = default; TestTensorTransforms(const TestTensorTransforms &pass) : PassWrapper(pass) {} void getDependentDialects(DialectRegistry &registry) const override { registry.insert<arith::ArithmeticDialect, scf::SCFDialect>(); } StringRef getArgument() const final { return \"test-tensor-transform-patterns\"; } StringRef getDescription() const final { return \"Test Tensor transformation patterns by applying them greedily.\"; } void runOnOperation() override;",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- Mapper.cpp - ClangDoc Mapper ----------------------------*- C++ -*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"Mapper.h\" #include \"BitcodeWriter.h\" #include \"Serialize.h\" #include \"clang/AST/Comment.h\" #include \"clang/Index/USRGeneration.h\" #include \"llvm/ADT/StringExtras.h\" #include \"llvm/Support/Error.h\" using clang::comments::FullComment; namespace clang { namespace doc { void MapASTVisitor::HandleTranslationUnit(ASTContext &Context) { TraverseDecl(Context.getTranslationUnitDecl()); } template <typename T> bool MapASTVisitor::mapDecl(const T *D) { // If we're looking a decl not in user files, skip this decl. if (D->getASTContext().getSourceManager().isInSystemHeader(D->getLocation())) return true; // Skip function-internal decls. if (D->getParentFunctionOrMethod()) return true; llvm::SmallString<128> USR; // If there is an error generating a USR for the decl, skip this decl. if (index::generateUSRForDecl(D, USR)) return true; bool IsFileInRootDir; llvm::SmallString<128> File = getFile(D, D->getASTContext(), CDCtx.SourceRoot, IsFileInRootDir); auto I = serialize::emitInfo(D, getComment(D, D->getASTContext()), getLine(D, D->getASTConte",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- PPCISelLowering.cpp - PPC DAG Lowering Implementation -------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements the PPCISelLowering class. // //===----------------------------------------------------------------------===// #include \"PPCISelLowering.h\" #include \"MCTargetDesc/PPCPredicates.h\" #include \"PPC.h\" #include \"PPCCCState.h\" #include \"PPCCallingConv.h\" #include \"PPCFrameLowering.h\" #include \"PPCInstrInfo.h\" #include \"PPCMachineFunctionInfo.h\" #include \"PPCPerfectShuffle.h\" #include \"PPCRegisterInfo.h\" #include \"PPCSubtarget.h\" #include \"PPCTargetMachine.h\" #include \"llvm/ADT/APFloat.h\" #include \"llvm/ADT/APInt.h\" #include \"llvm/ADT/ArrayRef.h\" #include \"llvm/ADT/DenseMap.h\" #include \"llvm/ADT/None.h\" #include \"llvm/ADT/STLExtras.h\" #include \"llvm/ADT/SmallPtrSet.h\" #include \"llvm/ADT/SmallSet.h\" #include \"llvm/ADT/SmallVector.h\" #include \"llvm/ADT/Statistic.h\" #include \"llvm/ADT/StringRef.h\" #include \"llvm/ADT/StringSwitch.h\" #include \"llvm/CodeGen/CallingConvLower.h\" #include \"llvm/CodeGen/ISDOpcodes.h\" #include \"llvm/CodeGen/MachineBasicBlock.h\" #include \"llvm/CodeGen/MachineFrameInfo.h\" #include \"llvm/CodeGen/MachineFunction.h\" #include \"llvm/CodeGen/MachineInstr.h\" #include \"llvm/CodeGe",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- SROA.cpp - Scalar Replacement Of Aggregates ------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// /// \\file /// This transformation implements the well known scalar replacement of /// aggregates transformation. It tries to identify promotable elements of an /// aggregate alloca, and promote them to registers. It will also try to /// convert uses of an element (or set of elements) of an alloca into a vector /// or bitfield-style integer scalar if appropriate. /// /// It works to do this with minimal slicing of the alloca so that regions /// which are merely transferred in and out of external memory remain unchanged /// and are not decomposed to scalar code. /// /// Because this also performs alloca promotion, it can be thought of as also /// serving the purpose of SSA formation. The algorithm iterates on the /// function until all opportunities for promotion have been realized. /// //===----------------------------------------------------------------------===// #include \"llvm/Transforms/Scalar/SROA.h\" #include \"llvm/ADT/APInt.h\" #include \"llvm/ADT/ArrayRef.h\" #include \"llvm/ADT/DenseMap.h\" #include \"llvm/ADT/PointerIntPair.h\" #include \"llvm/ADT/STLExtras.h\" #include \"llvm/ADT/SetVector.h\" #include \"llvm/ADT/Sm",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "// -*- C++ -*- //===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // REQUIRES: modules-build // WARNING: This test was generated by 'generate_private_header_tests.py' // and should not be edited manually. // expected-error@*:* {{use of private header from outside its module: '__concepts/arithmetic.h'}} #include <__concepts/arithmetic.h>",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- MainModule.cpp - Main pybind module --------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include <tuple> #include \"PybindUtils.h\" #include \"DialectLinalg.h\" #include \"ExecutionEngine.h\" #include \"Globals.h\" #include \"IRModule.h\" #include \"Pass.h\" namespace py = pybind11; using namespace mlir; using namespace mlir::python; // ----------------------------------------------------------------------------- // PyGlobals // ----------------------------------------------------------------------------- PyGlobals *PyGlobals::instance = nullptr; PyGlobals::PyGlobals() { assert(!instance && \"PyGlobals already constructed\"); instance = this; } PyGlobals::~PyGlobals() { instance = nullptr; } void PyGlobals::loadDialectModule(llvm::StringRef dialectNamespace) { py::gil_scoped_acquire(); if (loadedDialectModulesCache.contains(dialectNamespace)) return; // Since re-entrancy is possible, make a copy of the search prefixes. std::vector<std::string> localSearchPrefixes = dialectSearchPrefixes; py::object loaded; for (std::string moduleName : localSearchPrefixes) { moduleName.push_back('.'); moduleName.append(dialectNamespace.data(), dialectNamespace.size()); try { py::gil_",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===--- CodeGenAction.cpp - LLVM Code Generation Frontend Action ---------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"clang/CodeGen/CodeGenAction.h\" #include \"CodeGenModule.h\" #include \"CoverageMappingGen.h\" #include \"MacroPPCallbacks.h\" #include \"clang/AST/ASTConsumer.h\" #include \"clang/AST/ASTContext.h\" #include \"clang/AST/DeclCXX.h\" #include \"clang/AST/DeclGroup.h\" #include \"clang/Basic/DiagnosticFrontend.h\" #include \"clang/Basic/FileManager.h\" #include \"clang/Basic/LangStandard.h\" #include \"clang/Basic/SourceManager.h\" #include \"clang/Basic/TargetInfo.h\" #include \"clang/CodeGen/BackendUtil.h\" #include \"clang/CodeGen/ModuleBuilder.h\" #include \"clang/Driver/DriverDiagnostic.h\" #include \"clang/Frontend/CompilerInstance.h\" #include \"clang/Frontend/FrontendDiagnostic.h\" #include \"clang/Lex/Preprocessor.h\" #include \"llvm/Bitcode/BitcodeReader.h\" #include \"llvm/CodeGen/MachineOptimizationRemarkEmitter.h\" #include \"llvm/IR/DebugInfo.h\" #include \"llvm/IR/DiagnosticInfo.h\" #include \"llvm/IR/DiagnosticPrinter.h\" #include \"llvm/IR/GlobalValue.h\" #include \"llvm/IR/LLVMContext.h\" #include \"llvm/IR/LLVMRemarkStreamer.h\" #include \"llvm/IR/LegacyPassManager.h\" #include \"llvm/IR/Module.h\" #include \"llvm/IRReader/IRReader.h\" #include",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- XML.cpp -----------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"lldb/Host/Config.h\" #include \"lldb/Host/XML.h\" using namespace lldb; using namespace lldb_private; #pragma mark-- XMLDocument XMLDocument::XMLDocument() = default; XMLDocument::~XMLDocument() { Clear(); } void XMLDocument::Clear() { #if LLDB_ENABLE_LIBXML2 if (m_document) { xmlDocPtr doc = m_document; m_document = nullptr; xmlFreeDoc(doc); } #endif } bool XMLDocument::IsValid() const { return m_document != nullptr; } void XMLDocument::ErrorCallback(void *ctx, const char *format, ...) { XMLDocument *document = (XMLDocument *)ctx; va_list args; va_start(args, format); document->m_errors.PrintfVarArg(format, args); document->m_errors.EOL(); va_end(args); } bool XMLDocument::ParseFile(const char *path) { #if LLDB_ENABLE_LIBXML2 Clear(); xmlSetGenericErrorFunc((void *)this, XMLDocument::ErrorCallback); m_document = xmlParseFile(path); xmlSetGenericErrorFunc(nullptr, nullptr); #endif return IsValid(); } bool XMLDocument::ParseMemory(const char *xml, size_t xml_length, const char *url) { #if LLDB_ENABLE_LIBXML2 Clear(); xmlSetGene",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//=== JSON.cpp - JSON value, parsing and serialization - C++ -----------*-===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===---------------------------------------------------------------------===// #include \"llvm/Support/JSON.h\" #include \"llvm/Support/ConvertUTF.h\" #include \"llvm/Support/Format.h\" #include <cctype> namespace llvm { namespace json { Value &Object::operator[](const ObjectKey &K) { return try_emplace(K, nullptr).first->getSecond(); } Value &Object::operator[](ObjectKey &&K) { return try_emplace(std::move(K), nullptr).first->getSecond(); } Value *Object::get(StringRef K) { auto I = find(K); if (I == end()) return nullptr; return &I->second; } const Value *Object::get(StringRef K) const { auto I = find(K); if (I == end()) return nullptr; return &I->second; } llvm::Optional<std::nullptr_t> Object::getNull(StringRef K) const { if (auto *V = get(K)) return V->getAsNull(); return llvm::None; } llvm::Optional<bool> Object::getBoolean(StringRef K) const { if (auto *V = get(K)) return V->getAsBoolean(); return llvm::None; } llvm::Optional<double> Object::getNumber(StringRef K) const { if (auto *V = get(K)) return V->getAsNumber(); return llvm::None; } llvm::Optional<int64_t> Object::getInteger(StringRef K) const { if (auto *V = get(K)) return V->get",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- llvm-dwp.cpp - Split DWARF merging tool for llvm ------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // A utility for merging DWARF 5 Split DWARF .dwo files into .dwp (DWARF // package files). // //===----------------------------------------------------------------------===// #include \"DWPError.h\" #include \"DWPStringPool.h\" #include \"llvm/ADT/MapVector.h\" #include \"llvm/ADT/Optional.h\" #include \"llvm/ADT/STLExtras.h\" #include \"llvm/DebugInfo/DWARF/DWARFContext.h\" #include \"llvm/DebugInfo/DWARF/DWARFDataExtractor.h\" #include \"llvm/DebugInfo/DWARF/DWARFFormValue.h\" #include \"llvm/DebugInfo/DWARF/DWARFUnitIndex.h\" #include \"llvm/MC/MCAsmBackend.h\" #include \"llvm/MC/MCAsmInfo.h\" #include \"llvm/MC/MCCodeEmitter.h\" #include \"llvm/MC/MCContext.h\" #include \"llvm/MC/MCInstrInfo.h\" #include \"llvm/MC/MCObjectFileInfo.h\" #include \"llvm/MC/MCObjectWriter.h\" #include \"llvm/MC/MCRegisterInfo.h\" #include \"llvm/MC/MCStreamer.h\" #include \"llvm/MC/MCTargetOptionsCommandFlags.h\" #include \"llvm/Object/Decompressor.h\" #include \"llvm/Object/ObjectFile.h\" #include \"llvm/Support/CommandLine.h\" #include \"llvm/Support/DataExtractor.h\" #include \"llvm/Support/Error.h\" #include \"llvm/Support/FileSystem.h\" #include \"llvm/Support/InitLLVM.h\"",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // UNSUPPORTED: c++03, c++11, c++14, c++17 // This test relies on P0482 being fixed, which isn't in // older Apple dylibs // // XFAIL: use_system_cxx_lib && target={{.+}}-apple-macosx10.{{9|10|11|12|13|14|15}} // <locale> // template <> class codecvt<char16_t, char8_t, mbstate_t> // result unshift(stateT& state, // externT* to, externT* to_end, externT*& to_next) const; #include <cassert> #include <locale> int main(int, char**) { using F = std::codecvt<char16_t, char8_t, std::mbstate_t>; const F& f = std::use_facet<F>(std::locale::classic()); std::mbstate_t mbs = {}; char8_t to[3]; char8_t* to_next = nullptr; assert(f.unshift(mbs, to, to + 3, to_next) == F::noconv); assert(to_next == to); return 0; }",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- WebAssemblyOptimizeReturned.cpp - Optimize \"returned\" attributes --===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// /// /// \\file /// Optimize calls with \"returned\" attributes for WebAssembly. /// //===----------------------------------------------------------------------===// #include \"WebAssembly.h\" #include \"llvm/IR/Dominators.h\" #include \"llvm/IR/InstVisitor.h\" #include \"llvm/Support/Debug.h\" #include \"llvm/Support/raw_ostream.h\" using namespace llvm; #define DEBUG_TYPE \"wasm-optimize-returned\" namespace { class OptimizeReturned final : public FunctionPass, public InstVisitor<OptimizeReturned> { StringRef getPassName() const override { return \"WebAssembly Optimize Returned\"; } void getAnalysisUsage(AnalysisUsage &AU) const override { AU.setPreservesCFG(); AU.addRequired<DominatorTreeWrapperPass>(); AU.addPreserved<DominatorTreeWrapperPass>(); FunctionPass::getAnalysisUsage(AU); } bool runOnFunction(Function &F) override; DominatorTree *DT = nullptr; public: static char ID; OptimizeReturned() : FunctionPass(ID) {} void visitCallBase(CallBase &CB); }; } // End anonymous namespace char OptimizeReturned::ID = 0; INITIALIZE_PASS(OptimizeReturned, DEBUG",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-------------------------- cxa_demangle.cpp --------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // FIXME: (possibly) incomplete list of features that clang mangles that this // file does not yet support: // - C++ modules TS #include \"demangle/ItaniumDemangle.h\" #include \"__cxxabi_config.h\" #include <cassert> #include <cctype> #include <cstdio> #include <cstdlib> #include <cstring> #include <functional> #include <numeric> #include <utility> using namespace itanium_demangle; constexpr const char *itanium_demangle::FloatData<float>::spec; constexpr const char *itanium_demangle::FloatData<double>::spec; constexpr const char *itanium_demangle::FloatData<long double>::spec; // <discriminator> := _ <non-negative number> # when number < 10 // := __ <non-negative number> _ # when number >= 10 // extension := decimal-digit+ # at the end of string const char *itanium_demangle::parse_discriminator(const char *first, const char *last) { // parse but ignore discriminator if (first != last) { if (*first == '_') { const char *t1 = first + 1; if (t1 != last) { if (std::isdigit(*t1)) first",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===--- ShrinkToFitCheck.cpp - clang-tidy---------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"ShrinkToFitCheck.h\" #include \"clang/AST/ASTContext.h\" #include \"clang/ASTMatchers/ASTMatchFinder.h\" #include \"clang/Lex/Lexer.h\" #include \"llvm/ADT/StringRef.h\" using namespace clang::ast_matchers; namespace clang { namespace tidy { namespace modernize { void ShrinkToFitCheck::registerMatchers(MatchFinder *Finder) { // Swap as a function need not to be considered, because rvalue can not // be bound to a non-const reference. const auto ShrinkableAsMember = memberExpr(member(valueDecl().bind(\"ContainerDecl\"))); const auto ShrinkableAsDecl = declRefExpr(hasDeclaration(valueDecl().bind(\"ContainerDecl\"))); const auto CopyCtorCall = cxxConstructExpr(hasArgument( 0, anyOf(ShrinkableAsMember, ShrinkableAsDecl, unaryOperator(has(ignoringParenImpCasts(ShrinkableAsMember))), unaryOperator(has(ignoringParenImpCasts(ShrinkableAsDecl)))))); const auto SwapParam = expr(anyOf(memberExpr(member(equalsBoundNode(\"ContainerDecl\"))), declRefExpr(hasDeclaration(equalsBoundNode(\"ContainerDecl\"))), unaryOperator(has(ignoringP",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- SPIRVToLLVM.cpp - SPIR-V to LLVM Patterns --------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements patterns to convert SPIR-V dialect to LLVM dialect. // //===----------------------------------------------------------------------===// #include \"mlir/Conversion/SPIRVToLLVM/SPIRVToLLVM.h\" #include \"mlir/Conversion/StandardToLLVM/ConvertStandardToLLVM.h\" #include \"mlir/Conversion/StandardToLLVM/ConvertStandardToLLVMPass.h\" #include \"mlir/Dialect/LLVMIR/LLVMDialect.h\" #include \"mlir/Dialect/SPIRV/IR/SPIRVDialect.h\" #include \"mlir/Dialect/SPIRV/IR/SPIRVOps.h\" #include \"mlir/Dialect/SPIRV/Utils/LayoutUtils.h\" #include \"mlir/Dialect/StandardOps/IR/Ops.h\" #include \"mlir/IR/BuiltinOps.h\" #include \"mlir/IR/PatternMatch.h\" #include \"mlir/Support/LogicalResult.h\" #include \"mlir/Transforms/DialectConversion.h\" #include \"llvm/Support/Debug.h\" #include \"llvm/Support/FormatVariadic.h\" #define DEBUG_TYPE \"spirv-to-llvm-pattern\" using namespace mlir; //===----------------------------------------------------------------------===// // Utility functions //===----------------------------------------------------------------------===// /// Returns true if the given type is a signed integer or vector typ",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- SampleProfWriter.cpp - Write LLVM sample profile data --------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements the class that writes LLVM sample profiles. It // supports two file formats: text and binary. The textual representation // is useful for debugging and testing purposes. The binary representation // is more compact, resulting in smaller file sizes. However, they can // both be used interchangeably. // // See lib/ProfileData/SampleProfReader.cpp for documentation on each of the // supported formats. // //===----------------------------------------------------------------------===// #include \"llvm/ProfileData/SampleProfWriter.h\" #include \"llvm/ADT/StringRef.h\" #include \"llvm/ADT/StringSet.h\" #include \"llvm/ProfileData/ProfileCommon.h\" #include \"llvm/ProfileData/SampleProf.h\" #include \"llvm/Support/Compression.h\" #include \"llvm/Support/Endian.h\" #include \"llvm/Support/EndianStream.h\" #include \"llvm/Support/ErrorOr.h\" #include \"llvm/Support/FileSystem.h\" #include \"llvm/Support/LEB128.h\" #include \"llvm/Support/MD5.h\" #include \"llvm/Support/raw_ostream.h\" #include <algorithm> #include <cstdint> #include <memory> #include <set> #include <system_error> #include <utility> #include <vector> usin",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- AggressiveInstCombine.cpp ------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements the aggressive expression pattern combiner classes. // Currently, it handles expression patterns for: // * Truncate instruction // //===----------------------------------------------------------------------===// #include \"llvm/Transforms/AggressiveInstCombine/AggressiveInstCombine.h\" #include \"AggressiveInstCombineInternal.h\" #include \"llvm-c/Initialization.h\" #include \"llvm-c/Transforms/AggressiveInstCombine.h\" #include \"llvm/ADT/Statistic.h\" #include \"llvm/Analysis/AliasAnalysis.h\" #include \"llvm/Analysis/AssumptionCache.h\" #include \"llvm/Analysis/BasicAliasAnalysis.h\" #include \"llvm/Analysis/GlobalsModRef.h\" #include \"llvm/Analysis/TargetLibraryInfo.h\" #include \"llvm/Analysis/ValueTracking.h\" #include \"llvm/IR/DataLayout.h\" #include \"llvm/IR/Dominators.h\" #include \"llvm/IR/Function.h\" #include \"llvm/IR/IRBuilder.h\" #include \"llvm/IR/LegacyPassManager.h\" #include \"llvm/IR/PatternMatch.h\" #include \"llvm/InitializePasses.h\" #include \"llvm/Pass.h\" #include \"llvm/Transforms/Utils/Local.h\" using namespace llvm; using namespace PatternMatch; #define DEBUG_TYPE \"aggressive-instcombine\" S",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===-- TestTypeSystemClang.cpp -------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// #include \"Plugins/ExpressionParser/Clang/ClangUtil.h\" #include \"Plugins/TypeSystem/Clang/TypeSystemClang.h\" #include \"TestingSupport/SubsystemRAII.h\" #include \"TestingSupport/Symbol/ClangTestUtils.h\" #include \"lldb/Host/FileSystem.h\" #include \"lldb/Host/HostInfo.h\" #include \"lldb/Symbol/Declaration.h\" #include \"clang/AST/DeclCXX.h\" #include \"clang/AST/DeclObjC.h\" #include \"clang/AST/ExprCXX.h\" #include \"gtest/gtest.h\" using namespace clang; using namespace lldb; using namespace lldb_private; class TestTypeSystemClang : public testing::Test { public: SubsystemRAII<FileSystem, HostInfo> subsystems; void SetUp() override { m_ast.reset( new TypeSystemClang(\"test ASTContext\", HostInfo::GetTargetTriple())); } void TearDown() override { m_ast.reset(); } protected: std::unique_ptr<TypeSystemClang> m_ast; QualType GetBasicQualType(BasicType type) const { return ClangUtil::GetQualType(m_ast->GetBasicTypeFromAST(type)); } QualType GetBasicQualType(const char *name) const { return ClangUtil::GetQualType( m_ast->GetBuiltinTypeByName(ConstString(name))); } }; TEST_F(TestTyp",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===----------------------------------------------------------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // UNSUPPORTED: c++98, c++03, c++11, c++14, c++17 // <forward_list> // template <class T, class Allocator, class U> // void erase(forward_list<T, Allocator>& c, const U& value); #include <forward_list> #include <optional> #include \"test_macros.h\" #include \"test_allocator.h\" #include \"min_allocator.h\" template <class S, class U> void test0(S s, U val, S expected) { ASSERT_SAME_TYPE(void, decltype(std::erase(s, val))); std::erase(s, val); assert(s == expected); } template <class S> void test() { test0(S(), 1, S()); test0(S({1}), 1, S()); test0(S({1}), 2, S({1})); test0(S({1,2}), 1, S({2})); test0(S({1,2}), 2, S({1})); test0(S({1,2}), 3, S({1,2})); test0(S({1,1}), 1, S()); test0(S({1,1}), 3, S({1,1})); test0(S({1,2,3}), 1, S({2,3})); test0(S({1,2,3}), 2, S({1,3})); test0(S({1,2,3}), 3, S({1,2})); test0(S({1,2,3}), 4, S({1,2,3})); test0(S({1,1,1}), 1, S()); test0(S({1,1,1}), 2, S({1,1,1})); test0(S({1,1,2}), 1, S({2})); test0(S({1,1,2}), 2, S({1,1})); test0(S({1,1,2}), 3, S({1,1,2})); test0(S({1,2,2}), 1, S({2,2}));",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- CoroSplit.cpp - Converts a coroutine into a state machine ----------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // This pass builds the coroutine frame and outlines resume and destroy parts // of the coroutine into separate functions. // // We present a coroutine to an LLVM as an ordinary function with suspension // points marked up with intrinsics. We let the optimizer party on the coroutine // as a single function for as long as possible. Shortly before the coroutine is // eligible to be inlined into its callers, we split up the coroutine into parts // corresponding to an initial, resume and destroy invocations of the coroutine, // add them to the current SCC and restart the IPO pipeline to optimize the // coroutine subfunctions we extracted before proceeding to the caller of the // coroutine. //===----------------------------------------------------------------------===// #include \"llvm/Transforms/Coroutines/CoroSplit.h\" #include \"CoroInstr.h\" #include \"CoroInternal.h\" #include \"llvm/ADT/DenseMap.h\" #include \"llvm/ADT/PriorityWorklist.h\" #include \"llvm/ADT/SmallPtrSet.h\" #include \"llvm/ADT/SmallVector.h\" #include \"llvm/ADT/StringRef.h\" #include \"llvm/ADT/Twine.h\" #include \"llvm/Analysis/CFG.h\" #include \"llvm/Analysis/Ca",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- PWMAFunctionTest.cpp - Tests for PWMAFunction ----------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file contains tests for PWMAFunction. // //===----------------------------------------------------------------------===// #include \"./Utils.h\" #include \"mlir/Analysis/Presburger/PWMAFunction.h\" #include \"mlir/Analysis/Presburger/PresburgerRelation.h\" #include \"mlir/IR/MLIRContext.h\" #include <gmock/gmock.h> #include <gtest/gtest.h> using namespace mlir; using namespace presburger; using testing::ElementsAre; TEST(PWAFunctionTest, isEqual) { // The output expressions are different but it doesn't matter because they are // equal in this domain. PWMAFunction idAtZeros = parsePWMAF( /*numInputs=*/2, /*numOutputs=*/2, { {\"(x, y) : (y == 0)\", {{1, 0, 0}, {0, 1, 0}}}, // (x, y). {\"(x, y) : (y - 1 >= 0, x == 0)\", {{1, 0, 0}, {0, 1, 0}}}, // (x, y). {\"(x, y) : (-y - 1 >= 0, x == 0)\", {{1, 0, 0}, {0, 1, 0}}} // (x, y). }); PWMAFunction idAtZeros2 = parsePWMAF( /*numInputs=*/2, /*numOutputs=*/2, { {\"(x, y) : (y == 0)\", {{1, 0, 0}, {0, 20, 0}}}, // (x, 20y). {\"(x, y) : (y - 1 >= 0, x == 0)\", {{30, 0, 0}, {0, 1,",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "//===- MSFTOps.cpp - Implement MSFT dialect operations --------------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // //===----------------------------------------------------------------------===// // // This file implements the MSFT dialect operations. // //===----------------------------------------------------------------------===// #include \"circt/Dialect/MSFT/MSFTOps.h\" #include \"circt/Dialect/HW/HWAttributes.h\" #include \"circt/Dialect/HW/HWOps.h\" #include \"circt/Dialect/HW/ModuleImplementation.h\" #include \"circt/Dialect/MSFT/MSFTAttributes.h\" #include \"mlir/IR/Builders.h\" #include \"mlir/IR/DialectImplementation.h\" #include \"mlir/IR/FunctionImplementation.h\" #include \"mlir/IR/FunctionInterfaces.h\" #include \"llvm/ADT/BitVector.h\" #include \"llvm/ADT/SmallPtrSet.h\" #include \"llvm/ADT/TypeSwitch.h\" using namespace circt; using namespace msft; //===----------------------------------------------------------------------===// // Custom directive parsers/printers //===----------------------------------------------------------------------===// ParseResult parsePhysLoc(OpAsmParser &p, PhysLocationAttr &attr) { llvm::SMLoc loc = p.getCurrentLocation(); StringRef devTypeStr; uint64_t x, y, num; if (p.parseKeyword(&devTypeStr) || p.parseKeyword(\"x\") || p.parseColon() || p.parseInteger(x) || p.pars",
+    "gt": [
+      "apache-2.0",
+      "llvm-exception"
+    ],
+    "tag": "Apache-2.0 WITH LLVM-exception",
+    "lang": "c++",
+    "scancode": "apache-2.0 WITH llvm-exception",
+    "residual": "A"
+  },
+  {
+    "text": "# Copyright 2008-present Contributors to the OpenImageIO project. # https://github.com/OpenImageIO/oiio/blob/master/LICENSE.md ########################################################################### # # This file contains compiler-related detection, options, and actions. # # Each option declaration is kept close to the related logic for that # option. # ########################################################################### ########################################################################### # Print some basic status about the system and compiler # if (VERBOSE) message (STATUS \"CMAKE_SYSTEM_NAME = ${CMAKE_SYSTEM_NAME}\") message (STATUS \"CMAKE_SYSTEM_VERSION = ${CMAKE_SYSTEM_VERSION}\") message (STATUS \"CMAKE_SYSTEM_PROCESSOR = ${CMAKE_SYSTEM_PROCESSOR}\") endif () message (STATUS \"CMAKE_CXX_COMPILER = ${CMAKE_CXX_COMPILER}\") message (STATUS \"CMAKE_CXX_COMPILER_ID = ${CMAKE_CXX_COMPILER_ID}\") ########################################################################### # C++ language standard # set (CMAKE_CXX_STANDARD 11 CACHE STRING \"C++ standard to prefer (11, 14, 17, 20, etc.)\") set (CMAKE_CXX_STANDARD_REQUIRED ON) set (CMAKE_CXX_EXTENSIONS OFF) message (STATUS \"Building for C++${CMAKE_CXX_STANDARD}\") ########################################################################### # Figure out which compiler we're using # if (CMAKE_COMPILER_IS_GNUCC) execute_process (COMMAND ${CMAKE_CXX_C",
+    "gt": [
+      "bsd-new"
+    ],
+    "tag": "BSD-3-Clause",
+    "lang": "cmake",
+    "scancode": null,
+    "residual": "B"
+  },
+  {
+    "text": "# # Copyright (C) 2019-2020 Intel Corporation. # # ARG BASE=video-analytics-serving-gstreamer-base ARG MODELS_COMMAND=do_not_copy_models ARG PIPELINES_COMMAND=do_not_copy_pipelines ARG FINAL_STAGE=video-analytics-serving-environment ######################################################## # First stage installs video-analytics-serving and its dependencies on top of a compatible Media Analytics Base. # See documentation for more details on requirements for the Media Analytics Base. FROM ${BASE} as video-analytics-serving ARG FRAMEWORK=gstreamer # Multi-License Disclaimer RUN echo \"IMPORTANT: This script will build third party components licensed under various open source licenses into your container images. The terms under which those components may be used and distributed can be found with the license document that is provided with those components. Please familiarize yourself with those terms to ensure your distribution of those components complies with the terms of those licenses.\" # Switching to root user to create user and install packages USER root # Dependencies for OpenVINO ARG BASE=video-analytics-serving-gstreamer-base ENV VA_SERVING_BASE=${BASE} SHELL [\"/bin/bash\", \"-c\"] RUN if [[ ${VA_SERVING_BASE} = *\"openvino\"* ]]; then \\ if [ -f /opt/intel/openvino/install_dependencies/install_openvino_dependencies.sh ]; then \\ /opt/intel/openvino/install_dependencies/install_openvino_dependencies.sh ;\\ fi",
+    "gt": [
+      "bsd-new"
+    ],
+    "tag": "BSD-3-Clause",
+    "lang": "dockerfile",
+    "scancode": "unknown-license-reference",
+    "residual": "B"
+  },
+  {
+    "text": "-- Copyright (c) 2020, The Pallene Developers -- Pallene is licensed under the MIT license. -- Please refer to the LICENSE and AUTHORS files for details local typedecl = require \"pallene.typedecl\" local types = {} local function declare_type(type_name, cons) typedecl.declare(types, \"types\", type_name, cons) end declare_type(\"T\", { Any = {}, Nil = {}, Boolean = {}, Integer = {}, Float = {}, String = {}, Function = {\"arg_types\", \"ret_types\"}, Array = {\"elem\"}, Table = {\"fields\"}, Record = { \"name\", -- for tostring only \"field_names\", -- same order as the source type declaration \"field_types\", -- map { string => types.T } }, }) function types.is_gc(t) local tag = t._tag if tag == \"types.T.Nil\" or tag == \"types.T.Boolean\" or tag == \"types.T.Integer\" or tag == \"types.T.Float\" then return false elseif tag == \"types.T.Any\" or tag == \"types.T.String\" or tag == \"types.T.Function\" or tag == \"types.T.Array\" or tag == \"types.T.Table\" or tag == \"types.T.Record\" then return true else typedecl.tag_error(tag) end end function types.is_condition(t) local tag = t._tag if tag == \"types.T.Any\" or tag == \"types.T.Boolean\" then return true elseif tag == \"types.T.Nil\" or",
+    "gt": [
+      "mit"
+    ],
+    "tag": "MIT",
+    "lang": "lua",
+    "scancode": "mit",
+    "residual": "A"
+  },
+  {
+    "text": "-- Copyright (c) 2020, The Pallene Developers -- Pallene is licensed under the MIT license. -- Please refer to the LICENSE and AUTHORS files for details local util = {} function util.abort(msg) io.stderr:write(msg, \"\\n\") os.exit(1) end -- Barebones string-based template function for generating C/Lua code. Replaces $VAR and ${VAR} -- placeholders in the `code` template by the corresponding strings in the `substs` table. -- -- Don't call this function in tail-call position, wrap the call in parens if necessary. This way if -- there is an error you will get an accurate line number in the stack trace instead of just -- \"(...tail calls...)\" function util.render(code, substs) local err local out = string.gsub(code, \"%$({?)([A-Za-z_][A-Za-z_0-9]*)(}?)\", function(a, k, b) if a == \"{\" and b == \"\" then err = \"unmatched ${ in template\" return \"\" end local v = substs[k] if not v then err = \"missing template variable \" .. k return \"\" elseif type(v) ~= \"string\" then err = \"template variable is not a string \" .. k return \"\" end if a == \"\" and b == \"}\" then v = v .. b end return v end) if err then error(err) end return out end -- -- Shell and filesystem stuff -- function util.split_ext(fi",
+    "gt": [
+      "mit"
+    ],
+    "tag": "MIT",
+    "lang": "lua",
+    "scancode": "mit",
+    "residual": "A"
+  },
+  {
+    "text": "# Copyright cocotb contributors # Licensed under the Revised BSD License, see LICENSE for details. # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. TOPLEVEL_LANG ?= verilog TOPLEVEL := fatal MODULE := test_fatal PWD=$(shell pwd) ifeq ($(TOPLEVEL_LANG),verilog) VERILOG_SOURCES := $(PWD)/fatal.sv else ifeq ($(TOPLEVEL_LANG),vhdl) VHDL_SOURCES := $(PWD)/fatal.vhd ifneq ($(filter $(SIM),ius xcelium),) SIM_ARGS += -v93 endif endif # squash error code from simulator and ensure the cocotb test passed .PHONY: override_for_this_test override_for_this_test: -$(MAKE) all $(call check_for_results_file) ../../../bin/combine_results.py &> /dev/null include $(shell cocotb-config --makefiles)/Makefile.sim",
+    "gt": [
+      "bsd-new"
+    ],
+    "tag": "BSD-3-Clause",
+    "lang": "makefile",
+    "scancode": "bsd-new",
+    "residual": "A"
+  },
+  {
+    "text": "--- Publication-State: Active Access: Public Reviewers: - Name: CycoPH Associated-With-Project: false Compensation-Source: external Domain: Security Methodology: - Code-Review Issues-Identified: Not-Examined Package-URLs: - pkg:npm/restify Review-Date: '2017-04-14' Scope: Implementation/Full Schema-Version: '1.0' --- ### Summary *Cross-Site Scripting (XSS)*<br><br>Recommendation: Upgrade to v4.1.0 or greater. ### Details Restify is a framework for building REST APIs. Using URL encoded script tags in a non-existent URL, an attacker can get script to run in some browsers. For example, for the URL `https://localhost:3000/no5_such3_file7.pl?%22%3E%3Cscript%3Ealert(73541);%3C/script%3E` restify will return `<script>alert(73541);</script>` as part of the response, and in some browsers will run. <br><br>\u2022 Affected Versions: >=2.0.0 <=4.0.4 <br>\u2022 Patched Versions: >=4.1.0 ### Methodology This review was taken directly from the Security Advisories section of npm's official website. ### External References ['https://github.com/restify/node-restify/issues/1018)'] ### Disclaimer All security reviews are conducted on a \"best-effort\" basis against a software component at a point in time. We make no guarantee as to the quality or completeness of any review. If you believe any content is inaccurate, we encourage you to open an issue or submit a pull request with a correction or improvement. ### License This text is released under at least the [Creativ",
+    "gt": [
+      "cc-by-4.0"
+    ],
+    "tag": "CC-BY-4.0",
+    "lang": "markdown",
+    "scancode": null,
+    "residual": "B"
+  },
+  {
+    "text": "# AutoTransform # Large scale, component based code modification library # # Licensed under the MIT License <http://opensource.org/licenses/MIT> # Copyright (c) 2022-present Nathan Rockenbach <http://github.com/nathro> # @black_format \"\"\"A change represents a submission from a run of AutoTransform on a particular Batch. They are used for managing submissions to code review/source control systems. A pull request is an example of a potential change.\"\"\"",
+    "gt": [
+      "mit"
+    ],
+    "tag": "MIT",
+    "lang": "python",
+    "scancode": "mit",
+    "residual": "A"
+  },
+  {
+    "text": "#!/bin/bash # # Copyright (c) 2018-2020 by Kristoffer Paulsson <kristoffer.paulsson@talenten.se>. # # This software is available under the terms of the MIT license. Parts are licensed under # different terms if stated. The legal terms are attached to the LICENSE file and are # made available on: # # https://opensource.org/licenses/MIT # # # Contributors: # Kristoffer Paulsson - initial implementation # # Creates directories for Angelos install. [ $(id -u) -ne 0 ] && echo \"Run as sudo\" && exit 1 [ -z \"${CONF_DIR}\" ] && echo \"CONF_DIR is not set!\" && exit 1 [ -z \"${VAR_DIR}\" ] && echo \"VAR_DIR is not set!\" && exit 1 [ -z \"${LOG_DIR}\" ] && echo \"LOG_DIR is not set!\" && exit 1 ########## CREATE_DIRS ########## install -d -m 0755 \"$CONF_DIR\" install -d -g $GROUP -o $USERNAME -m 0700 \"$VAR_DIR\" install -d -g $GROUP -o $USERNAME -m 0700 \"$LOG_DIR\" ########## CREATE_DIRS_END ##########",
+    "gt": [
+      "mit"
+    ],
+    "tag": "MIT",
+    "lang": "shell",
+    "scancode": "mit",
+    "residual": "A"
+  },
+  {
+    "text": "#!/bin/sh # Copyright 2020 Nokia # Licensed under the BSD 3-Clause License. robot --consolecolors on -r none -l ./tests/out/$(basename $1)-log --output ./tests/out/$(basename $1)-out $1",
+    "gt": [
+      "bsd-new"
+    ],
+    "tag": "BSD-3-Clause",
+    "lang": "shell",
+    "scancode": "bsd-new",
+    "residual": "A"
+  }
+]

@@ -24,12 +24,18 @@ dependencies = [
 #   sentence-transformers/model2vec  embedding baselines, measured not deployed
 eval = [
     "scancode-toolkit>=32.0.0",
+    # The agent under test. A path dependency, not a release: the suite must score
+    # the working tree of the branch it is measuring, not a published version.
+    "atarashi",
     "scikit-learn>=1.9.0",
     "scipy>=1.14.0",
     "numpy>=1.26.0",
     "sentence-transformers>=5.6.0",
     "model2vec[distill,train]>=0.8.2",
 ]
+
+[tool.uv.sources]
+atarashi = { path = "../../atarashi", editable = true }
 
 [dependency-groups]
 dev = ["pytest>=9.0.2"]

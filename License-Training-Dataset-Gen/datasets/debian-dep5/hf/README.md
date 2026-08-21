@@ -36,13 +36,19 @@ copy-detection rather than identification. Nothing here derives from it.
 
 | | |
 |---|---|
-| rows | 2,077 files from 544 source packages |
-| `notice` regime | 678 — license prose present, answerable |
-| `no-signal` regime | 1,399 — no prose; the correct answer is UNKNOWN |
-| distinct licenses (notice) | 34 |
+| rows | 2,050 files from 544 source packages |
+| `notice` regime | 671 — license prose present, answerable |
+| `no-signal` regime | 1,379 — no prose; the correct answer is UNKNOWN |
+| distinct licenses (notice) | 33 |
 
 Fields: `regime`, `license` (SPDX-style shortname), `dep5_name` (Debian's own
 spelling, pre-normalization), `text`, `text_sha256`, `package`, `version`, `path`.
+
+Labels use **SPDX 3.0 naming**, so `GPL-2.0-only` and `GPL-2.0-or-later` are distinct
+classes. Debian's notation carries the same distinction — `GPL-2` means only, `GPL-2+`
+means or-later — and collapsing them to a bare `GPL-2.0`, as an earlier revision did,
+discards something legally decisive and grades a detector leniently in both
+directions.
 
 ### Why `text` is null on no-signal rows
 

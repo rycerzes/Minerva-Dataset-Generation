@@ -214,6 +214,10 @@ def score_scancode(verdicts, queries) -> dict:
 
 def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.ArgumentParser:
     ap = ap or argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--corpus", choices=("spdx-tag", "debian"), default="spdx-tag",
+                    help="spdx-tag: in-file author declarations (15 licenses). "
+                         "debian: DEP-5 maintainer records, independent and deeper "
+                         "into the tail — build it with `debian-dep5 --mode corpus`.")
     ap.add_argument("--per-lang", type=int, default=0, help="files per language; 0 = all")
     ap.add_argument("--max-per-license", type=int, default=150, help="cap per license; 0 = off")
     ap.add_argument("--snapshot", default=None, help="override the-stack-smol data dir")
@@ -224,14 +228,41 @@ def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.Argument
     return ap
 
 
+def load_debian_corpus(k2: dict[str, str]) -> list[dict]:
+    """The DEP-5 corpus, reshaped to the query contract the scorer already uses.
+
+    Ground truth arrives as a license shortname; every other corpus here keys on
+    ScanCode reference keys. Converting here rather than at build time keeps the
+    corpus in Debian's own terms and keeps one scoring path.
+    """
+    path = Path(__file__).resolve().parents[2] / "cache" / "debian_corpus.json"
+    if not path.exists():
+        raise SystemExit(
+            f"{path} not found — build it first:\n"
+            "  uv run src/run_eval.py debian-dep5 --mode corpus --packages 700")
+    out = []
+    for row in json.loads(path.read_text()):
+        key = k2.get(row["gt"])
+        if not key:
+            continue          # label outside the agent's list: an index gap, not a miss
+        out.append({**row, "gt": {key}, "tag": row["dep5_name"], "lang": row["path"]})
+    return out
+
+
 def main(argv=None) -> None:
     args = build_parser().parse_args(argv)
 
     refs = load_references()
     s2k = spdx_to_key_map()
-    allq = build_queries(args.per_lang, s2k, refs, args.snapshot)
-    notice = stratify([q for q in allq if q["regime"] == "notice"], args.max_per_license)
-    nosig = [q for q in allq if q["regime"] == "no-signal"]
+    if args.corpus == "debian":
+        agent_probe, df_probe = load_agent()
+        rows = load_debian_corpus(key_map(df_probe["shortname"], s2k, refs))
+        notice = stratify([r for r in rows if r["regime"] == "notice"], args.max_per_license)
+        nosig = [r for r in rows if r["regime"] == "no-signal"]
+    else:
+        allq = build_queries(args.per_lang, s2k, refs, args.snapshot)
+        notice = stratify([q for q in allq if q["regime"] == "notice"], args.max_per_license)
+        nosig = [q for q in allq if q["regime"] == "no-signal"]
     if args.limit:
         notice, nosig = notice[:args.limit], nosig[:args.limit]
 
@@ -243,6 +274,7 @@ def main(argv=None) -> None:
     answerable = [q for q in notice if q["gt"] & reachable]
     unreachable = len(notice) - len(answerable)
 
+    print(f"corpus: {args.corpus}")
     print(f"notice queries : {len(notice)}  (no-signal {len(nosig)})")
     print(f"agent license list: {len(df)} licenses, {len(k2)} mapped to reference keys")
     print(f"ground truth outside the agent's list: {unreachable}/{len(notice)} "

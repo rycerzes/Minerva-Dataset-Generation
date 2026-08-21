@@ -130,7 +130,15 @@ def _variants(name: str):
     if base != name:
         yield from _variants(base)
     if name.endswith("+"):                    # Debian's or-later marker
-        yield from _variants(name[:-1])
+        stem = name[:-1]
+        # Try the or-later form *first*: the list carries `GPL-3.0+` alongside
+        # `GPL-3.0`, and collapsing to the bare form turns an or-later grant into an
+        # only grant. That is the same distinction the SPDX resolver preserves, and
+        # dropping it here would score a correct or-later answer as wrong.
+        bumped = _BARE_VERSION.match(stem)
+        if bumped:
+            yield f"{bumped.group(1)}-{bumped.group(2)}.0+"
+        yield from _variants(stem)
     version = _BARE_VERSION.match(name)       # GPL-2 -> GPL-2.0, Apache-2 -> Apache-2.0
     if version:
         yield f"{version.group(1)}-{version.group(2)}.0"
@@ -211,28 +219,150 @@ def survey(packages: list[str], workers: int = 16) -> dict:
     }
 
 
+# Files worth asking about. A DEP-5 glob labels every path it covers, including
+# build files and data, so restricting to source keeps the query set to things that
+# could carry a license header at all.
+SOURCE_SUFFIXES = (".c", ".h", ".cc", ".cpp", ".hpp", ".cs", ".java", ".py", ".rb",
+                   ".pl", ".pm", ".go", ".rs", ".js", ".ts", ".php", ".sh", ".m",
+                   ".swift", ".kt", ".scala", ".lua", ".el")
+# Directories that carry packaging or vendored copies rather than the project's own
+# source; their licenses are real but attributing them to this package is noise.
+SKIP_DIRS = frozenset({".pc", "debian", ".git", ".github", "test", "tests", "po"})
+HEADER_LINES = 40
+
+
+def _api(path: str):
+    raw = _cached("api:" + path, lambda: _get(f"{BASE}/api/src/{path}"))
+    if not raw:
+        return None
+    try:
+        return json.loads(raw)
+    except ValueError:
+        return None
+
+
+def source_files(package: str, limit: int = 6) -> tuple[str, list[str]]:
+    """Up to `limit` source paths in `package`, with the version they came from.
+
+    Walks the top level and one directory down. Deeper walks cost a request each and
+    buy little: projects that put source in `src/` or `lib/` are covered, and those
+    that nest further contribute their top-level files instead.
+    """
+    root = _api(f"{urllib.parse.quote(package)}/latest/")
+    if not root or not root.get("version"):
+        return "", []
+    version = root["version"]
+    quoted = f"{urllib.parse.quote(package)}/{urllib.parse.quote(version)}"
+
+    def sources(entries, prefix=""):
+        return [prefix + e["name"] for e in entries
+                if e.get("type") == "file" and e["name"].endswith(SOURCE_SUFFIXES)]
+
+    entries = root.get("content", [])
+    found = sources(entries)
+    for entry in entries:
+        if len(found) >= limit:
+            break
+        if entry.get("type") != "directory" or entry["name"] in SKIP_DIRS:
+            continue
+        child = _api(f"{quoted}/{urllib.parse.quote(entry['name'])}/")
+        if child:
+            found += sources(child.get("content", []), prefix=entry["name"] + "/")
+    return version, found[:limit]
+
+
+def file_license(package: str, version: str, path: str) -> str | None:
+    """The DEP-5 license Debian records for one file, resolved by their own globs."""
+    url = (f"{BASE}/copyright/api/file/{urllib.parse.quote(package)}/"
+           f"{urllib.parse.quote(version)}/{urllib.parse.quote(path)}/")
+    raw = _cached(f"lic:{package}:{version}:{path}", lambda: _get(url))
+    if not raw:
+        return None
+    try:
+        result = json.loads(raw).get("result") or []
+    except ValueError:
+        return None
+    return result[0]["copyright"]["license"] if result else None
+
+
+def file_header(package: str, version: str, path: str) -> str | None:
+    meta = _api(f"{urllib.parse.quote(package)}/{urllib.parse.quote(version)}/"
+                f"{urllib.parse.quote(path)}/")
+    if not meta or not meta.get("raw_url"):
+        return None
+    body = _cached(f"raw:{package}:{version}:{path}", lambda: _get(BASE + meta["raw_url"]))
+    return body
+
+
+def build_corpus(packages: list[str], per_package: int = 6, workers: int = 12) -> list[dict]:
+    """(query, label) pairs: a file header, labelled by Debian's own DEP-5 record.
+
+    The SPDX tag is stripped from the query, as in the spdx-tag suite, so a file
+    that carries both is still scored on its prose rather than on the tag path.
+    """
+    import pandas as pd
+    from atarashi.spdx.resolver import shortname_index
+    from evaluation.spdx_tag import TAGLINE, classify_regime
+
+    csv = Path(__import__("atarashi").__file__).parent / "data" / "licenses" / "licenseList.csv"
+    index = shortname_index(pd.read_csv(csv)["shortname"])
+
+    def one(package: str) -> list[dict]:
+        version, paths = source_files(package, per_package)
+        rows = []
+        for path in paths:
+            raw_name = file_license(package, version, path)
+            if not raw_name:
+                continue
+            label = canonical_license(raw_name, index)
+            if label is None or label is False:
+                continue
+            body = file_header(package, version, path)
+            if not body:
+                continue
+            head = " ".join(TAGLINE.sub(" ", "\n".join(
+                body.splitlines()[:HEADER_LINES])).split())
+            if len(head) < 40:
+                continue
+            rows.append({"text": head, "gt": label, "dep5_name": raw_name,
+                         "regime": classify_regime(head),
+                         "package": package, "path": path, "version": version})
+        return rows
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        return [row for rows in pool.map(one, packages) for row in rows]
+
+
 def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.ArgumentParser:
     ap = ap or argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--mode", choices=("names", "corpus"), default="names")
     ap.add_argument("--packages", type=int, default=400, help="sample size")
     ap.add_argument("--workers", type=int, default=16)
+    ap.add_argument("--per-package", type=int, default=6, help="corpus mode: files per package")
     return ap
 
 
 def main(argv=None) -> None:
     args = build_parser().parse_args(argv)
-    if args.mode == "corpus":
-        raise SystemExit(
-            "corpus mode is not built yet: the survey below is what decides whether "
-            "it is worth the network cost. Run --mode names first."
-        )
-
     names = list_packages()
     if not names:
         raise SystemExit("could not list Debian packages (network?)")
     step = max(1, len(names) // args.packages)
     sample = names[::step][:args.packages]          # spread across the alphabet
     print(f"Debian source packages: {len(names)}; sampling {len(sample)}")
+
+    if args.mode == "corpus":
+        rows = build_corpus(sample, args.per_package, min(args.workers, 12))
+        by_regime = Counter(r["regime"] for r in rows)
+        licenses = Counter(r["gt"] for r in rows)
+        print(f"labelled files: {len(rows)}  distinct licenses: {len(licenses)}")
+        print(f"  notice regime   : {by_regime['notice']}  (answerable)")
+        print(f"  no-signal       : {by_regime['no-signal']}  (correct answer is UNKNOWN)")
+        print(f"top licenses: {licenses.most_common(12)}")
+        out_path = ROOT / "cache" / "debian_corpus.json"
+        out_path.write_text(json.dumps(rows, indent=1))
+        print(f"\nwrote {out_path}")
+        return
 
     out = survey(sample, args.workers)
     print(f"copyright fetched      : {out['copyright_fetched']}/{out['packages_sampled']}")

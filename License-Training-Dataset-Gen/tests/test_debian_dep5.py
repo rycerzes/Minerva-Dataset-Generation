@@ -92,3 +92,17 @@ def test_non_dep5_copyright_is_reported_as_unparseable_not_empty():
     as packages that declare nothing, rather than ones we cannot read."""
     assert dep5_licenses("This package is free software.\nSee /usr/share/...") is None
     assert dep5_licenses(None) is None
+
+
+def test_or_later_is_preserved_when_the_list_has_it():
+    """`GPL-3+` is an or-later grant. Collapsing it to `GPL-3.0` turns it into an
+    only grant and scores a correct or-later answer as wrong — the same distinction
+    the SPDX resolver keeps."""
+    index = {**INDEX, "gpl-3.0+": "GPL-3.0+", "gpl-2.0+": "GPL-2.0+"}
+    assert canonical_license("GPL-3+", index) == "GPL-3.0+"
+    assert canonical_license("GPL-2+", index) == "GPL-2.0+"
+
+
+def test_or_later_falls_back_when_the_list_lacks_it():
+    """Where no or-later shortname exists, the base license is the best available."""
+    assert canonical_license("GPL-2+", INDEX) == "GPL-2.0"

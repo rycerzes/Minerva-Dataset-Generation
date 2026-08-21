@@ -255,11 +255,16 @@ def load_debian_corpus(k2: dict[str, str]) -> list[dict]:
     ScanCode reference keys. Converting here rather than at build time keeps the
     corpus in Debian's own terms and keeps one scoring path.
     """
-    path = Path(__file__).resolve().parents[2] / "cache" / "debian_corpus.json"
+    root = Path(__file__).resolve().parents[2]
+    # The committed corpus is the reference copy; a local build overrides it so an
+    # experiment can run against a freshly crawled set without touching the tracked one.
+    path = root / "cache" / "debian_corpus.json"
+    if not path.exists():
+        path = root / "datasets" / "debian-dep5" / "corpus.json"
     if not path.exists():
         raise SystemExit(
             f"{path} not found — build it first:\n"
-            "  uv run src/run_eval.py debian-dep5 --mode corpus --packages 700")
+            "  uv run src/run_eval.py debian-dep5 --mode corpus --packages 6000 --tail")
     out = []
     for row in json.loads(path.read_text()):
         key = k2.get(row["gt"])

@@ -9,3 +9,6 @@ __pycache__/
 
 # Editable-install metadata
 *.egg-info/
+
+# The DEP-5 corpus is a deliverable, not a cache: ~20k requests to rebuild.
+!datasets/

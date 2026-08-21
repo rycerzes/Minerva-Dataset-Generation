@@ -143,16 +143,27 @@ def _variants(name: str):
     base = _EXCEPTION.sub("", name).strip()   # "GPL-2+ with Autoconf exception"
     if base != name:
         yield from _variants(base)
+    # SPDX 3.0 split `GPL-2.0` into `-only` and `-or-later`, and `preprocess` merges
+    # the modern SPDX list in, so those are the spellings the agent answers with.
+    # Debian says the same thing in its own notation: `GPL-2` means only, `GPL-2+`
+    # means or-later. Mapping both to a bare `GPL-2.0` would discard a distinction
+    # both vocabularies actually make.
     if name.endswith("+"):                    # Debian's or-later marker
         stem = name[:-1]
-        # Try the or-later form *first*: the list carries `GPL-3.0+` alongside
-        # `GPL-3.0`, and collapsing to the bare form turns an or-later grant into an
-        # only grant. That is the same distinction the SPDX resolver preserves, and
-        # dropping it here would score a correct or-later answer as wrong.
         bumped = _BARE_VERSION.match(stem)
         if bumped:
-            yield f"{bumped.group(1)}-{bumped.group(2)}.0+"
+            base = f"{bumped.group(1)}-{bumped.group(2)}.0"
+            yield f"{base}-or-later"
+            yield f"{base}+"
+        else:
+            yield f"{stem}-or-later"
         yield from _variants(stem)
+    else:
+        dotted = _BARE_VERSION.match(name)
+        if dotted:
+            yield f"{dotted.group(1)}-{dotted.group(2)}.0-only"
+        elif re.match(r"^[A-Za-z].*-\d+\.\d+$", name):
+            yield f"{name}-only"
     version = _BARE_VERSION.match(name)       # GPL-2 -> GPL-2.0, Apache-2 -> Apache-2.0
     if version:
         yield f"{version.group(1)}-{version.group(2)}.0"
@@ -183,9 +194,16 @@ def canonical_license(name: str, index: dict[str, str]) -> str | None | bool:
 
 
 def survey(packages: list[str], workers: int = 16) -> dict:
-    """License diversity across `packages`, and how much of it we can name."""
-    import pandas as pd
+    """License diversity across `packages`, and how much of it we can name.
+
+    Names are resolved against the list the agent actually answers from — the merged
+    SPDX+FOSSology one when `preprocess` has produced it — so "unmapped" means a
+    license the engine could not have named, not merely one absent from the shipped
+    CSV.
+    """
     from atarashi.spdx.resolver import shortname_index
+
+    from evaluation.agent import load_license_list
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         texts = list(pool.map(copyright_text, packages))
@@ -201,9 +219,7 @@ def survey(packages: list[str], workers: int = 16) -> dict:
         dep5 += 1
         raw.update(names)
 
-    csv = Path(__import__("atarashi").__file__).parent / "data" / "licenses" / "licenseList.csv"
-    known = pd.read_csv(csv)["shortname"]
-    index = shortname_index(known)
+    index = shortname_index(load_license_list()["shortname"])
 
     mapped: Counter[str] = Counter()
     unmapped: Counter[str] = Counter()
@@ -318,10 +334,10 @@ def build_corpus(packages: list[str], per_package: int = 6, workers: int = 12) -
     """
     import pandas as pd
     from atarashi.spdx.resolver import shortname_index
+    from evaluation.agent import load_license_list
     from evaluation.spdx_tag import TAGLINE, classify_regime
 
-    csv = Path(__import__("atarashi").__file__).parent / "data" / "licenses" / "licenseList.csv"
-    index = shortname_index(pd.read_csv(csv)["shortname"])
+    index = shortname_index(load_license_list()["shortname"])
 
     def one(package: str) -> list[dict]:
         version, paths = source_files(package, per_package)
@@ -362,11 +378,11 @@ def tail_first(packages: list[str], per_license: int = 40,
     The effect is a corpus whose license count is set by the archive's diversity
     rather than by how often a license happens to occur.
     """
-    import pandas as pd
     from atarashi.spdx.resolver import shortname_index
 
-    csv = Path(__import__("atarashi").__file__).parent / "data" / "licenses" / "licenseList.csv"
-    index = shortname_index(pd.read_csv(csv)["shortname"])
+    from evaluation.agent import load_license_list
+
+    index = shortname_index(load_license_list()["shortname"])
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         texts = list(pool.map(copyright_text, packages))

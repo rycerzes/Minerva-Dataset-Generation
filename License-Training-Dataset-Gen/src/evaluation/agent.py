@@ -48,6 +48,29 @@ RESULTS = Path(__file__).resolve().parents[2] / "output" / "agent_eval.json"
 SWEEP = (8, 12, 16, 20, 24, 30, 40)
 
 
+def load_license_list() -> "pd.DataFrame":
+    """The agent's license list — the merged one when `preprocess` has produced it.
+
+    `build_deps.download_dependencies` downloads 727 licenses from spdx.org and merges
+    them into FOSSology's 382, writing `processedLicenses.csv`. That merged list is
+    what a real installation uses; the shipped CSV is only the FOSSology half. Scoring
+    against the smaller list understates the engine — the notice index is keyed by
+    SPDX id and carries 986 licenses, of which the 382-list can receive 213 and the
+    merged list 733.
+    """
+    data = Path(__import__("atarashi").__file__).parent / "data" / "licenses"
+    merged = data / "processedLicenses.csv"
+    if merged.exists():
+        df = pd.read_csv(merged).fillna("")
+        keep = ["shortname", "processed_text"]
+        if "processed_header" in df.columns:
+            keep.append("processed_header")
+        return df[keep]
+    df = pd.read_csv(data / "licenseList.csv").fillna("").rename(
+        columns={"text": "processed_text"})
+    return df[["shortname", "processed_text"]]
+
+
 def load_agent(strong_run: int | None = None, min_coverage: float | None = None,
                use_ranker: bool = True):
     """The agent under test, on its shipped license list.
@@ -60,9 +83,7 @@ def load_agent(strong_run: int | None = None, min_coverage: float | None = None,
     from atarashi.agents.cascade import Cascade
     from atarashi.libs.decision import DEFAULT_MIN_COVERAGE, DEFAULT_STRONG_RUN
 
-    csv = Path(__import__("atarashi").__file__).parent / "data" / "licenses" / "licenseList.csv"
-    df = pd.read_csv(csv).fillna("").rename(columns={"text": "processed_text"})
-    df = df[["shortname", "processed_text"]]
+    df = load_license_list()
     return Cascade(df, use_gate=False, use_ranker=use_ranker,
                    strong_run=DEFAULT_STRONG_RUN if strong_run is None else strong_run,
                    min_coverage=DEFAULT_MIN_COVERAGE if min_coverage is None else min_coverage), df

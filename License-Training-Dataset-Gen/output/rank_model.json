@@ -1,25 +1,44 @@
 {
-  "n_queries": 901,
-  "n_candidates": 3914,
-  "n_positive": 852,
-  "cv_mean_delta": 0.06851027519861394,
-  "importance": {
-    "best_unit_coverage": 0.12358843849859354,
-    "units_matched": 0.06823347290276802,
-    "required_ok": 0.006831510153970169,
-    "run_margin": 0.004067604689742044,
-    "ref_gap": 0.004066629678738276,
-    "run_count": 0.003966348211244003,
-    "log_ref_tokens": 0.00381705137584476,
-    "longest_run": 0.003242753579272728,
-    "query_coverage": 0.002838661841122095,
-    "ref_head": 0.0026655446920856724,
-    "matched_tokens": 0.0021447159143906935,
-    "cov_margin": 0.0018953582535500418,
-    "substitution": 0.0018304750434725986,
-    "shingle_ratio": 0.0016597208362348764,
-    "query_gap": 0.0012239340131555976,
-    "ref_tail": 0.0008178828847485442,
-    "ref_coverage": -0.00020417470795119907
-  }
+  "n_queries": 916,
+  "n_candidates": 4073,
+  "n_positive": 875,
+  "leave_family_out": [
+    {
+      "family": "GPL",
+      "n": 269,
+      "baseline": 0.8141263940520446,
+      "learned": 0.8661710037174721
+    },
+    {
+      "family": "APACHE",
+      "n": 258,
+      "baseline": 1.0,
+      "learned": 1.0
+    },
+    {
+      "family": "BSD",
+      "n": 83,
+      "baseline": 0.8433734939759037,
+      "learned": 0.7590361445783133
+    },
+    {
+      "family": "MIT",
+      "n": 68,
+      "baseline": 0.9411764705882353,
+      "learned": 0.9852941176470589
+    },
+    {
+      "family": "LGPL",
+      "n": 59,
+      "baseline": 0.6610169491525424,
+      "learned": 0.6610169491525424
+    },
+    {
+      "family": "EPL",
+      "n": 30,
+      "baseline": 0.9666666666666667,
+      "learned": 0.9666666666666667
+    }
+  ],
+  "lofo_delta": 0.01303780964797914
 }

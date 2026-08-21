@@ -38,7 +38,7 @@ FEATURES = ROOT / "cache" / "rank_features.json"
 
 # Imported, never redeclared: inference uses the same code, and a silent mismatch
 # between training and inference features would poison every score without erroring.
-from atarashi.libs.ranker import FEATURE_NAMES, featurize  # noqa: E402
+from atarashi.libs.ranker import FEATURE_NAMES, family, featurize  # noqa: E402
 
 
 def extract(agent, rows, k2, corpus: str) -> list[dict]:
@@ -161,21 +161,17 @@ def main(argv=None) -> None:
 
     if args.leave_family_out:
         import collections
-        import re
         solvable = [r for r in records if any(r["y"])]
 
-        def family(gt):
-            m = re.match(r"^(a?l?gpl|mpl|epl|bsd|apache|mit|cc|isc|artistic|zlib|ofl"
-                         r"|wtfpl|edl|ecl)", gt[0], re.I)
-            return m.group(1).upper() if m else "OTHER"
-
+        # Reuse the same family rule inference gates on, so the held-out split and
+        # the deployed gate cannot disagree about what "unseen family" means.
         by_family = collections.defaultdict(list)
         for r in solvable:
-            by_family[family(r["gt"])].append(r)
+            by_family[family(r["gt"][0])].append(r)
         tot_l = tot_b = tot_n = 0
         rows_out = []
         for fam, rows in sorted(by_family.items(), key=lambda kv: -len(kv[1]))[:6]:
-            train = [r for r in solvable if family(r["gt"]) != fam]
+            train = [r for r in solvable if family(r["gt"][0]) != fam]
             model, scaler = fit(train)
             learned, base = top1_accuracy(model, rows, scaler)
             tot_l += learned * len(rows); tot_b += base * len(rows); tot_n += len(rows)
@@ -233,8 +229,13 @@ def main(argv=None) -> None:
         import joblib
         model, scaler = fit([r for r in records if any(r["y"])])
         args.save.parent.mkdir(parents=True, exist_ok=True)
-        joblib.dump({"model": model, "scaler": scaler,
+        # Families seen in training. Outside them the model is measurably worse than
+        # the hand-tuned key, so inference declines rather than guessing.
+        families = sorted({family(n) for r in records
+                           for n, lab in zip(r["names"], r["y"]) if lab})
+        joblib.dump({"model": model, "scaler": scaler, "families": families,
                      "features": FEATURE_NAMES, "n_queries": len(records)}, args.save)
+        print(f"  trained families ({len(families)}): {', '.join(families)}")
         print(f"\nwrote ranker artifact -> {args.save} "
               f"({args.save.stat().st_size/1e3:.0f} KB)")
 

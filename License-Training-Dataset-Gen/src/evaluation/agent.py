@@ -96,20 +96,29 @@ def scan_all(agent, queries, suffix=".txt"):
     """
     fd, path = tempfile.mkstemp(suffix=suffix)
     os.close(fd)
-    out = []
+    out, full = [], []
     try:
         for q in queries:
             Path(path).write_text(q["text"], errors="replace")
-            out.append(agent.scan(path)[0])
+            results = agent.scan(path)
+            out.append(results[0])
+            full.append(results)
     finally:
         os.unlink(path)
-    return out
+    return out, full
 
 
-def score(tops, queries, k2: dict[str, str]) -> dict:
-    """Coverage and precision on what the agent chose to answer."""
-    answered = hits = unmapped = 0
-    for top, q in zip(tops, queries):
+def score(tops, queries, k2: dict[str, str], full=None) -> dict:
+    """Coverage and precision on what the agent chose to answer.
+
+    ``full`` is the whole reported result list per query, when available. Top-1
+    metrics read result[0] and are blind to what else the engine reported
+    alongside it — a bug that let the agent return 4.72 licenses per file, 97% of
+    them carrying a license that was not the file's, while precision looked fine.
+    ``exact_set`` is the metric a compliance reviewer actually consumes.
+    """
+    answered = hits = unmapped = exact = reported = 0
+    for i, (top, q) in enumerate(zip(tops, queries)):
         name = top["shortname"]
         if name == "UNKNOWN":
             continue
@@ -117,9 +126,17 @@ def score(tops, queries, k2: dict[str, str]) -> dict:
         key = k2.get(name)
         if key is None:
             unmapped += 1
-            continue
-        hits += key in q["gt"]
-    return {
+        else:
+            hits += key in q["gt"]
+        if full is not None:
+            names = {k2.get(h["shortname"]) for h in full[i]
+                     if h["shortname"] != "UNKNOWN"}
+            reported += len(names)
+            exact += names == set(q["gt"])
+    out_extra = ({"exact_set": round(exact / answered, 4) if answered else None,
+                  "licenses_per_file": round(reported / answered, 3) if answered else None}
+                 if full is not None else {})
+    return {**out_extra,
         "n": len(queries),
         "answered": answered,
         "coverage": round(answered / len(queries), 4) if queries else 0.0,
@@ -284,14 +301,16 @@ def main(argv=None) -> None:
 
     print("\n=== agent, shipped thresholds "
           f"(strong_run={agent.strong_run}, min_coverage={agent.min_coverage}) ===")
-    tops = scan_all(agent, answerable)
-    native = score(tops, answerable, k2)
+    tops, full = scan_all(agent, answerable)
+    native = score(tops, answerable, k2, full)
     print(f"  answered {native['answered']}/{native['n']} ({native['coverage']:.1%})  "
           f"precision {native['precision_at_answered']}  R@1 {native['recall_at_1']}")
+    print(f"  exact-set {native['exact_set']}  ({native['licenses_per_file']} licenses "
+          f"reported per file) — what a reviewer actually consumes")
     if native["unmapped_answers"]:
         print(f"  answers with no reference key: {native['unmapped_answers']} (scored as misses)")
 
-    ns_tops = scan_all(agent, nosig) if nosig else []
+    ns_tops = scan_all(agent, nosig)[0] if nosig else []
     ns_answered = sum(1 for t in ns_tops if t["shortname"] != "UNKNOWN")
     if nosig:
         print(f"  no-signal falsely answered: {ns_answered}/{len(nosig)} "

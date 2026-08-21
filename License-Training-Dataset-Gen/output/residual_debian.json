@@ -1,15 +1,5 @@
 [
   {
-    "text": "#!/usr/bin/perl -w # (c) 2001, Dave Jones. (the file handling bit) # (c) 2005, Joel Schopp <jschopp@austin.ibm.com> (the ugly bit) # (c) 2007,2008, Andy Whitcroft <apw@uk.ibm.com> (new conditions, test suite) # (c) 2008,2009, Andy Whitcroft <apw@canonical.com> # Licensed under the terms of the GNU GPL License version 2 use strict; my $P = $0; $P =~ s@.*/@@g; my $V = '0.30'; use Getopt::Long qw(:config no_auto_abbrev); my $quiet = 0; my $tree = 1; my $chk_signoff = 1; my $chk_patch = 1; my $tst_only; my $emacs = 0; my $terse = 0; my $file = 0; my $check = 0; my $summary = 1; my $mailback = 0; my $summary_file = 0; my $root; my %debug; my $help = 0; sub help { my ($exitcode) = @_; print << \"EOM\"; Usage: $P [OPTION]... [FILE]... Version: $V Options:",
-    "gt": [
-      "gpl-2.0"
-    ],
-    "tag": "GPL-2",
-    "lang": "scripts/checkpatch.pl",
-    "scancode": "gpl-2.0",
-    "residual": "A"
-  },
-  {
     "text": "/* Copyright (c) 2012-2023, CKSource Holding sp. z o.o. All rights reserved. For licensing, see LICENSE.md */ importPackage( org.mozilla.javascript ); importClass( java.lang.System ); importClass( java.lang.Integer ); /** * @class java.io.File * * Check out [official java.io.File documentation][1] for more. * * [1]: https://docs.oracle.com/javase/7/docs/api/java/io/File.html */ /** * @class java.io.OutputStream * * Check out [official java.io.File documentation][1] for more. * * [1]: https://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html */ /** * @class * * Main file which is run from Rhino. Responsible for load scripts and run controller. */ this.CKBuilder = ( function() { var isMinified = true; try { java.lang.Class.forName( \"ckbuilder.ckbuilder\" ); } catch ( e ) { isMinified = false; } var now; if(System.env.get('SOURCE_DATE_EPOCH') !== null) { now = new Date(parseInt(System.getenv(\"SOURCE_DATE_EPOCH\"), 10) * 1000);",
     "gt": [
       "mit"
@@ -37,36 +27,6 @@
     "tag": "BSD-2-Clause",
     "lang": "setup.py",
     "scancode": "bsd-new",
-    "residual": "A"
-  },
-  {
-    "text": "import setuptools commitInfo = \" (HEAD -> master, tag: 1.6.3)\".strip(\"( )\").split() version = commitInfo[commitInfo.index(\"tag:\") + 1].rstrip(\",\") setuptools.setup( name=\"dnarrange\", version=version, description='Find rearrangements in \"long\" DNA reads relative to a genome sequence', long_description=open(\"README.md\").read(), long_description_content_type=\"text/markdown\", url=\"https://github.com/mcfrith/dnarrange\", classifiers=[ \"Intended Audience :: Science/Research\", \"Topic :: Scientific/Engineering :: Bio-Informatics\", \"License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)\", ], scripts=[ \"dnarrange\", \"dnarrange-genes\", \"dnarrange-link\", \"dnarrange-merge\", \"last-multiplot\", ], )",
-    "gt": [
-      "gpl-3.0-plus"
-    ],
-    "tag": "GPL-3+",
-    "lang": "setup.py",
-    "scancode": "gpl-3.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "/* $Header: /home/ksheff/src/e2tools/RCS/copy.c,v 0.16 2004/04/07 01:15:20 ksheff Exp $ */ /* * copy.c * * Copyright (C) 2002 Keith W Sheffield. This file may be redistributed * under the terms of the GNU Public License. * */ /* Description */ /* * This module contains functions used to copy files to and from an ext2fs * filesystem * */ /* * $Log: copy.c,v $ * Revision 0.16 2004/04/07 01:15:20 ksheff * Modified to pass the default file stat to put_file() so the user may alter * the owner, group, or permissions of a file copied to an ext2fs file system. * * Revision 0.15 2004/04/07 00:13:38 ksheff * Corrected behavior when the argument to -d is a local filesystem. * * Revision 0.14 2004/04/06 23:26:37 ksheff * Updated the usage string. * * Revision 0.13 2002/07/09 06:43:19 ksheff * compensated for blank dest_dir. * * Revision 0.12 2002/07/09 06:31:41 ksheff * Forgot to remove debugging printfs. * * Revision 0.11 2002/07/09 02:36:51 ksheff * Verbose was not always reporting the correct output destination - fixed. * * Revision 0.10 2002/06/26 11:13:46 ksheff * Added a call to init_progress() before any copy operation if the verbose * flag is set. *",
-    "gt": [
-      "gpl-2.0-plus"
-    ],
-    "tag": "GPL-2+",
-    "lang": "src/e2tool-e2cp.c",
-    "scancode": "gpl-1.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "/* $Header: /home/ksheff/src/e2tools/RCS/ln.c,v 0.3 2002/06/30 05:54:02 ksheff Exp $ */ /* * ln.c * * Copyright (C) 2002 Keith W Sheffield. This file may be redistributed * under the terms of the GNU Public License. * */ /* Description */ /* * Module to create links * */ /* * $Log: ln.c,v $ * Revision 0.3 2002/06/30 05:54:02 ksheff * Modified create_hard_link() to check file type before linking to current * directory. This was not being done before and it was causing problems if a * non regular file was renamed. * * Revision 0.2 2002/03/21 09:04:40 ksheff * Split the mv operation into its own module. * * Revision 0.1 2002/03/07 07:23:41 ksheff * initial revision. * */ /* Feature Test Switches */ /* Headers */ #include \"e2tools.h\" #include \"e2tool-e2ln.h\" /* Macros */ #define USAGE \"Usage: e2ln [-vfs] source destination\\n\" /* Name: main_e2ln() *",
-    "gt": [
-      "gpl-2.0-plus"
-    ],
-    "tag": "GPL-2+",
-    "lang": "src/e2tool-e2ln.c",
-    "scancode": "gpl-1.0-plus",
     "residual": "A"
   },
   {
@@ -130,76 +90,6 @@
     "residual": "A"
   },
   {
-    "text": "# Copyright (c) 2010-2011 Joshua Harlan Lifton. # See LICENSE.txt for details. \"\"\"Plover: Open Source Stenography Software\"\"\" if __name__ == \"plover\": from plover.i18n import Translator _ = Translator(__package__) else: # exec from `setup.py`, package data # may not be available, and we don't # want to translate anyway. _ = lambda s: s __version__ = \"5.0.0\" __copyright__ = \"(C) Open Steno Project\" __url__ = \"http://www.openstenoproject.org/\" __download_url__ = \"http://www.openstenoproject.org/plover\" __credits__ = _(\"\"\"\\ Founded by stenographer Mirabai Knight. Developers: Joshua Lifton Hesky Fisher Ted Morin Benoit Pierre Sammi Ta Martin Koerner and many more on GitHub: <https://github.com/openstenoproject/plover>\"\"\") __license__ = \"GNU General Public License v2 or later (GPLv2+)\" # i18n: Short description for Plover, currently not used in the interface. __description__ = _(\"Open Source Stenography Software\") __long_description__ = _(\"\"\"\\ Plover is a free open source program intended to bring realtime stenographic technology not just to stenographers, but also to hackers, hobbyists, accessibility mavens, and all-around speed demons.\"\"\")",
-    "gt": [
-      "gpl-2.0-plus"
-    ],
-    "tag": "GPL-2+",
-    "lang": "plover/__init__.py",
-    "scancode": "gpl-2.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "#!/bin/sh # Copyright (C) 2019-2021 all contributors <meta@public-inbox.org> # License: AGPL-3.0+ <https://www.gnu.org/licenses/agpl-3.0.txt> # Prints OS-specific package profiles to stdout (one per-newline) to use # as command-line args for ci/deps.perl. Called automatically by ci/run.sh # set by os-release(5) or similar ID= VERSION_ID= case $(uname -o) in GNU/Linux) for f in /etc/os-release /usr/lib/os-release do test -f $f || continue . $f # Debian sid (and testing) have no VERSION_ID case $ID--$VERSION_ID in debian--) case $PRETTY_NAME in */sid) VERSION_ID=sid ;; *) echo >&2 \"$ID, but no VERSION_ID\" echo >&2 \"==> $f <==\" cat >&2 $f exit 1 ;; esac ;; esac case $ID--$VERSION_ID in -|*--|--*) continue ;; *--*) break ;; esac done ;; FreeBSD) ID=freebsd VERSION_ID=$(uname -r | cut -d . -f 1)",
-    "gt": [
-      "agpl-3.0"
-    ],
-    "tag": "AGPL-3.0+",
-    "lang": "ci/profiles.sh",
-    "scancode": "agpl-3.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "#!/bin/sh # Copyright (C) 2019-2021 all contributors <meta@public-inbox.org> # License: AGPL-3.0+ <https://www.gnu.org/licenses/agpl-3.0.txt> set -e SUDO=${SUDO-'sudo'} PERL=${PERL-'perl'} MAKE=${MAKE-'make'} DO=${DO-''} set -x if test -f Makefile then $DO $MAKE clean fi ./ci/profiles.sh | while read args do $DO $SUDO $PERL -w ci/deps.perl $args $DO $PERL Makefile.PL $DO $MAKE $DO $MAKE check $DO $MAKE clean done",
-    "gt": [
-      "agpl-3.0"
-    ],
-    "tag": "AGPL-3.0+",
-    "lang": "ci/run.sh",
-    "scancode": "agpl-3.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "-- Copyright (C) 2015-2021 all contributors <meta@public-inbox.org> -- License: GPLv2 or later <https://www.gnu.org/licenses/gpl-2.0.txt> -- This commit filter maps a subject line to a search URL of a public-inbox -- disclaimer: written by someone who does not know Lua. -- -- This requires cgit linked with Lua -- Usage (in your cgitrc(5) config file): -- -- commit-filter=lua:/path/to/this/script.lua -- -- Example site: https://80x24.org/public-inbox.git/ local urls = {} urls['public-inbox.git'] = 'https://public-inbox.org/meta/' -- additional URLs here... -- TODO we should be able to auto-generate this based on \"coderepo\" -- directives in the public-inbox config file; but keep in mind -- the mapping is M:N between inboxes and coderepos function filter_open(...) lineno = 0 buffer = \"\" end function filter_close() -- cgit opens and closes this filter for the commit subject -- and body separately, and we only generate the link based -- on the commit subject: if lineno == 1 and string.find(buffer, \"\\n\") == nil then u = urls[os.getenv('CGIT_REPO_URL')] if u == nil then html(buffer) else html(\"<a\\ntitle='mail thread'\\n\") html('href=\"' .. u .. '?x=t&amp;q=') s = string.gsub(buffer, '\"', '\"\"') html_url_arg('\"' .. s .. '\"') html('\">') html_txt(buffer) html('</a>')",
-    "gt": [
-      "agpl-3.0"
-    ],
-    "tag": "AGPL-3.0+",
-    "lang": "examples/cgit-commit-filter.lua",
-    "scancode": "gpl-2.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "-- Copyright (C) 2019-2021 all contributors <meta@public-inbox.org> -- License: GPL-2.0+ <https://www.gnu.org/licenses/gpl-2.0.txt> -- -- This filter accesses the PublicInbox::WwwHighlight PSGI endpoint -- (see examples/highlight.psgi) -- -- Dependencies: lua-http -- -- disclaimer: written by someone who does not know Lua. -- -- This requires cgit linked with Lua -- Usage (in your cgitrc(5) config file): -- -- source-filter=lua:/path/to/this/script.lua -- about-filter=lua:/path/to/this/script.lua -- local wwwhighlight_url = 'http://127.0.0.1:9090/' local req_timeout = 10 local too_big = false -- match $PublicInbox::HTTP::MAX_REQUEST_BUFFER local max_len = 10 * 1024 * 1024 -- about-filter needs surrounding <pre> tags if all we do is -- highlight and linkify local pre = true function filter_open(...) req_body = \"\" -- detect when we're used in an about-filter local repo_url = os.getenv('CGIT_REPO_URL') if repo_url then local path_info = os.getenv('PATH_INFO') rurl = path_info:match(\"^/(.+)/about/?$\") pre = rurl == repo_url end -- hand filename off for language detection local fn = select(1, ...)",
-    "gt": [
-      "agpl-3.0"
-    ],
-    "tag": "AGPL-3.0+",
-    "lang": "examples/cgit-wwwhighlight-filter.lua",
-    "scancode": "gpl-2.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "try: from setuptools import setup except ImportError: from distutils.core import setup from os import path here = path.abspath(path.dirname(__file__)) # Get the long description from the relevant file with open(path.join(here, 'README.rst'), 'rb') as f: long_description = f.read().decode('utf-8') config = { 'name': 'PyMeeus', 'version': '0.5.12', 'description': 'Python implementation of Jean Meeus astronomical routines', 'long_description': long_description, 'keywords': 'Meeus astronomy module library', 'license': 'LGPLv3', 'author': 'Dagoberto Salazar', 'author_email': 'dagoberto.salazar@gmail.com', 'url': 'https://github.com/architest/pymeeus', 'download_url': 'https://github.com/architest/pymeeus', # 'install_requires': ['nose', 'pypandoc'], 'packages': ['pymeeus'], # 'scripts': ['example.py'], 'py_modules': ['base'], 'classifiers': [ 'Development Status :: 4 - Beta', 'Environment :: Console', 'Intended Audience :: Developers', 'Intended Audience :: Education', 'Intended Audience :: Science/Research', 'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)', 'Operating System :: OS Independent', 'Programming Language :: Python :: 2.7', 'Programming Language :: Python :: 3.6',",
-    "gt": [
-      "lgpl-3.0-plus"
-    ],
-    "tag": "LGPL-3+",
-    "lang": "setup.py",
-    "scancode": "lgpl-3.0",
-    "residual": "A"
-  },
-  {
-    "text": "from setuptools import setup # Version VERSION = \"2.2.1\" if \"#\" in VERSION: import sys sys.stderr.write(\"Bad version %s\\n\" % VERSION) sys.exit(1) setup(name = \"python-hostlist\", version = VERSION, description = \"Python module for hostlist handling\", long_description = \"The hostlist.py module knows how to expand and collect Slurm hostlist expressions.\", author = \"Kent Engstr\u00f6m\", author_email = \"kent@nsc.liu.se\", url = \"http://www.nsc.liu.se/~kent/python-hostlist/\", license = \"GPL2+\", classifiers = ['Development Status :: 5 - Production/Stable', 'Intended Audience :: Science/Research', 'Intended Audience :: System Administrators', 'License :: OSI Approved :: GNU General Public License (GPL)', 'Topic :: System :: Clustering', 'Topic :: System :: Systems Administration', 'Programming Language :: Python :: 3', ], py_modules = [\"hostlist\"], scripts = [\"hostlist\", \"hostgrep\", \"pshbak\", \"dbuck\"], data_files = [(\"share/man/man1\", [\"hostlist.1\", \"hostgrep.1\", \"pshbak.1\", \"dbuck.1\"])], )",
-    "gt": [
-      "gpl-2.0-plus"
-    ],
-    "tag": "GPL-2+",
-    "lang": "setup.py",
-    "scancode": "gpl-2.0-plus",
-    "residual": "A"
-  },
-  {
     "text": "# -*- coding: utf-8 -*- # Requests Futures \"\"\" async requests HTTP library ~~~~~~~~~~~~~~~~~~~~~ \"\"\" import logging __title__ = 'requests-futures' __version__ = '1.0.2' __build__ = 0x000000 __author__ = 'Ross McFarland' __license__ = 'Apache 2.0' __copyright__ = 'Copyright 2013 Ross McFarland' # Set default logging handler to avoid \"No handler found\" warnings. try: # Python 2.7+ from logging import NullHandler except ImportError: class NullHandler(logging.Handler): def emit(self, record): pass logging.getLogger(__name__).addHandler(NullHandler())",
     "gt": [
       "apache-2.0"
@@ -207,16 +97,6 @@
     "tag": "Apache-2.0",
     "lang": "requests_futures/__init__.py",
     "scancode": "apache-2.0",
-    "residual": "A"
-  },
-  {
-    "text": "# encoding: utf-8 from distutils.core import setup import SimPy setup( name='SimPy', version=SimPy.__version__, author='Klaus Muller, Tony Vignaux, Ontje L\u00fcnsdorf, Stefan Scherfke', author_email=('vignaux at user.sourceforge.net; ' 'kgmuller at users.sourceforge.net; ' 'the_com at gmx.de; ' 'stefan at sofa-rockers.org'), description='Event discrete, process based simulation for Python.', long_description=open('README.txt').read(), url='http://simpy.sourceforge.net/', download_url='https://sourceforge.net/projects/simpy/files/', license='GNU LGPL', packages=[ 'SimPy', 'SimPy.test', ], package_data={}, classifiers=[ 'Programming Language :: Python', 'Programming Language :: Python :: 2', 'Programming Language :: Python :: 2.6', 'Programming Language :: Python :: 2.7', 'Programming Language :: Python :: 3', 'Programming Language :: Python :: 3.2', 'Programming Language :: Python :: Implementation :: PyPy', 'Operating System :: OS Independent', 'License :: OSI Approved :: GNU Library or Lesser General Public ' + \\ 'License (LGPL)', 'Development Status :: 5 - Production/Stable', 'Intended Audience :: Science/Research', 'Topic :: Scientific/Engineering', ], )",
-    "gt": [
-      "lgpl-2.1"
-    ],
-    "tag": "LGPL-2.1",
-    "lang": "setup.py",
-    "scancode": "lgpl-2.0-plus",
     "residual": "A"
   },
   {
@@ -237,36 +117,6 @@
     "tag": "Expat",
     "lang": "pywps/__init__.py",
     "scancode": "mit",
-    "residual": "A"
-  },
-  {
-    "text": "#!/usr/bin/env php <?php /* +-----------------------------------------------------------------------+ | This file is part of the Roundcube Webmail client | | | | Copyright (C) The Roundcube Dev Team | | | | Licensed under the GNU General Public License version 3 or | | any later version with exceptions for skins & plugins. | | See the README file for a full license statement. | | | | PURPOSE: | | Finally remove all db records marked as deleted some time ago | +-----------------------------------------------------------------------+ | Author: Thomas Bruederli <roundcube@gmail.com> | +-----------------------------------------------------------------------+ */ define('INSTALL_PATH', '/var/lib/roundcube/'); require INSTALL_PATH.'program/include/clisetup.php'; if (!empty($_SERVER['argv'][1])) { $days = intval($_SERVER['argv'][1]); } else { $days = 7; } rcmail_utils::db_clean($days);",
-    "gt": [
-      "gpl-3.0-plus"
-    ],
-    "tag": "GPL-3+",
-    "lang": "bin/cleandb.sh",
-    "scancode": "gpl-3.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "#!/usr/bin/env php <?php /* +-----------------------------------------------------------------------+ | This file is part of the Roundcube Webmail client | | | | Copyright (C) The Roundcube Dev Team | | | | Licensed under the GNU General Public License version 3 or | | any later version with exceptions for skins & plugins. | | See the README file for a full license statement. | | | | PURPOSE: | | Decrypt the encrypted parts of the HTTP Received: headers | +-----------------------------------------------------------------------+ | Author: Tomas Tevesz <ice@extreme.hu> | +-----------------------------------------------------------------------+ */ /** * If http_received_header_encrypt is configured, the IP address and the * host name of the added Received: header is encrypted with 3DES, to * protect information that some could consider sensitive, yet their * availability is a must in some circumstances. * * Such an encrypted Received: header might look like: * * Received: from DzgkvJBO5+bw+oje5JACeNIa/uSI4mRw2cy5YoPBba73eyBmjtyHnQ== * [my0nUbjZXKtl7KVBZcsvWOxxtyVFxza4] * with HTTP/1.1 (POST); Thu, 14 May 2009 19:17:28 +0200 * * In this example, the two encrypted components are the sender host name * (DzgkvJBO5+bw+oje5JACeNIa/uSI4mRw2cy5YoPBba73eyBmjtyHnQ==) and the IP * address (my0nUbjZXKtl7KVBZcsvWOxxtyVFxza4). * * Using this tool, they can be decrypted into plain text: * * $ bin/decrypt.sh 'my0nUbjZXKtl7KVBZcsvWOxxtyVFxza4' \\ * > 'DzgkvJBO5+bw+oje5JACeNIa/uSI4mRw2cy5YoPBba73eyBmjtyHnQ==' * 84.3.187.208",
-    "gt": [
-      "gpl-3.0-plus"
-    ],
-    "tag": "GPL-3+",
-    "lang": "bin/decrypt.sh",
-    "scancode": "gpl-3.0-plus",
-    "residual": "A"
-  },
-  {
-    "text": "#!/usr/bin/env php <?php /* +-----------------------------------------------------------------------+ | This file is part of the Roundcube Webmail client | | | | Copyright (C) The Roundcube Dev Team | | | | Licensed under the GNU General Public License version 3 or | | any later version with exceptions for skins & plugins. | | See the README file for a full license statement. | | | | PURPOSE: | | Utility script to remove all data related to a certain user | | from the local database. | +-----------------------------------------------------------------------+ | Author: Thomas Bruederli <thomas@roundcube.net> | +-----------------------------------------------------------------------+ */ define('INSTALL_PATH', '/var/lib/roundcube/'); require_once INSTALL_PATH . 'program/include/clisetup.php'; function print_usage() { print \"Usage: deluser.sh [--host=HOST][--age=DAYS][--dry-run] [username]\\n\"; print \"--host=HOST The IMAP hostname or IP the given user is related to\\n\"; print \"--age=DAYS Delete all users who have not logged in for more than X days\\n\"; print \"--dry-run List users but do not delete them (for use with --age)\\n\"; } function _die($msg, $usage=false) { fwrite(STDERR, $msg . \"\\n\"); if ($usage) print_usage(); exit(1); }",
-    "gt": [
-      "gpl-3.0-plus"
-    ],
-    "tag": "GPL-3+",
-    "lang": "bin/deluser.sh",
-    "scancode": "gpl-3.0-plus",
     "residual": "A"
   },
   {
@@ -307,16 +157,6 @@
     "tag": "Apache-2.0",
     "lang": "src/ethiopian.rs",
     "scancode": "apache-2.0",
-    "residual": "A"
-  },
-  {
-    "text": "#!/bin/sh # # Find users whose last login is greater or less than the specified arguments. # Needs the userinfo utility from http://userinfo.sourceforge.net/. # # Copyright (c) 2003-2004 Ben Kibbey <bjk@arbornet.org> # Distributed under the terms of the General Public License version 2 or later. # # $Log: lastusers.sh,v $ # Revision 2.0 2004-12-05 19:44:23 bjk # Initial revision # # Revision 1.6 2004/11/21 18:48:07 bjk # Updated to work with userinfo 2.0 (included in the archive). # # Revision 1.5 2004/05/01 19:10:37 bjk # Changed option -b to -l. # # Displaying users who have never logged in is off by default. Specify with -n. # # Revision 1.4 2003/03/01 19:30:44 bjk # Changed option -a to -b to specify logins before the arguments. # # Added options -s, -m, -r to specify seconds, minutes and hours. # # Revision 1.3 2003/03/01 16:14:46 bjk # Added option -a to specify logins after the arguments. # # Revision 1.2 2003/02/26 17:43:22 bjk # Dont run userinfo on matches. Dump only the username. # # Added option -n to suppress users who have never logged in. # # Revision 1.1 2003/02/22 20:57:18 bjk # Initial commit. # # PN=\"`basename $0`\"; MINUTE=60; HOUR=3600;",
-    "gt": [
-      "gpl-2.0-plus"
-    ],
-    "tag": "GPL-2+",
-    "lang": "contrib/lastusers.sh",
-    "scancode": "gpl-2.0-plus AND bootloader-exception",
     "residual": "A"
   },
   {

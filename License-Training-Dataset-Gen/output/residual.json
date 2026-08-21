@@ -11,17 +11,6 @@
     "residual": "A"
   },
   {
-    "text": "/* * Equalizer Load-balancer for serial network interfaces. * * (c) Copyright 1995 Simon \"Guru Aleph-Null\" Janes * NCM: Network and Communications Management, Inc. * * * This software may be used and distributed according to the terms * of the GNU General Public License, incorporated herein by reference. * * The author may be reached as simon@ncm.com, or C/O * NCM * Attn: Simon Janes * 6803 Whittier Ave * McLean VA 22101 * Phone: 1-703-847-0040 ext 103 */ #ifndef _LINUX_IF_EQL_H #define _LINUX_IF_EQL_H #define EQL_DEFAULT_SLAVE_PRIORITY 28800 #define EQL_DEFAULT_MAX_SLAVES 4 #define EQL_DEFAULT_MTU 576 #define EQL_DEFAULT_RESCHED_IVAL HZ #define EQL_ENSLAVE (SIOCDEVPRIVATE) #define EQL_EMANCIPATE (SIOCDEVPRIVATE + 1) #define EQL_GETSLAVECFG (SIOCDEVPRIVATE + 2) #define EQL_SETSLAVECFG (SIOCDEVPRIVATE + 3) #define EQL_GETMASTRCFG (SIOCDEVPRIVATE + 4) #define EQL_SETMASTRCFG (SIOCDEVPRIVATE + 5) typedef struct master_config { char master_name[16]; int max_slaves; int min_slaves; } master_config_t; typedef struct slave_config { char slave_name[16]; long priority; } slave_config_t; typedef struct slaving_request { char slave_name[16]; long priority; } slaving_request_t; #endif /* _LINUX_IF_EQL_H */",
-    "gt": [
-      "gpl-2.0",
-      "linux-syscall-exception-gpl"
-    ],
-    "tag": "GPL-2.0 WITH Linux-syscall-note",
-    "lang": "c",
-    "scancode": "gpl-1.0-plus",
-    "residual": "A"
-  },
-  {
     "text": "/******************************************************************************* * DISCLAIMER * This software is supplied by Renesas Electronics Corporation and is only * intended for use with Renesas products. No other uses are authorized. This * software is owned by Renesas Electronics Corporation and is protected under * all applicable laws, including copyright laws. * THIS SOFTWARE IS PROVIDED \"AS IS\" AND RENESAS MAKES NO WARRANTIES REGARDING * THIS SOFTWARE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT * LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE * AND NON-INFRINGEMENT. ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED. * TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY LAW, NEITHER RENESAS * ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE * FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR * ANY REASON RELATED TO THIS SOFTWARE, EVEN IF RENESAS OR ITS AFFILIATES HAVE * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. * Renesas reserves the right, without notice, to make changes to this software * and to discontinue the availability of this software. By using this software, * you agree to the additional terms and conditions found by accessing the * following link: * http://www.renesas.com/disclaimer * Copyright (C) 2018-2020 Renesas Electronics Corporation. All rights reserved. *******************************************************************************/ /* Copyright (c) 2018-2",
     "gt": [
       "apache-2.0"

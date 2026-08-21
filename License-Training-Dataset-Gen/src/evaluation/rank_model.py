@@ -41,16 +41,23 @@ FEATURES = ROOT / "cache" / "rank_features.json"
 from atarashi.libs.ranker import FEATURE_NAMES, family, featurize  # noqa: E402
 
 
-def extract(agent, rows, k2, corpus: str) -> list[dict]:
-    """One record per query: feature rows for its candidates plus the correct index."""
+def extract(agent, rows, k2, corpus: str, regime: str = "notice") -> list[dict]:
+    """One record per query: feature rows for its candidates plus the correct index.
+
+    No-signal queries are included with an all-zero label vector. They are what teaches
+    the model to say "none of these" — without them its probabilities only ever rank
+    candidates against each other and cannot support an accept/abstain decision.
+    """
     out = []
     for r in rows:
         hits = agent.matcher.match(r["text"], min_run=agent.min_run)
         if not hits:
             continue
-        labels = [1 if k2.get(h.shortname) in r["gt"] else 0 for h in hits]
+        labels = [0] * len(hits) if regime == "no-signal" else [
+            1 if k2.get(h.shortname) in r["gt"] else 0 for h in hits]
         out.append({
             "corpus": corpus,
+            "regime": regime,
             "x": featurize(hits),
             "y": labels,
             "names": [h.shortname for h in hits],
@@ -68,11 +75,19 @@ def build_dataset(limit_spdx=150, limit_deb=150) -> list[dict]:
     k2 = key_map(df["shortname"], s2k, refs)
     reach = set(k2.values())
 
-    deb = stratify([r for r in load_debian_corpus(k2) if r["regime"] == "notice"], limit_deb)
+    corpus_rows = load_debian_corpus(k2)
+    deb = stratify([r for r in corpus_rows if r["regime"] == "notice"], limit_deb)
+    deb_neg = [r for r in corpus_rows if r["regime"] == "no-signal"]
     allq = build_queries(0, s2k, refs, None)
     spdx = [q for q in stratify([q for q in allq if q["regime"] == "notice"], limit_spdx)
             if q["gt"] & reach]
-    return extract(agent, deb, k2, "debian") + extract(agent, spdx, k2, "spdx-tag")
+    # Cap the negatives: they outnumber the positives 2:1 in DEP-5 and 8:1 in the
+    # SPDX-tag corpus, and a model swamped by them abstains on everything.
+    spdx_neg = [q for q in allq if q["regime"] == "no-signal"][:len(spdx) * 2]
+    return (extract(agent, deb, k2, "debian")
+            + extract(agent, spdx, k2, "spdx-tag")
+            + extract(agent, deb_neg[:len(deb) * 2], k2, "debian", "no-signal")
+            + extract(agent, spdx_neg, k2, "spdx-tag", "no-signal"))
 
 
 def flatten(records):
@@ -150,6 +165,9 @@ def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.Argument
                     help="hold out a whole license family — tests whether the model "
                          "learned a general ranking rule or memorised per-family "
                          "feature signatures")
+    ap.add_argument("--accept", type=float, default=0.30,
+                    help="learned reject option: accept the top candidate above this "
+                         "probability. Chosen from the held-out risk-coverage curve.")
     ap.add_argument("--save", type=Path, default=None,
                     help="fit on everything and write the artifact for Cascade to load")
     ap.add_argument("--cross-corpus", action="store_true",
@@ -252,6 +270,7 @@ def main(argv=None) -> None:
         families = sorted({family(n) for r in records
                            for n, lab in zip(r["names"], r["y"]) if lab})
         joblib.dump({"model": model, "scaler": scaler, "families": families,
+                     "accept": args.accept,
                      "features": FEATURE_NAMES, "n_queries": len(records)}, args.save)
         print(f"  trained families ({len(families)}): {', '.join(families)}")
         print(f"\nwrote ranker artifact -> {args.save} "

@@ -14,17 +14,17 @@
   "n_no_signal": 2145,
   "unreachable_gt": 0,
   "agent": {
-    "exact_set": 0.5885,
+    "exact_set": 0.5992,
     "licenses_per_file": 1.0,
     "n": 266,
-    "answered": 260,
-    "coverage": 0.9774,
-    "correct": 250,
-    "precision_at_answered": 0.9615,
-    "recall_at_1": 0.9398,
+    "answered": 257,
+    "coverage": 0.9662,
+    "correct": 251,
+    "precision_at_answered": 0.9767,
+    "recall_at_1": 0.9436,
     "unmapped_answers": 0
   },
-  "no_signal_answered": 26,
+  "no_signal_answered": 35,
   "sweep": [
     {
       "strong_run": 8,

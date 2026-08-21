@@ -49,6 +49,17 @@ Good enough to compare engines against identical labels. Not readable as absolut
 accuracy, and not clean enough to treat a disagreement as an engine error without
 looking at the file.
 
+## Published
+
+`hf/` holds the redistributable form, mirrored to
+**https://huggingface.co/datasets/rycerzes/atarashi-dep5** (private until made
+public). Notice rows carry their text; no-signal rows carry a pointer plus the
+SHA-256 of the derived text, because those files hold no license notice and their
+content is plain third-party source. `hf/rehydrate.py` rebuilds them from Debian and
+verifies each against its hash — spot-checked at 8/8 exact.
+
+Regenerate with `uv run src/evaluation/export_hf.py`.
+
 ## Reproducing
 
 ```

@@ -48,7 +48,8 @@ RESULTS = Path(__file__).resolve().parents[2] / "output" / "agent_eval.json"
 SWEEP = (8, 12, 16, 20, 24, 30, 40)
 
 
-def load_agent(strong_run: int | None = None, min_coverage: float | None = None):
+def load_agent(strong_run: int | None = None, min_coverage: float | None = None,
+               use_ranker: bool = True):
     """The agent under test, on its shipped license list.
 
     The gate is switched off deliberately. ``libs/gate.py`` imports ``nirjas.gate``,
@@ -62,7 +63,7 @@ def load_agent(strong_run: int | None = None, min_coverage: float | None = None)
     csv = Path(__import__("atarashi").__file__).parent / "data" / "licenses" / "licenseList.csv"
     df = pd.read_csv(csv).fillna("").rename(columns={"text": "processed_text"})
     df = df[["shortname", "processed_text"]]
-    return Cascade(df, use_gate=False,
+    return Cascade(df, use_gate=False, use_ranker=use_ranker,
                    strong_run=DEFAULT_STRONG_RUN if strong_run is None else strong_run,
                    min_coverage=DEFAULT_MIN_COVERAGE if min_coverage is None else min_coverage), df
 
@@ -240,6 +241,8 @@ def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.Argument
     ap.add_argument("--snapshot", default=None, help="override the-stack-smol data dir")
     ap.add_argument("--limit", type=int, default=0, help="cap scored queries (quick runs)")
     ap.add_argument("--no-scancode", action="store_true", help="skip the head-to-head")
+    ap.add_argument("--no-ranker", action="store_true",
+                    help="disable the learned scorer and use the hand-tuned rank key")
     ap.add_argument("--dump-residual", type=Path, default=None,
                     help="write abstained notice queries here (Residual A + B)")
     return ap
@@ -272,7 +275,7 @@ def main(argv=None) -> None:
     refs = load_references()
     s2k = spdx_to_key_map()
     if args.corpus == "debian":
-        agent_probe, df_probe = load_agent()
+        agent_probe, df_probe = load_agent(use_ranker=not args.no_ranker)
         rows = load_debian_corpus(key_map(df_probe["shortname"], s2k, refs))
         notice = stratify([r for r in rows if r["regime"] == "notice"], args.max_per_license)
         nosig = [r for r in rows if r["regime"] == "no-signal"]
@@ -283,7 +286,7 @@ def main(argv=None) -> None:
     if args.limit:
         notice, nosig = notice[:args.limit], nosig[:args.limit]
 
-    agent, df = load_agent()
+    agent, df = load_agent(use_ranker=not args.no_ranker)
     k2 = key_map(df["shortname"], s2k, refs)
     reachable = set(k2.values())
 

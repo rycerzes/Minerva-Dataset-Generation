@@ -36,46 +36,9 @@ ROOT = Path(__file__).resolve().parents[2]
 RESULTS = ROOT / "output" / "rank_model.json"
 FEATURES = ROOT / "cache" / "rank_features.json"
 
-# Order is fixed: coefficients are reported against it.
-FEATURE_NAMES = [
-    "longest_run", "log_ref_tokens", "ref_coverage", "query_coverage",
-    "matched_tokens", "shingle_ratio", "run_count",
-    "ref_gap", "query_gap", "ref_head", "ref_tail", "substitution",
-    "required_ok", "rank", "run_margin", "cov_margin",
-]
-
-
-def featurize(hits) -> list[list[float]]:
-    """Feature rows for one query's candidate list, in the matcher's own order.
-
-    `rank`, `run_margin` and `cov_margin` are list-relative: the current ranking is
-    itself a feature, and the distance to the leader is the signal the per-candidate
-    confidence bar could never see.
-    """
-    if not hits:
-        return []
-    lead = hits[0]
-    rows = []
-    for i, h in enumerate(hits):
-        rows.append([
-            float(h.longest_run),
-            float(np.log1p(h.ref_tokens)),
-            float(h.score),
-            float(h.query_coverage),
-            float(h.matched_tokens),
-            float(h.shingle_ratio),
-            float(h.run_count),
-            float(h.ref_gap),
-            float(h.query_gap),
-            float(h.ref_head),
-            float(h.ref_tail),
-            float(h.substitution),
-            1.0 if h.required_ok else 0.0,
-            float(i),
-            float(lead.longest_run - h.longest_run),
-            float(lead.score - h.score),
-        ])
-    return rows
+# Imported, never redeclared: inference uses the same code, and a silent mismatch
+# between training and inference features would poison every score without erroring.
+from atarashi.libs.ranker import FEATURE_NAMES, featurize  # noqa: E402
 
 
 def extract(agent, rows, k2, corpus: str) -> list[dict]:
@@ -133,15 +96,11 @@ def top1_accuracy(model, records, scaler) -> tuple[float, float]:
     return learned / scored, baseline / scored
 
 
-# `rank` is the hand-tuned ordering itself. Left in, a linear model simply copies it
-# (weight -1.6, delta +0.002); it is excluded so the model must earn its ordering from
-# the evidence. Removing it costs the GBM nothing (+0.0764 -> +0.0763), which is how
-# we know the gain is not leakage.
-EXCLUDED = frozenset({"rank"})
-
-
+# The rank *position* is not a feature: given it, a linear model simply reproduces
+# the ordering it was meant to improve (weight -1.6, delta +0.002). It was dropped
+# from FEATURE_NAMES entirely, so every column is used.
 def _columns():
-    return [i for i, n in enumerate(FEATURE_NAMES) if n not in EXCLUDED]
+    return list(range(len(FEATURE_NAMES)))
 
 
 def fit(records, seed=0):
@@ -173,6 +132,8 @@ def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.Argument
                     help="hold out a whole license family — tests whether the model "
                          "learned a general ranking rule or memorised per-family "
                          "feature signatures")
+    ap.add_argument("--save", type=Path, default=None,
+                    help="fit on everything and write the artifact for Cascade to load")
     ap.add_argument("--cross-corpus", action="store_true",
                     help="train on one corpus, test on the other — the honest test, "
                          "since license identity is heavily imbalanced within each")
@@ -267,6 +228,15 @@ def main(argv=None) -> None:
         print("  -> the margin features dominate; they re-express the existing "
               "ranking rather than adding evidence.")
         out["importance"] = {names[i]: float(imp.importances_mean[i]) for i in order}
+
+    if args.save:
+        import joblib
+        model, scaler = fit([r for r in records if any(r["y"])])
+        args.save.parent.mkdir(parents=True, exist_ok=True)
+        joblib.dump({"model": model, "scaler": scaler,
+                     "features": FEATURE_NAMES, "n_queries": len(records)}, args.save)
+        print(f"\nwrote ranker artifact -> {args.save} "
+              f"({args.save.stat().st_size/1e3:.0f} KB)")
 
     RESULTS.parent.mkdir(exist_ok=True)
     RESULTS.write_text(json.dumps(out, indent=2))

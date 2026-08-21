@@ -14,14 +14,14 @@
   "n_no_signal": 1399,
   "unreachable_gt": 0,
   "agent": {
-    "exact_set": 0.8203,
+    "exact_set": 0.8065,
     "licenses_per_file": 1.054,
     "n": 678,
     "answered": 651,
     "coverage": 0.9602,
-    "correct": 564,
-    "precision_at_answered": 0.8664,
-    "recall_at_1": 0.8319,
+    "correct": 555,
+    "precision_at_answered": 0.8525,
+    "recall_at_1": 0.8186,
     "unmapped_answers": 0
   },
   "no_signal_answered": 69,

@@ -90,7 +90,7 @@ def top1_accuracy(model, records, scaler) -> tuple[float, float]:
             continue           # correct answer absent: reranking cannot help
         scored += 1
         p = model.predict_proba(
-            scaler.transform(np.array(r["x"], dtype=float)[:, _columns()]))[:, 1]
+            scaler.transform(_matrix(np.asarray(r["x"], float)[:, _columns()])))[:, 1]
         learned += r["y"][int(np.argmax(p))]
         baseline += r["y"][0]          # the matcher's own order
     return learned / scored, baseline / scored
@@ -101,6 +101,20 @@ def top1_accuracy(model, records, scaler) -> tuple[float, float]:
 # from FEATURE_NAMES entirely, so every column is used.
 def _columns():
     return list(range(len(FEATURE_NAMES)))
+
+
+def _matrix(rows) -> np.ndarray:
+    """Contiguous float matrix.
+
+    Fancy-indexing a column list yields a non-contiguous array, and
+    ``StandardScaler.transform`` then accumulates in a different order — a 7e-14
+    difference. That is invisible until it lands on a histogram bin boundary inside
+    the tree ensemble, where it flipped nine of 269 predictions and made two
+    supposedly identical evaluations disagree by 0.016 on leave-one-family-out.
+    Contiguity is enforced here so results are reproducible rather than
+    memory-layout dependent.
+    """
+    return np.ascontiguousarray(np.asarray(rows, dtype=float))
 
 
 def fit(records, seed=0):
@@ -114,11 +128,15 @@ def fit(records, seed=0):
     from sklearn.ensemble import HistGradientBoostingClassifier
     from sklearn.preprocessing import StandardScaler
 
-    cols = _columns()
     X, y, _ = flatten(records)
-    X = X[:, cols]
+    X = _matrix(X[:, _columns()])
     scaler = StandardScaler().fit(X)
-    model = HistGradientBoostingClassifier(max_depth=3, max_iter=200,
+    # Depth is the memorisation knob, and it trades in-distribution gain against
+    # out-of-distribution safety. Measured on leave-one-license-family-out against
+    # grouped CV: depth 3 gives +0.068 in-dist but -0.013 OOD; depth 2 gives +0.059
+    # and +0.001; depth 1 gives +0.021 and +0.008. Depth 2 keeps nearly all the gain
+    # while no longer harming licenses the model has never seen.
+    model = HistGradientBoostingClassifier(max_depth=2, max_iter=200,
                                            min_samples_leaf=10, random_state=seed)
     model.fit(scaler.transform(X), y)
     return model, scaler

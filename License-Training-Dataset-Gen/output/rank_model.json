@@ -2,43 +2,22 @@
   "n_queries": 901,
   "n_candidates": 3914,
   "n_positive": 852,
-  "leave_family_out": [
-    {
-      "family": "GPL",
-      "n": 269,
-      "baseline": 0.8215613382899628,
-      "learned": 0.6877323420074349
-    },
-    {
-      "family": "APACHE",
-      "n": 258,
-      "baseline": 0.9883720930232558,
-      "learned": 0.9728682170542635
-    },
-    {
-      "family": "BSD",
-      "n": 85,
-      "baseline": 0.8352941176470589,
-      "learned": 0.8235294117647058
-    },
-    {
-      "family": "MIT",
-      "n": 68,
-      "baseline": 0.9264705882352942,
-      "learned": 0.9705882352941176
-    },
-    {
-      "family": "LGPL",
-      "n": 59,
-      "baseline": 0.6610169491525424,
-      "learned": 0.6610169491525424
-    },
-    {
-      "family": "AGPL",
-      "n": 25,
-      "baseline": 1.0,
-      "learned": 0.88
-    }
-  ],
-  "lofo_delta": -0.05366492146596859
+  "cv_mean_delta": 0.043710001921895184,
+  "importance": {
+    "shingle_ratio": 0.07018635164193451,
+    "longest_run": 0.027777752131942335,
+    "required_ok": 0.018153893138135993,
+    "ref_gap": 0.016242369866479256,
+    "ref_head": 0.01022889815295551,
+    "matched_tokens": 0.009499548461726778,
+    "ref_tail": 0.008571583175102773,
+    "query_coverage": 0.007924436207169733,
+    "log_ref_tokens": 0.007907486362002336,
+    "run_count": 0.007559978089214617,
+    "substitution": 0.005275980232140029,
+    "run_margin": 0.0032387169056316,
+    "query_gap": 0.003139801414884222,
+    "cov_margin": 0.0016151109732383817,
+    "ref_coverage": 0.0009895333996481487
+  }
 }

@@ -349,12 +349,70 @@ def build_corpus(packages: list[str], per_package: int = 6, workers: int = 12) -
         return [row for rows in pool.map(one, packages) for row in rows]
 
 
+def tail_first(packages: list[str], per_license: int = 40,
+               workers: int = 24) -> list[str]:
+    """Reorder packages so rare licenses are collected first.
+
+    Random sampling is a bad way to reach the tail: MIT, GPL and Apache saturate
+    long before anything else appears, and the corpus builder costs ~13 requests per
+    package against the survey's two. So survey widely and build selectively —
+    score each package by the rarest license it declares, take the rarest first, and
+    stop collecting a license once it has `per_license` packages.
+
+    The effect is a corpus whose license count is set by the archive's diversity
+    rather than by how often a license happens to occur.
+    """
+    import pandas as pd
+    from atarashi.spdx.resolver import shortname_index
+
+    csv = Path(__import__("atarashi").__file__).parent / "data" / "licenses" / "licenseList.csv"
+    index = shortname_index(pd.read_csv(csv)["shortname"])
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        texts = list(pool.map(copyright_text, packages))
+
+    declared: dict[str, set[str]] = {}
+    frequency: Counter[str] = Counter()
+    for package, text in zip(packages, texts):
+        names = dep5_licenses(text)
+        if not names:
+            continue
+        resolved = set()
+        for name in names:
+            got = canonical_license(name, index)
+            if isinstance(got, str):
+                resolved.add(got)
+        if resolved:
+            declared[package] = resolved
+            frequency.update(resolved)
+
+    # Rarest declared license decides a package's priority; ties broken by declaring
+    # fewer licenses, which keeps the attribution unambiguous.
+    ordered = sorted(declared, key=lambda p: (min(frequency[x] for x in declared[p]),
+                                              len(declared[p])))
+    quota: Counter[str] = Counter()
+    chosen = []
+    for package in ordered:
+        if any(quota[x] < per_license for x in declared[package]):
+            chosen.append(package)
+            quota.update(declared[package])
+    print(f"surveyed {len(declared)} packages declaring {len(frequency)} licenses; "
+          f"selected {len(chosen)} tail-first (quota {per_license}/license)")
+    return chosen
+
+
 def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.ArgumentParser:
     ap = ap or argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--mode", choices=("names", "corpus"), default="names")
     ap.add_argument("--packages", type=int, default=400, help="sample size")
     ap.add_argument("--workers", type=int, default=16)
     ap.add_argument("--per-package", type=int, default=6, help="corpus mode: files per package")
+    ap.add_argument("--tail", action="store_true",
+                    help="corpus mode: order packages rarest-license-first, so the "
+                         "corpus reaches licenses random sampling never surfaces")
+    ap.add_argument("--per-license", type=int, default=40,
+                    help="with --tail: stop collecting a license after this many packages")
+    ap.add_argument("--out", type=Path, default=None, help="corpus mode: output path")
     return ap
 
 
@@ -368,6 +426,8 @@ def main(argv=None) -> None:
     print(f"Debian source packages: {len(names)}; sampling {len(sample)}")
 
     if args.mode == "corpus":
+        if args.tail:
+            sample = tail_first(sample, args.per_license, args.workers)
         rows = build_corpus(sample, args.per_package, min(args.workers, 12))
         by_regime = Counter(r["regime"] for r in rows)
         licenses = Counter(r["gt"] for r in rows)
@@ -375,7 +435,7 @@ def main(argv=None) -> None:
         print(f"  notice regime   : {by_regime['notice']}  (answerable)")
         print(f"  no-signal       : {by_regime['no-signal']}  (correct answer is UNKNOWN)")
         print(f"top licenses: {licenses.most_common(12)}")
-        out_path = ROOT / "cache" / "debian_corpus.json"
+        out_path = args.out or (ROOT / "cache" / "debian_corpus.json")
         out_path.write_text(json.dumps(rows, indent=1))
         print(f"\nwrote {out_path}")
         return

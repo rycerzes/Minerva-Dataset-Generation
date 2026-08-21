@@ -114,3 +114,37 @@ def test_family_names_are_not_resolved_to_a_version():
     worse than a gap."""
     assert canonical_license("Artistic", INDEX) is False
     assert canonical_license("Artistic-2", INDEX) == "Artistic-2.0"
+
+
+# --- tail-first selection -----------------------------------------------------
+
+def test_tail_first_prioritises_rare_licenses(monkeypatch):
+    """Random sampling saturates on MIT/GPL/Apache long before the tail appears, and
+    the corpus builder costs ~13 requests per package against the survey's two — so
+    selection has to be rarity-driven, not random."""
+    from evaluation import debian
+
+    archive = {
+        "common-a": "License: Expat", "common-b": "License: Expat",
+        "common-c": "License: Expat", "rare-one": "License: Zlib",
+        "rare-two": "License: Artistic-2",
+    }
+    header = "Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/\n\n"
+    monkeypatch.setattr(debian, "copyright_text", lambda p: header + archive[p])
+
+    chosen = debian.tail_first(list(archive), per_license=1, workers=2)
+    # Every license is represented, and the rare ones are not crowded out.
+    assert "rare-one" in chosen and "rare-two" in chosen
+    # MIT is declared by three packages but the quota admits one.
+    assert sum(1 for c in chosen if c.startswith("common")) == 1
+
+
+def test_tail_first_skips_packages_with_no_resolvable_license(monkeypatch):
+    from evaluation import debian
+
+    header = "Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/\n\n"
+    archive = {"ok": header + "License: Expat",
+               "prose": "This package is free software, see /usr/share/doc.",
+               "junk": header + "License: public-domain"}
+    monkeypatch.setattr(debian, "copyright_text", lambda p: archive[p])
+    assert debian.tail_first(list(archive), per_license=5, workers=2) == ["ok"]

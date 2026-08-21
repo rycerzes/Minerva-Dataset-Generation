@@ -1,177 +1,177 @@
 {
-  "packages_sampled": 1600,
-  "copyright_fetched": 1593,
-  "machine_readable_dep5": 1259,
-  "raw_names": 392,
-  "occurrences": 2616,
-  "mapped_occurrences": 2179,
-  "mapped_share": 0.833,
-  "distinct_licenses": 59,
-  "non_identifying": 67,
-  "unmapped_occurrences": 370,
-  "unmapped_names": 271,
+  "packages_sampled": 6000,
+  "copyright_fetched": 5959,
+  "machine_readable_dep5": 4713,
+  "raw_names": 1010,
+  "occurrences": 9949,
+  "mapped_occurrences": 7977,
+  "mapped_share": 0.8018,
+  "distinct_licenses": 97,
+  "non_identifying": 251,
+  "unmapped_occurrences": 1721,
+  "unmapped_names": 764,
   "top_licenses": [
     [
       "MIT",
-      464
-    ],
-    [
-      "GPL-2.0",
-      318
-    ],
-    [
-      "BSD-3-Clause",
-      206
-    ],
-    [
-      "GPL-3.0",
-      201
-    ],
-    [
-      "Apache-2.0",
-      192
-    ],
-    [
-      "Artistic-1.0",
-      124
-    ],
-    [
-      "GPL-1.0",
-      122
-    ],
-    [
-      "BSD-2-Clause",
-      80
-    ],
-    [
-      "LGPL-2.1+",
-      69
-    ],
-    [
-      "LGPL-2.0",
-      52
-    ],
-    [
-      "CC0-1.0",
-      47
-    ],
-    [
-      "LGPL-3.0",
-      37
-    ],
-    [
-      "ISC",
-      28
-    ],
-    [
-      "LGPL-2.1",
-      24
-    ],
-    [
-      "MPL-2.0",
-      15
-    ],
-    [
-      "CC-BY-SA-3.0",
-      15
+      1737
     ],
     [
       "GPL-2.0+",
-      12
+      914
     ],
     [
-      "Zlib",
-      12
+      "Apache-2.0",
+      813
+    ],
+    [
+      "BSD-3-Clause",
+      751
     ],
     [
       "GPL-3.0+",
-      12
+      633
     ],
     [
-      "OFL-1.1",
-      11
+      "GPL-1.0+",
+      460
+    ],
+    [
+      "GPL-2.0",
+      305
+    ],
+    [
+      "BSD-2-Clause",
+      301
+    ],
+    [
+      "LGPL-2.1+",
+      282
+    ],
+    [
+      "GPL-3.0",
+      212
+    ],
+    [
+      "CC0-1.0",
+      170
+    ],
+    [
+      "LGPL-2.0+",
+      167
+    ],
+    [
+      "LGPL-2.1",
+      124
+    ],
+    [
+      "ISC",
+      121
+    ],
+    [
+      "LGPL-3.0+",
+      118
+    ],
+    [
+      "LGPL-3.0",
+      70
+    ],
+    [
+      "Zlib",
+      68
+    ],
+    [
+      "MPL-2.0",
+      65
+    ],
+    [
+      "BSL-1.0",
+      47
+    ],
+    [
+      "CC-BY-SA-3.0",
+      44
     ]
   ],
   "top_unmapped": [
     [
-      "LGPL-2.1+3+KDEeV",
-      10
+      "Artistic",
+      468
     ],
     [
       "FSFAP",
-      9
+      50
     ],
     [
-      "GPL-2.0-or-later",
-      8
-    ],
-    [
-      "LGPL-2.1-only",
-      7
-    ],
-    [
-      "LGPL-3.0-only",
-      7
-    ],
-    [
-      "BSD-3",
-      6
-    ],
-    [
-      "LicenseRef-KDE-Accepted-LGPL",
-      6
-    ],
-    [
-      "LGPL-2.0-or-later",
-      6
+      "LGPL-2.1+3+KDEeV",
+      35
     ],
     [
       "FSFULLR",
-      5
+      32
+    ],
+    [
+      "FSFUL",
+      24
+    ],
+    [
+      "BSD-3",
+      21
+    ],
+    [
+      "LicenseRef-KDE-Accepted-LGPL",
+      17
+    ],
+    [
+      "GPL",
+      17
+    ],
+    [
+      "BSD",
+      16
+    ],
+    [
+      "LGPL",
+      15
     ],
     [
       "0BSD",
-      4
+      12
     ],
     [
-      "LGPL-2.1-or-later",
-      4
+      "GFDL-NIV-1.3",
+      12
     ],
     [
-      "GPL-3.0-only",
-      4
+      "MIT/X11",
+      11
     ],
     [
-      "LicenseRef-KDE-Accepted-GPL",
-      4
-    ],
-    [
-      "GPL-2.0-only",
-      4
-    ],
-    [
-      "RSA",
-      3
-    ],
-    [
-      "EPL-2.0",
-      3
-    ],
-    [
-      "GPL-3.0-or-later",
-      3
+      "PD",
+      11
     ],
     [
       "Python",
-      3
+      10
     ],
     [
-      "LicenseRef-Qt-Commercial",
-      3
+      "BSD-like",
+      8
     ],
     [
-      "LGPL-2.0-only",
-      3
+      "BSD3",
+      8
+    ],
+    [
+      "LicenseRef-KDE-Accepted-GPL",
+      8
+    ],
+    [
+      "PSF",
+      8
+    ],
+    [
+      "EPL-2.0",
+      8
     ]
   ]
 }

@@ -10,8 +10,17 @@ curate it by hand, per file glob, in the machine-readable DEP-5 format, with no
 matcher involved — and Debian ships tens of thousands of packages, so it reaches
 licenses that barely occur in a code-hosting sample.
 
-Measured on a 400-package sample: 81% of packages ship machine-readable DEP-5, and
-they name **51 distinct licenses** against the SPDX-tag corpus's 15.
+Measured on a 1,600-package sample: 79% of packages ship machine-readable DEP-5, and
+they name **59 distinct licenses** against the SPDX-tag corpus's 15.
+
+**Label noise is real and must be quoted with any result from this corpus.** Of 359
+corpus queries that both Atarashi and ScanCode answered, 48 contradict the DEP-5
+label and 26 of those have the two independent engines agreeing with *each other* —
+a ~7% floor on label error. It comes from DEP-5 being loose about only-vs-or-later
+(maintainers write `GPL-2` for a file that says "version 2 or any later version") and
+from globs attributing a package-level license to a file whose own header differs.
+Good enough to compare engines against each other on identical labels; not good
+enough to read as absolute accuracy.
 
 The catch is naming. DEP-5 short names predate SPDX and are written by hand, so the
 same license arrives as `Expat`, `MIT`, `Apache-2.0`, `APACHE-2.0`, `Apache 2.0`,
@@ -59,10 +68,15 @@ _BARE_VERSION = re.compile(r"^([A-Za-z][A-Za-z\-]*?)-(\d)$")
 
 # Debian names with no SPDX counterpart reachable by normalization.
 ALIAS = {
-    "expat": "MIT", "artistic": "Artistic-1.0", "artistic-1": "Artistic-1.0",
-    "artistic-2": "Artistic-2.0", "zlib/libpng": "Zlib", "wtfpl-2": "WTFPL",
-    "cc0": "CC0-1.0", "boost": "BSL-1.0", "apache": "Apache-2.0",
+    "expat": "MIT", "artistic-1": "Artistic-1.0", "artistic-2": "Artistic-2.0",
+    "zlib/libpng": "Zlib", "wtfpl-2": "WTFPL", "cc0": "CC0-1.0",
+    "boost": "BSL-1.0", "apache": "Apache-2.0",
 }
+# Names that name a family rather than a license. Resolving them to a specific
+# version is a guess, and a guess in the ground truth is worse than a gap: bare
+# `Artistic` was mapped to Artistic-1.0 and produced four "errors" where both the
+# agent and ScanCode independently read Artistic-2.0 from the file.
+AMBIGUOUS = frozenset({"artistic", "gpl", "lgpl", "agpl", "bsd", "cc-by", "zlib/png"})
 # Names that identify no license, so a query labelled only with one has nothing to
 # find. Excluded rather than counted as a miss, as `references.SKIP_KEYS` does.
 NON_IDENTIFYING = frozenset({
@@ -157,6 +171,8 @@ def canonical_license(name: str, index: dict[str, str]) -> str | None | bool:
     cleaned = name.strip()
     if cleaned.lower() in NON_IDENTIFYING:
         return None
+    if cleaned.lower() in AMBIGUOUS:
+        return False
     if cleaned.lower() in ALIAS:
         return ALIAS[cleaned.lower()]
     for candidate in _variants(cleaned):

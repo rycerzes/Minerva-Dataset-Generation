@@ -106,3 +106,11 @@ def test_or_later_is_preserved_when_the_list_has_it():
 def test_or_later_falls_back_when_the_list_lacks_it():
     """Where no or-later shortname exists, the base license is the best available."""
     assert canonical_license("GPL-2+", INDEX) == "GPL-2.0"
+
+
+def test_family_names_are_not_resolved_to_a_version():
+    """Bare `Artistic` names a family. Guessing 1.0 produced four false errors where
+    both engines independently read Artistic-2.0 — a guess in the ground truth is
+    worse than a gap."""
+    assert canonical_license("Artistic", INDEX) is False
+    assert canonical_license("Artistic-2", INDEX) == "Artistic-2.0"

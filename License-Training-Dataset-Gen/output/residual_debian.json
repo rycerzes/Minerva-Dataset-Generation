@@ -1,0 +1,332 @@
+[
+  {
+    "text": "#!/usr/bin/perl -w # (c) 2001, Dave Jones. (the file handling bit) # (c) 2005, Joel Schopp <jschopp@austin.ibm.com> (the ugly bit) # (c) 2007,2008, Andy Whitcroft <apw@uk.ibm.com> (new conditions, test suite) # (c) 2008,2009, Andy Whitcroft <apw@canonical.com> # Licensed under the terms of the GNU GPL License version 2 use strict; my $P = $0; $P =~ s@.*/@@g; my $V = '0.30'; use Getopt::Long qw(:config no_auto_abbrev); my $quiet = 0; my $tree = 1; my $chk_signoff = 1; my $chk_patch = 1; my $tst_only; my $emacs = 0; my $terse = 0; my $file = 0; my $check = 0; my $summary = 1; my $mailback = 0; my $summary_file = 0; my $root; my %debug; my $help = 0; sub help { my ($exitcode) = @_; print << \"EOM\"; Usage: $P [OPTION]... [FILE]... Version: $V Options:",
+    "gt": [
+      "gpl-2.0"
+    ],
+    "tag": "GPL-2",
+    "lang": "scripts/checkpatch.pl",
+    "scancode": "gpl-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "/* Copyright (c) 2012-2023, CKSource Holding sp. z o.o. All rights reserved. For licensing, see LICENSE.md */ importPackage( org.mozilla.javascript ); importClass( java.lang.System ); importClass( java.lang.Integer ); /** * @class java.io.File * * Check out [official java.io.File documentation][1] for more. * * [1]: https://docs.oracle.com/javase/7/docs/api/java/io/File.html */ /** * @class java.io.OutputStream * * Check out [official java.io.File documentation][1] for more. * * [1]: https://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html */ /** * @class * * Main file which is run from Rhino. Responsible for load scripts and run controller. */ this.CKBuilder = ( function() { var isMinified = true; try { java.lang.Class.forName( \"ckbuilder.ckbuilder\" ); } catch ( e ) { isMinified = false; } var now; if(System.env.get('SOURCE_DATE_EPOCH') !== null) { now = new Date(parseInt(System.getenv(\"SOURCE_DATE_EPOCH\"), 10) * 1000);",
+    "gt": [
+      "mit"
+    ],
+    "tag": "Expat",
+    "lang": "src/ckbuilder.js",
+    "scancode": "unknown-license-reference",
+    "residual": "B"
+  },
+  {
+    "text": "package cmd import ( \"fmt\" \"os\" \"testing\" \"github.com/spf13/viper\" ) func TestGoldenAddCmd(t *testing.T) { viper.Set(\"useViper\", true) viper.Set(\"license\", \"apache\") viper.Set(\"year\", \"2022\") defer viper.Set(\"year\", nil) command := &Command{ CmdName: \"test\", CmdParent: parentName, Project: getProject(), } defer os.RemoveAll(command.AbsolutePath) assertNoErr(t, command.Project.Create()) assertNoErr(t, command.Create()) generatedFile := fmt.Sprintf(\"%s/cmd/%s.go\", command.AbsolutePath, command.CmdName) goldenFile := fmt.Sprintf(\"testdata/%s.go.golden\", command.CmdName) err := compareFiles(generatedFile, goldenFile) if err != nil { t.Fatal(err) } } func TestValidateCmdName(t *testing.T) { testCases := []struct { input string expected string }{ {\"cmdName\", \"cmdName\"},",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "cmd/add_test.go",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "import os from setuptools import setup from extras import RunFlakesCommand version = '2.4.0' readme_file = os.path.join(os.path.dirname(__file__), 'README.rst') with open(readme_file) as f: long_description = f.read() setup( name='django-guardian', version=version, python_requires='>=3.5', url='http://github.com/django-guardian/django-guardian', author='Lukasz Balcerzak', author_email='lukaszbalcerzak@gmail.com', download_url='https://github.com/django-guardian/django-guardian/tags', description=\"Implementation of per object permissions for Django.\", long_description=long_description, zip_safe=False, packages=[ 'guardian', 'guardian.conf', 'guardian.management', 'guardian.migrations', 'guardian.templatetags', 'guardian.testapp', 'guardian.management.commands', 'guardian.testapp.migrations', 'guardian.testapp.tests' ], include_package_data=True, license='BSD', install_requires=[\"Django>=2.2\"], tests_require=['django-environ', 'pytest', 'pytest-django'], classifiers=['Development Status :: 5 - Production/Stable', 'Environment :: Web Environment', 'Framework :: Django', 'Framework :: Django :: 2.2', 'Framework :: Django :: 3.0', 'Framework :: Django :: 3.1', 'Framework :: Django :: 3.2', 'Intended Audience :: Developers',",
+    "gt": [
+      "bsd-simplified"
+    ],
+    "tag": "BSD-2-Clause",
+    "lang": "setup.py",
+    "scancode": "bsd-new",
+    "residual": "A"
+  },
+  {
+    "text": "import setuptools commitInfo = \" (HEAD -> master, tag: 1.6.3)\".strip(\"( )\").split() version = commitInfo[commitInfo.index(\"tag:\") + 1].rstrip(\",\") setuptools.setup( name=\"dnarrange\", version=version, description='Find rearrangements in \"long\" DNA reads relative to a genome sequence', long_description=open(\"README.md\").read(), long_description_content_type=\"text/markdown\", url=\"https://github.com/mcfrith/dnarrange\", classifiers=[ \"Intended Audience :: Science/Research\", \"Topic :: Scientific/Engineering :: Bio-Informatics\", \"License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)\", ], scripts=[ \"dnarrange\", \"dnarrange-genes\", \"dnarrange-link\", \"dnarrange-merge\", \"last-multiplot\", ], )",
+    "gt": [
+      "gpl-3.0-plus"
+    ],
+    "tag": "GPL-3+",
+    "lang": "setup.py",
+    "scancode": "gpl-3.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "/* $Header: /home/ksheff/src/e2tools/RCS/copy.c,v 0.16 2004/04/07 01:15:20 ksheff Exp $ */ /* * copy.c * * Copyright (C) 2002 Keith W Sheffield. This file may be redistributed * under the terms of the GNU Public License. * */ /* Description */ /* * This module contains functions used to copy files to and from an ext2fs * filesystem * */ /* * $Log: copy.c,v $ * Revision 0.16 2004/04/07 01:15:20 ksheff * Modified to pass the default file stat to put_file() so the user may alter * the owner, group, or permissions of a file copied to an ext2fs file system. * * Revision 0.15 2004/04/07 00:13:38 ksheff * Corrected behavior when the argument to -d is a local filesystem. * * Revision 0.14 2004/04/06 23:26:37 ksheff * Updated the usage string. * * Revision 0.13 2002/07/09 06:43:19 ksheff * compensated for blank dest_dir. * * Revision 0.12 2002/07/09 06:31:41 ksheff * Forgot to remove debugging printfs. * * Revision 0.11 2002/07/09 02:36:51 ksheff * Verbose was not always reporting the correct output destination - fixed. * * Revision 0.10 2002/06/26 11:13:46 ksheff * Added a call to init_progress() before any copy operation if the verbose * flag is set. *",
+    "gt": [
+      "gpl-2.0-plus"
+    ],
+    "tag": "GPL-2+",
+    "lang": "src/e2tool-e2cp.c",
+    "scancode": "gpl-1.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "/* $Header: /home/ksheff/src/e2tools/RCS/ln.c,v 0.3 2002/06/30 05:54:02 ksheff Exp $ */ /* * ln.c * * Copyright (C) 2002 Keith W Sheffield. This file may be redistributed * under the terms of the GNU Public License. * */ /* Description */ /* * Module to create links * */ /* * $Log: ln.c,v $ * Revision 0.3 2002/06/30 05:54:02 ksheff * Modified create_hard_link() to check file type before linking to current * directory. This was not being done before and it was causing problems if a * non regular file was renamed. * * Revision 0.2 2002/03/21 09:04:40 ksheff * Split the mv operation into its own module. * * Revision 0.1 2002/03/07 07:23:41 ksheff * initial revision. * */ /* Feature Test Switches */ /* Headers */ #include \"e2tools.h\" #include \"e2tool-e2ln.h\" /* Macros */ #define USAGE \"Usage: e2ln [-vfs] source destination\\n\" /* Name: main_e2ln() *",
+    "gt": [
+      "gpl-2.0-plus"
+    ],
+    "tag": "GPL-2+",
+    "lang": "src/e2tool-e2ln.c",
+    "scancode": "gpl-1.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "/* diag_aes_gcm_tc13_no_aad.c * * v3 : after the ex2 rewrite of run_aesgcm_vec, the no-AAD case * (NIST SP 800-38D TC13) still fails. This diag isolates the * problem to the no-AAD code path : reproduces run_aesgcm_vec * exactly for both TC13 (no AAD) and TC14 (with AAD), prints the * actual CT and TAG, then probes a candidate fix : force an * EVP_EncryptUpdate AAD call with 0 bytes to explicitly transition * the cipher state from post-init to AAD-done. * * Build : cc disabled/diag_aes_gcm_tc13_no_aad.c -lcrypto -o /tmp/diag_tc13 * Run : /tmp/diag_tc13 * * License : Apache-2.0 */ #include <stdio.h> #include <string.h> #include <openssl/evp.h> #include <openssl/err.h> #include <openssl/opensslv.h> /* Identical to cavp_extended.c globals. */ static const unsigned char kK[32] = { 0xfe,0xff,0xe9,0x92,0x86,0x65,0x73,0x1c, 0x6d,0x6a,0x8f,0x94,0x67,0x30,0x83,0x08, 0xfe,0xff,0xe9,0x92,0x86,0x65,0x73,0x1c, 0x6d,0x6a,0x8f,0x94,0x67,0x30,0x83,0x08 }; static const unsigned char IV[12] = { 0xca,0xfe,0xba,0xbe,0xfa,0xce,0xdb,0xad, 0xde,0xca,0xf8,0x88 }; static const unsigned char AAD[20] = { 0xfe,0xed,0xfa,0xce,0xde,0xad,0xbe,0xef, 0xfe,0xed,0xfa,0xce,0xde,0xad,0xbe,0xef, 0xab,0xad,0xda,0xd2 }; static const unsigned char PT[60] = { 0xd9,0x31,0x32,0x25,0xf8,0x84,0x06,0xe5, 0xa5,0x59,0x09,0xc5,0xaf,0xf5,0x26,0x9a,",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "disabled/diag_aes_gcm_tc13_no_aad.c",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "/* diag_aes_gcm_tc14.c * * Standalone diagnostic for the AES-GCM-256/SP800-38D-TC14 KAT failure * observed in dev mode on OpenSSL 3.5.6 (no FIPS provider). * * Reproduces the exact EVP sequence from src/fhsm_crypto.c * fhsm_aes_gcm_encrypt() with the boot-KAT vectors from * kat/fhsm_kat_vectors.c. Prints the OpenSSL error chain at every * potential failure point so we know which call rejected the input * and why. * * Build : cc diag_aes_gcm_tc14.c -lcrypto -o /tmp/diag_tc14 * Run : /tmp/diag_tc14 * * Expected output if the KAT works : * ENCRYPT OK : 60 bytes CT match, 16 bytes tag match * * Expected output if the KAT fails : * EncryptInit_ex2 returned 0 * OpenSSL error chain : * [whatever the chain reveals] * * License : Apache-2.0 */ #include <stdio.h> #include <string.h> #include <openssl/evp.h> #include <openssl/err.h> #include <openssl/opensslv.h> #include <openssl/provider.h> /* OSSL_PROVIDER_available */ static const unsigned char K[32] = { 0xfe,0xff,0xe9,0x92,0x86,0x65,0x73,0x1c, 0x6d,0x6a,0x8f,0x94,0x67,0x30,0x83,0x08, 0xfe,0xff,0xe9,0x92,0x86,0x65,0x73,0x1c, 0x6d,0x6a,0x8f,0x94,0x67,0x30,0x83,0x08 }; static const unsigned char IV[12] = { 0xca,0xfe,0xba,0xbe,0xfa,0xce,0xdb,0xad, 0xde,0xca,0xf8,0x88",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "disabled/diag_aes_gcm_tc14.c",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "/* diag_aes_gcm_tc14_v2.c * * v2 : reproduce the dev-mode init sequence from * src/fhsm_crypto.c::crypto_init_once before invoking the EVP * sequence. The original diag worked because OpenSSL auto-loaded * the default provider ; this v2 explicitly does what FreeHSM * does in dev mode to see if that setup is the trigger. * * Build : cc disabled/diag_aes_gcm_tc14_v2.c -lcrypto -o /tmp/diag_tc14v2 * Run : /tmp/diag_tc14v2 * * License : Apache-2.0 */ #include <stdio.h> #include <string.h> #include <openssl/evp.h> #include <openssl/err.h> #include <openssl/opensslv.h> #include <openssl/provider.h> #include <openssl/crypto.h> static const unsigned char K[32] = { 0xfe,0xff,0xe9,0x92,0x86,0x65,0x73,0x1c, 0x6d,0x6a,0x8f,0x94,0x67,0x30,0x83,0x08, 0xfe,0xff,0xe9,0x92,0x86,0x65,0x73,0x1c, 0x6d,0x6a,0x8f,0x94,0x67,0x30,0x83,0x08 }; static const unsigned char IV[12] = { 0xca,0xfe,0xba,0xbe,0xfa,0xce,0xdb,0xad, 0xde,0xca,0xf8,0x88 }; static const unsigned char AAD[20] = { 0xfe,0xed,0xfa,0xce,0xde,0xad,0xbe,0xef, 0xfe,0xed,0xfa,0xce,0xde,0xad,0xbe,0xef, 0xab,0xad,0xda,0xd2 }; static const unsigned char PT[60] = { 0xd9,0x31,0x32,0x25,0xf8,0x84,0x06,0xe5, 0xa5,0x59,0x09,0xc5,0xaf,0xf5,0x26,0x9a, 0x86,0xa7,0xa9,0x53,0x15,0x34,0xf7,0xda,",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "disabled/diag_aes_gcm_tc14_v2.c",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "/* diag_rsa_oaep.c * * Reproduces kat/cavp_extended.c::run_rsa_oaep_roundtrip exactly with * a print + ERR_print_errors at every potential failure point, so we * can see which EVP call fails and what OpenSSL error chain it produces. * * Also runs the PSS roundtrip first for comparison (since PSS passes * in dev mode but OAEP fails). * * Build : cc disabled/diag_rsa_oaep.c -lcrypto -o /tmp/diag_oaep * Run : /tmp/diag_oaep * * License : Apache-2.0 */ #include <stdio.h> #include <string.h> #include <openssl/evp.h> #include <openssl/rsa.h> #include <openssl/err.h> #include <openssl/opensslv.h> static const unsigned char msg[16] = \"FreeHSM RSA KAT!\"; static void dump_err(const char *who) { fprintf(stderr, \" [%s] FAIL\\n\", who); fprintf(stderr, \" OpenSSL error chain :\\n\"); ERR_print_errors_fp(stderr); fprintf(stderr, \"\\n\"); } static EVP_PKEY *gen_rsa_2048(void) { EVP_PKEY *pkey = NULL; EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new_id(EVP_PKEY_RSA, NULL); if (!ctx) { dump_err(\"EVP_PKEY_CTX_new_id(RSA)\"); return NULL; } if (EVP_PKEY_keygen_init(ctx) <= 0) { dump_err(\"keygen_init\"); goto end; } if (EVP_PKEY_CTX_set_rsa_keygen_bits(ctx, 2048) <= 0) { dump_err(\"set_keygen_bits\"); goto end; } if (EVP_PKEY_keygen(ctx, &pkey) <= 0) { dump_err(\"EVP_PKEY_keygen\"); pkey = NULL; goto end;",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "disabled/diag_rsa_oaep.c",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "# coding: utf-8 import sys from setuptools import setup, find_packages install_requires = [ 'Flask', 'PyYAML', 'cairocffi', 'pyparsing>=1.5.7', 'pytz', 'six', 'structlog', 'tzlocal', ] if sys.version_info < (2, 7): install_requires.append('importlib') install_requires.append('logutils') install_requires.append('ordereddict') with open('README.rst') as f: long_description = f.read() setup( name='graphite-api', version='1.1.3', url='https://github.com/brutasse/graphite-api', author=\"Bruno Reni\u00e9, based on Chris Davis's graphite-web\", author_email='bruno@renie.fr', license='Apache Software License 2.0', description=('Graphite-web, without the interface. ' 'Just the rendering HTTP API.'), long_description=long_description, packages=find_packages(exclude=['tests']), include_package_data=True, install_requires=install_requires, extras_require={ 'sentry': ['raven[flask]'], 'cyanite': ['cyanite'],",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache",
+    "lang": "setup.py",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "# SPDX-FileCopyrightText: 2025 James R. Barlow \"\"\"This is a simple web service/HTTP wrapper for OCRmyPDF. This may be more convenient than the command line tool for some Docker users. Note that OCRmyPDF uses Ghostscript, which is licensed under AGPLv3+. While OCRmyPDF is under GPLv3, this file is distributed under the Affero GPLv3+ license, to emphasize that SaaS deployments should make sure they comply with Ghostscript's license as well as OCRmyPDF's. \"\"\" from __future__ import annotations import os import subprocess import sys from functools import partial from operator import getitem from pathlib import Path from tempfile import NamedTemporaryFile import pikepdf import streamlit as st from ocrmypdf._defaults import DEFAULT_ROTATE_PAGES_THRESHOLD def get_host_url_with_port(port: int) -> str: \"\"\"Get the host URL for the web service. Hacky.\"\"\" host_url = st.context.headers[\"host\"] try: host, _streamlit_port = host_url.split(\":\", maxsplit=1) except ValueError: host = host_url return f\"//{host}:{port}\" # Use the same protocol st.title(\"OCRmyPDF Web Service\")",
+    "gt": [
+      "agpl-3.0"
+    ],
+    "tag": "AGPL-3+",
+    "lang": "misc/_webservice.py",
+    "scancode": "agpl-3.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "# Copyright (c) 2010-2011 Joshua Harlan Lifton. # See LICENSE.txt for details. \"\"\"Plover: Open Source Stenography Software\"\"\" if __name__ == \"plover\": from plover.i18n import Translator _ = Translator(__package__) else: # exec from `setup.py`, package data # may not be available, and we don't # want to translate anyway. _ = lambda s: s __version__ = \"5.0.0\" __copyright__ = \"(C) Open Steno Project\" __url__ = \"http://www.openstenoproject.org/\" __download_url__ = \"http://www.openstenoproject.org/plover\" __credits__ = _(\"\"\"\\ Founded by stenographer Mirabai Knight. Developers: Joshua Lifton Hesky Fisher Ted Morin Benoit Pierre Sammi Ta Martin Koerner and many more on GitHub: <https://github.com/openstenoproject/plover>\"\"\") __license__ = \"GNU General Public License v2 or later (GPLv2+)\" # i18n: Short description for Plover, currently not used in the interface. __description__ = _(\"Open Source Stenography Software\") __long_description__ = _(\"\"\"\\ Plover is a free open source program intended to bring realtime stenographic technology not just to stenographers, but also to hackers, hobbyists, accessibility mavens, and all-around speed demons.\"\"\")",
+    "gt": [
+      "gpl-2.0-plus"
+    ],
+    "tag": "GPL-2+",
+    "lang": "plover/__init__.py",
+    "scancode": "gpl-2.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "#!/bin/sh # Copyright (C) 2019-2021 all contributors <meta@public-inbox.org> # License: AGPL-3.0+ <https://www.gnu.org/licenses/agpl-3.0.txt> # Prints OS-specific package profiles to stdout (one per-newline) to use # as command-line args for ci/deps.perl. Called automatically by ci/run.sh # set by os-release(5) or similar ID= VERSION_ID= case $(uname -o) in GNU/Linux) for f in /etc/os-release /usr/lib/os-release do test -f $f || continue . $f # Debian sid (and testing) have no VERSION_ID case $ID--$VERSION_ID in debian--) case $PRETTY_NAME in */sid) VERSION_ID=sid ;; *) echo >&2 \"$ID, but no VERSION_ID\" echo >&2 \"==> $f <==\" cat >&2 $f exit 1 ;; esac ;; esac case $ID--$VERSION_ID in -|*--|--*) continue ;; *--*) break ;; esac done ;; FreeBSD) ID=freebsd VERSION_ID=$(uname -r | cut -d . -f 1)",
+    "gt": [
+      "agpl-3.0"
+    ],
+    "tag": "AGPL-3.0+",
+    "lang": "ci/profiles.sh",
+    "scancode": "agpl-3.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "#!/bin/sh # Copyright (C) 2019-2021 all contributors <meta@public-inbox.org> # License: AGPL-3.0+ <https://www.gnu.org/licenses/agpl-3.0.txt> set -e SUDO=${SUDO-'sudo'} PERL=${PERL-'perl'} MAKE=${MAKE-'make'} DO=${DO-''} set -x if test -f Makefile then $DO $MAKE clean fi ./ci/profiles.sh | while read args do $DO $SUDO $PERL -w ci/deps.perl $args $DO $PERL Makefile.PL $DO $MAKE $DO $MAKE check $DO $MAKE clean done",
+    "gt": [
+      "agpl-3.0"
+    ],
+    "tag": "AGPL-3.0+",
+    "lang": "ci/run.sh",
+    "scancode": "agpl-3.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "-- Copyright (C) 2015-2021 all contributors <meta@public-inbox.org> -- License: GPLv2 or later <https://www.gnu.org/licenses/gpl-2.0.txt> -- This commit filter maps a subject line to a search URL of a public-inbox -- disclaimer: written by someone who does not know Lua. -- -- This requires cgit linked with Lua -- Usage (in your cgitrc(5) config file): -- -- commit-filter=lua:/path/to/this/script.lua -- -- Example site: https://80x24.org/public-inbox.git/ local urls = {} urls['public-inbox.git'] = 'https://public-inbox.org/meta/' -- additional URLs here... -- TODO we should be able to auto-generate this based on \"coderepo\" -- directives in the public-inbox config file; but keep in mind -- the mapping is M:N between inboxes and coderepos function filter_open(...) lineno = 0 buffer = \"\" end function filter_close() -- cgit opens and closes this filter for the commit subject -- and body separately, and we only generate the link based -- on the commit subject: if lineno == 1 and string.find(buffer, \"\\n\") == nil then u = urls[os.getenv('CGIT_REPO_URL')] if u == nil then html(buffer) else html(\"<a\\ntitle='mail thread'\\n\") html('href=\"' .. u .. '?x=t&amp;q=') s = string.gsub(buffer, '\"', '\"\"') html_url_arg('\"' .. s .. '\"') html('\">') html_txt(buffer) html('</a>')",
+    "gt": [
+      "agpl-3.0"
+    ],
+    "tag": "AGPL-3.0+",
+    "lang": "examples/cgit-commit-filter.lua",
+    "scancode": "gpl-2.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "-- Copyright (C) 2019-2021 all contributors <meta@public-inbox.org> -- License: GPL-2.0+ <https://www.gnu.org/licenses/gpl-2.0.txt> -- -- This filter accesses the PublicInbox::WwwHighlight PSGI endpoint -- (see examples/highlight.psgi) -- -- Dependencies: lua-http -- -- disclaimer: written by someone who does not know Lua. -- -- This requires cgit linked with Lua -- Usage (in your cgitrc(5) config file): -- -- source-filter=lua:/path/to/this/script.lua -- about-filter=lua:/path/to/this/script.lua -- local wwwhighlight_url = 'http://127.0.0.1:9090/' local req_timeout = 10 local too_big = false -- match $PublicInbox::HTTP::MAX_REQUEST_BUFFER local max_len = 10 * 1024 * 1024 -- about-filter needs surrounding <pre> tags if all we do is -- highlight and linkify local pre = true function filter_open(...) req_body = \"\" -- detect when we're used in an about-filter local repo_url = os.getenv('CGIT_REPO_URL') if repo_url then local path_info = os.getenv('PATH_INFO') rurl = path_info:match(\"^/(.+)/about/?$\") pre = rurl == repo_url end -- hand filename off for language detection local fn = select(1, ...)",
+    "gt": [
+      "agpl-3.0"
+    ],
+    "tag": "AGPL-3.0+",
+    "lang": "examples/cgit-wwwhighlight-filter.lua",
+    "scancode": "gpl-2.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "try: from setuptools import setup except ImportError: from distutils.core import setup from os import path here = path.abspath(path.dirname(__file__)) # Get the long description from the relevant file with open(path.join(here, 'README.rst'), 'rb') as f: long_description = f.read().decode('utf-8') config = { 'name': 'PyMeeus', 'version': '0.5.12', 'description': 'Python implementation of Jean Meeus astronomical routines', 'long_description': long_description, 'keywords': 'Meeus astronomy module library', 'license': 'LGPLv3', 'author': 'Dagoberto Salazar', 'author_email': 'dagoberto.salazar@gmail.com', 'url': 'https://github.com/architest/pymeeus', 'download_url': 'https://github.com/architest/pymeeus', # 'install_requires': ['nose', 'pypandoc'], 'packages': ['pymeeus'], # 'scripts': ['example.py'], 'py_modules': ['base'], 'classifiers': [ 'Development Status :: 4 - Beta', 'Environment :: Console', 'Intended Audience :: Developers', 'Intended Audience :: Education', 'Intended Audience :: Science/Research', 'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)', 'Operating System :: OS Independent', 'Programming Language :: Python :: 2.7', 'Programming Language :: Python :: 3.6',",
+    "gt": [
+      "lgpl-3.0-plus"
+    ],
+    "tag": "LGPL-3+",
+    "lang": "setup.py",
+    "scancode": "lgpl-3.0",
+    "residual": "A"
+  },
+  {
+    "text": "from setuptools import setup # Version VERSION = \"2.2.1\" if \"#\" in VERSION: import sys sys.stderr.write(\"Bad version %s\\n\" % VERSION) sys.exit(1) setup(name = \"python-hostlist\", version = VERSION, description = \"Python module for hostlist handling\", long_description = \"The hostlist.py module knows how to expand and collect Slurm hostlist expressions.\", author = \"Kent Engstr\u00f6m\", author_email = \"kent@nsc.liu.se\", url = \"http://www.nsc.liu.se/~kent/python-hostlist/\", license = \"GPL2+\", classifiers = ['Development Status :: 5 - Production/Stable', 'Intended Audience :: Science/Research', 'Intended Audience :: System Administrators', 'License :: OSI Approved :: GNU General Public License (GPL)', 'Topic :: System :: Clustering', 'Topic :: System :: Systems Administration', 'Programming Language :: Python :: 3', ], py_modules = [\"hostlist\"], scripts = [\"hostlist\", \"hostgrep\", \"pshbak\", \"dbuck\"], data_files = [(\"share/man/man1\", [\"hostlist.1\", \"hostgrep.1\", \"pshbak.1\", \"dbuck.1\"])], )",
+    "gt": [
+      "gpl-2.0-plus"
+    ],
+    "tag": "GPL-2+",
+    "lang": "setup.py",
+    "scancode": "gpl-2.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "# -*- coding: utf-8 -*- # Requests Futures \"\"\" async requests HTTP library ~~~~~~~~~~~~~~~~~~~~~ \"\"\" import logging __title__ = 'requests-futures' __version__ = '1.0.2' __build__ = 0x000000 __author__ = 'Ross McFarland' __license__ = 'Apache 2.0' __copyright__ = 'Copyright 2013 Ross McFarland' # Set default logging handler to avoid \"No handler found\" warnings. try: # Python 2.7+ from logging import NullHandler except ImportError: class NullHandler(logging.Handler): def emit(self, record): pass logging.getLogger(__name__).addHandler(NullHandler())",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "requests_futures/__init__.py",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "# encoding: utf-8 from distutils.core import setup import SimPy setup( name='SimPy', version=SimPy.__version__, author='Klaus Muller, Tony Vignaux, Ontje L\u00fcnsdorf, Stefan Scherfke', author_email=('vignaux at user.sourceforge.net; ' 'kgmuller at users.sourceforge.net; ' 'the_com at gmx.de; ' 'stefan at sofa-rockers.org'), description='Event discrete, process based simulation for Python.', long_description=open('README.txt').read(), url='http://simpy.sourceforge.net/', download_url='https://sourceforge.net/projects/simpy/files/', license='GNU LGPL', packages=[ 'SimPy', 'SimPy.test', ], package_data={}, classifiers=[ 'Programming Language :: Python', 'Programming Language :: Python :: 2', 'Programming Language :: Python :: 2.6', 'Programming Language :: Python :: 2.7', 'Programming Language :: Python :: 3', 'Programming Language :: Python :: 3.2', 'Programming Language :: Python :: Implementation :: PyPy', 'Operating System :: OS Independent', 'License :: OSI Approved :: GNU Library or Lesser General Public ' + \\ 'License (LGPL)', 'Development Status :: 5 - Production/Stable', 'Intended Audience :: Science/Research', 'Topic :: Scientific/Engineering', ], )",
+    "gt": [
+      "lgpl-2.1"
+    ],
+    "tag": "LGPL-2.1",
+    "lang": "setup.py",
+    "scancode": "lgpl-2.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "################################################################## # Copyright 2018 Open Source Geospatial Foundation and others # # licensed under MIT, Please consult LICENSE.txt for details # ################################################################## from setuptools import find_packages, setup with open(\"VERSION.txt\") as ff: VERSION = ff.read().strip() DESCRIPTION = ( \"PyWPS is an implementation of the Web Processing Service \" \"standard from the Open Geospatial Consortium. PyWPS is \" \"written in Python.\" ) with open(\"README.md\") as ff: LONG_DESCRIPTION = ff.read() KEYWORDS = \"PyWPS WPS OGC processing\" with open(\"requirements.txt\") as fr: INSTALL_REQUIRES = fr.read().splitlines() with open(\"requirements-dev.txt\") as frd: DEV_REQUIRES = frd.read().splitlines() CONFIG = { \"name\": \"pywps\", \"version\": VERSION, \"description\": DESCRIPTION, \"long_description\": LONG_DESCRIPTION, \"long_description_content_type\": \"text/markdown\", \"keywords\": KEYWORDS, \"license\": \"MIT\", \"platforms\": \"all\", \"author\": \"Jachym Cepicky\", \"author_email\": \"jachym.cepicky@gmail.com\", \"maintainer\": \"Jachym Cepicky\", \"maintainer_email\": \"jachym.cepicky@gmail.com\",",
+    "gt": [
+      "mit"
+    ],
+    "tag": "Expat",
+    "lang": "setup.py",
+    "scancode": "mit",
+    "residual": "A"
+  },
+  {
+    "text": "################################################################## # Copyright 2018 Open Source Geospatial Foundation and others # # licensed under MIT, Please consult LICENSE.txt for details # ################################################################## import logging import os from lxml.builder import ElementMaker __version__ = \"4.7.0\" LOGGER = logging.getLogger('PYWPS') LOGGER.debug('setting core variables') PYWPS_INSTALL_DIR = os.path.dirname(os.path.abspath(__file__)) NAMESPACES = { 'xlink': \"http://www.w3.org/1999/xlink\", 'wps': \"http://www.opengis.net/wps/{wps_version}\", 'ows': \"http://www.opengis.net/ows/{ows_version}\", 'gml': \"http://www.opengis.net/gml\", 'xsi': \"http://www.w3.org/2001/XMLSchema-instance\" } E = ElementMaker() namespaces100 = {k: NAMESPACES[k].format(wps_version=\"1.0.0\", ows_version=\"1.1\") for k in NAMESPACES} namespaces200 = {k: NAMESPACES[k].format(wps_version=\"2.0\", ows_version=\"2.0\") for k in NAMESPACES} def get_ElementMakerForVersion(version): WPS = OWS = None if version == \"1.0.0\": WPS = ElementMaker(namespace=namespaces100['wps'], nsmap=namespaces100) OWS = ElementMaker(namespace=namespaces100['ows'], nsmap=namespaces100) elif version == \"2.0.0\": WPS = ElementMaker(namespace=namespaces200['wps'], nsmap=namespaces200) OWS = ElementMaker(namespace=namespaces200['ows'], nsmap=namespaces200) return WPS, OWS",
+    "gt": [
+      "mit"
+    ],
+    "tag": "Expat",
+    "lang": "pywps/__init__.py",
+    "scancode": "mit",
+    "residual": "A"
+  },
+  {
+    "text": "#!/usr/bin/env php <?php /* +-----------------------------------------------------------------------+ | This file is part of the Roundcube Webmail client | | | | Copyright (C) The Roundcube Dev Team | | | | Licensed under the GNU General Public License version 3 or | | any later version with exceptions for skins & plugins. | | See the README file for a full license statement. | | | | PURPOSE: | | Finally remove all db records marked as deleted some time ago | +-----------------------------------------------------------------------+ | Author: Thomas Bruederli <roundcube@gmail.com> | +-----------------------------------------------------------------------+ */ define('INSTALL_PATH', '/var/lib/roundcube/'); require INSTALL_PATH.'program/include/clisetup.php'; if (!empty($_SERVER['argv'][1])) { $days = intval($_SERVER['argv'][1]); } else { $days = 7; } rcmail_utils::db_clean($days);",
+    "gt": [
+      "gpl-3.0-plus"
+    ],
+    "tag": "GPL-3+",
+    "lang": "bin/cleandb.sh",
+    "scancode": "gpl-3.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "#!/usr/bin/env php <?php /* +-----------------------------------------------------------------------+ | This file is part of the Roundcube Webmail client | | | | Copyright (C) The Roundcube Dev Team | | | | Licensed under the GNU General Public License version 3 or | | any later version with exceptions for skins & plugins. | | See the README file for a full license statement. | | | | PURPOSE: | | Decrypt the encrypted parts of the HTTP Received: headers | +-----------------------------------------------------------------------+ | Author: Tomas Tevesz <ice@extreme.hu> | +-----------------------------------------------------------------------+ */ /** * If http_received_header_encrypt is configured, the IP address and the * host name of the added Received: header is encrypted with 3DES, to * protect information that some could consider sensitive, yet their * availability is a must in some circumstances. * * Such an encrypted Received: header might look like: * * Received: from DzgkvJBO5+bw+oje5JACeNIa/uSI4mRw2cy5YoPBba73eyBmjtyHnQ== * [my0nUbjZXKtl7KVBZcsvWOxxtyVFxza4] * with HTTP/1.1 (POST); Thu, 14 May 2009 19:17:28 +0200 * * In this example, the two encrypted components are the sender host name * (DzgkvJBO5+bw+oje5JACeNIa/uSI4mRw2cy5YoPBba73eyBmjtyHnQ==) and the IP * address (my0nUbjZXKtl7KVBZcsvWOxxtyVFxza4). * * Using this tool, they can be decrypted into plain text: * * $ bin/decrypt.sh 'my0nUbjZXKtl7KVBZcsvWOxxtyVFxza4' \\ * > 'DzgkvJBO5+bw+oje5JACeNIa/uSI4mRw2cy5YoPBba73eyBmjtyHnQ==' * 84.3.187.208",
+    "gt": [
+      "gpl-3.0-plus"
+    ],
+    "tag": "GPL-3+",
+    "lang": "bin/decrypt.sh",
+    "scancode": "gpl-3.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "#!/usr/bin/env php <?php /* +-----------------------------------------------------------------------+ | This file is part of the Roundcube Webmail client | | | | Copyright (C) The Roundcube Dev Team | | | | Licensed under the GNU General Public License version 3 or | | any later version with exceptions for skins & plugins. | | See the README file for a full license statement. | | | | PURPOSE: | | Utility script to remove all data related to a certain user | | from the local database. | +-----------------------------------------------------------------------+ | Author: Thomas Bruederli <thomas@roundcube.net> | +-----------------------------------------------------------------------+ */ define('INSTALL_PATH', '/var/lib/roundcube/'); require_once INSTALL_PATH . 'program/include/clisetup.php'; function print_usage() { print \"Usage: deluser.sh [--host=HOST][--age=DAYS][--dry-run] [username]\\n\"; print \"--host=HOST The IMAP hostname or IP the given user is related to\\n\"; print \"--age=DAYS Delete all users who have not logged in for more than X days\\n\"; print \"--dry-run List users but do not delete them (for use with --age)\\n\"; } function _die($msg, $usage=false) { fwrite(STDERR, $msg . \"\\n\"); if ($usage) print_usage(); exit(1); }",
+    "gt": [
+      "gpl-3.0-plus"
+    ],
+    "tag": "GPL-3+",
+    "lang": "bin/deluser.sh",
+    "scancode": "gpl-3.0-plus",
+    "residual": "A"
+  },
+  {
+    "text": "// This file is part of ICU4X. // // The contents of this file implement algorithms from Calendrical Calculations // by Reingold & Dershowitz, Cambridge University Press, 4th edition (2018), // which have been released as Lisp code at <https://github.com/EdReingold/calendar-code2/> // under the Apache-2.0 license. Accordingly, this file is released under // the Apache License, Version 2.0 which can be found at the calendrical_calculations // package root or at http://www.apache.org/licenses/LICENSE-2.0. //! This file contains important structs and functions relating to location, //! time, and astronomy; these are intended for calender calculations and based off //! _Calendrical Calculations_ by Reingold & Dershowitz. // TODO(#3709): Address inconcistencies with existing ICU code for extreme dates. use crate::error::LocationOutOfBoundsError; use crate::helpers::{binary_search, i64_to_i32, invert_angular, next_moment, poly}; use crate::rata_die::{Moment, RataDie}; use core::f64::consts::PI; #[allow(unused_imports)] use core_maths::*; // TODO: this isn't f64::div_euclid as defined in std. Figure out what the call sites // mean to do. fn div_euclid_f64(n: f64, d: f64) -> f64 { debug_assert!(d > 0.0); let (a, b) = (n / d, n % d); if n >= 0.0 || b == 0.0 { a } else { a - 1.0 } } #[derive(Debug, Copy, Clone, PartialEq)] /// A Location on the Earth given as a latitude, longitude, elevation, and standard time zone. /// Latitude is given in degrees from -90 to 90, longitude in degrees from -180 to 180, /// elevation in meters, and zone as a UTC offset in fractional days (ex. UTC+1 would have zone = 1.0 / 24.0) #[allow(clippy::exhaustive_structs)] // This is all that is needed by the book algorithms pub struct Location {",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "src/astronomy.rs",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "// This file is part of ICU4X. // // The contents of this file implement algorithms from Calendrical Calculations // by Reingold & Dershowitz, Cambridge University Press, 4th edition (2018), // which have been released as Lisp code at <https://github.com/EdReingold/calendar-code2/> // under the Apache-2.0 license. Accordingly, this file is released under // the Apache License, Version 2.0 which can be found at the calendrical_calculations // package root or at http://www.apache.org/licenses/LICENSE-2.0. use crate::helpers::{i64_to_i32, I32CastError}; use crate::rata_die::RataDie; pub(crate) const COPTIC_EPOCH: RataDie = crate::julian::fixed_from_julian(284, 8, 29); /// Lisp code reference: <https://github.com/EdReingold/calendar-code2/blob/1ee51ecfaae6f856b0d7de3e36e9042100b4f424/calendar.l#L1973> #[inline(always)] pub const fn is_leap_year(year: i32) -> bool { // The book uses year % 4 == 3, which does not behave correctly for negative numbers (year + 1) % 4 == 0 } /// Lisp code reference: <https://github.com/EdReingold/calendar-code2/blob/1ee51ecfaae6f856b0d7de3e36e9042100b4f424/calendar.l#L1978> pub fn fixed_from_coptic(year: i32, month: u8, day: u8) -> RataDie { COPTIC_EPOCH - 1 + 365 * (year as i64 - 1) + year.div_euclid(4) as i64 + 30 * (month as i64 - 1) + day as i64 } /// Lisp code reference: <https://github.com/EdReingold/calendar-code2/blob/1ee51ecfaae6f856b0d7de3e36e9042100b4f424/calendar.l#L1990> pub fn coptic_from_fixed(date: RataDie) -> Result<(i32, u8, u8), I32CastError> { let year = (4 * (date - COPTIC_EPOCH) + 1463).div_euclid(1461); let year = i64_to_i32(year)?; let month = ((date - fixed_from_coptic(year, 1, 1)).div_euclid(30) + 1) as u8; // <= 12 < u8::MAX let day = (date + 1 - fixed_from_coptic(year, month, 1)) as u8; // <= days_in_month < u8::MAX Ok((year, month, day)) }",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "src/coptic.rs",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "// This file is part of ICU4X. // // The contents of this file implement algorithms from Calendrical Calculations // by Reingold & Dershowitz, Cambridge University Press, 4th edition (2018), // which have been released as Lisp code at <https://github.com/EdReingold/calendar-code2/> // under the Apache-2.0 license. Accordingly, this file is released under // the Apache License, Version 2.0 which can be found at the calendrical_calculations // package root or at http://www.apache.org/licenses/LICENSE-2.0. use displaydoc::Display; /// A list of error outcomes for exceeding location bounds #[derive(Display, Debug, Copy, Clone, PartialEq)] #[non_exhaustive] pub enum LocationOutOfBoundsError { /// Latitude value was out of bounds #[displaydoc(\"Latitude {0} outside bounds of -90 to 90\")] Latitude(f64), /// Longitude value was out of bounds #[displaydoc(\"Longitude {0} outside bounds of -180 to 180\")] Longitude(f64), /// Offset value was out of bounds #[displaydoc(\"Offset {0} outside bounds of {1} to {2}\")] Offset(f64, f64, f64), } impl core::error::Error for LocationOutOfBoundsError {}",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "src/error.rs",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "// This file is part of ICU4X. // // The contents of this file implement algorithms from Calendrical Calculations // by Reingold & Dershowitz, Cambridge University Press, 4th edition (2018), // which have been released as Lisp code at <https://github.com/EdReingold/calendar-code2/> // under the Apache-2.0 license. Accordingly, this file is released under // the Apache License, Version 2.0 which can be found at the calendrical_calculations // package root or at http://www.apache.org/licenses/LICENSE-2.0. use crate::helpers::I32CastError; use crate::rata_die::RataDie; const ETHIOPIC_TO_COPTIC_OFFSET: i64 = super::coptic::COPTIC_EPOCH.since(crate::julian::fixed_from_julian(8, 8, 29)); /// Lisp code reference: <https://github.com/EdReingold/calendar-code2/blob/1ee51ecfaae6f856b0d7de3e36e9042100b4f424/calendar.l#L2017> pub fn fixed_from_ethiopian(year: i32, month: u8, day: u8) -> RataDie { crate::coptic::fixed_from_coptic(year, month, day) - ETHIOPIC_TO_COPTIC_OFFSET } /// Lisp code reference: <https://github.com/EdReingold/calendar-code2/blob/1ee51ecfaae6f856b0d7de3e36e9042100b4f424/calendar.l#L2028> pub fn ethiopian_from_fixed(date: RataDie) -> Result<(i32, u8, u8), I32CastError> { crate::coptic::coptic_from_fixed(date + ETHIOPIC_TO_COPTIC_OFFSET) }",
+    "gt": [
+      "apache-2.0"
+    ],
+    "tag": "Apache-2.0",
+    "lang": "src/ethiopian.rs",
+    "scancode": "apache-2.0",
+    "residual": "A"
+  },
+  {
+    "text": "#!/bin/sh # # Find users whose last login is greater or less than the specified arguments. # Needs the userinfo utility from http://userinfo.sourceforge.net/. # # Copyright (c) 2003-2004 Ben Kibbey <bjk@arbornet.org> # Distributed under the terms of the General Public License version 2 or later. # # $Log: lastusers.sh,v $ # Revision 2.0 2004-12-05 19:44:23 bjk # Initial revision # # Revision 1.6 2004/11/21 18:48:07 bjk # Updated to work with userinfo 2.0 (included in the archive). # # Revision 1.5 2004/05/01 19:10:37 bjk # Changed option -b to -l. # # Displaying users who have never logged in is off by default. Specify with -n. # # Revision 1.4 2003/03/01 19:30:44 bjk # Changed option -a to -b to specify logins before the arguments. # # Added options -s, -m, -r to specify seconds, minutes and hours. # # Revision 1.3 2003/03/01 16:14:46 bjk # Added option -a to specify logins after the arguments. # # Revision 1.2 2003/02/26 17:43:22 bjk # Dont run userinfo on matches. Dump only the username. # # Added option -n to suppress users who have never logged in. # # Revision 1.1 2003/02/22 20:57:18 bjk # Initial commit. # # PN=\"`basename $0`\"; MINUTE=60; HOUR=3600;",
+    "gt": [
+      "gpl-2.0-plus"
+    ],
+    "tag": "GPL-2+",
+    "lang": "contrib/lastusers.sh",
+    "scancode": "gpl-2.0-plus AND bootloader-exception",
+    "residual": "A"
+  },
+  {
+    "text": "#!/usr/bin/env python # This file is part of Xpra. # Copyright (C) 2017-2019 Antoine Martin <antoine@xpra.org> # Xpra is released under the terms of the GNU GPL v2, or, at your option, any # later version. See the file LICENSE for details. import sys import os.path import shutil def glob_recurse(srcdir): m = {} for root, _, files in os.walk(srcdir): for f in files: dirname = root[len(srcdir)+1:] filename = os.path.join(root, f) m.setdefault(dirname, []).append(filename) return m def get_status_output(*args, **kwargs): import subprocess kwargs[\"stdout\"] = subprocess.PIPE kwargs[\"stderr\"] = subprocess.PIPE try: p = subprocess.Popen(*args, **kwargs) except Exception as e: print(\"error running %s,%s: %s\" % (args, kwargs, e)) return -1, \"\", \"\" stdout, stderr = p.communicate() return p.returncode, stdout.decode(\"utf-8\"), stderr.decode(\"utf-8\") def install_symlink(symlink_options, dst): for symlink_option in symlink_options: if symlink_option.find(\"*\"): import glob #this is a glob, find at least one match: matches = glob.glob(symlink_option)",
+    "gt": [
+      "gpl-2.0-plus"
+    ],
+    "tag": "GPL-2+",
+    "lang": "setup_html5.py",
+    "scancode": "gpl-2.0",
+    "residual": "A"
+  }
+]

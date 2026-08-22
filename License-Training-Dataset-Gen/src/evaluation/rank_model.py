@@ -157,6 +157,57 @@ def fit(records, seed=0):
     return model, scaler
 
 
+def conformal_threshold(records, alpha: float = 0.10, seed: int = 0) -> dict:
+    """Split-conformal calibration of the accept threshold.
+
+    Nonconformity for a candidate is ``1 - P(correct)``. Calibrating on a disjoint
+    half and taking the ``ceil((n+1)(1-alpha))/n`` empirical quantile yields a
+    probability floor with a coverage guarantee, rather than a number found by grid
+    search. The three set sizes it produces are the three behaviours the engine
+    already has — empty is an abstention, one is an answer, several is an ambiguity.
+
+    The guarantee is **conditional on the correct licence being retrievable at all**.
+    Calibration can only use queries whose candidate list contains the truth (864 of
+    1,002 here), so for the rest no threshold can help and the statement does not
+    cover them. It is also marginal, not per-licence: class-conditional coverage
+    needs roughly 100 calibration points per class against the ~27 available.
+    """
+    solvable = [r for r in records if any(r["y"])]
+    others = [r for r in records if not any(r["y"])]
+    rng = np.random.default_rng(seed)
+    order = rng.permutation(len(solvable))
+    cal_idx, test_idx = order[: len(order) // 2], order[len(order) // 2:]
+
+    def score_with(fitted, r):
+        model, scaler = fitted
+        return model.predict_proba(
+            scaler.transform(_matrix(np.asarray(r["x"], float)[:, _columns()])))[:, 1]
+
+    # Each half is scored by a model fit on the other, so calibration and test scores
+    # are exchangeable — scoring calibration data with a model that saw it would make
+    # the quantile optimistic and the guarantee void.
+    on_test = fit([solvable[i] for i in cal_idx] + others)
+    on_cal = fit([solvable[i] for i in test_idx] + others)
+
+    cal = np.array([1.0 - score_with(on_cal, solvable[i])[int(np.argmax(solvable[i]["y"]))]
+                    for i in cal_idx])
+    n = len(cal)
+    k = min(int(np.ceil((n + 1) * (1 - alpha))), n)
+    qhat = float(np.sort(cal)[k - 1])
+
+    covered = sizes = 0
+    for i in test_idx:
+        r = solvable[i]
+        p = score_with(on_test, r)
+        keep = [j for j in range(len(p)) if (1.0 - p[j]) <= qhat]
+        sizes += len(keep)
+        covered += any(r["y"][j] for j in keep)
+    return {"alpha": alpha, "qhat": qhat, "accept": round(1.0 - qhat, 4),
+            "calibration_n": n, "realised_coverage": round(covered / len(test_idx), 4),
+            "mean_set_size": round(sizes / len(test_idx), 3),
+            "retrievable": f"{len(solvable)}/{len(records)}"}
+
+
 def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.ArgumentParser:
     ap = ap or argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--rebuild", action="store_true", help="re-extract features")
@@ -165,9 +216,11 @@ def build_parser(ap: argparse.ArgumentParser | None = None) -> argparse.Argument
                     help="hold out a whole license family — tests whether the model "
                          "learned a general ranking rule or memorised per-family "
                          "feature signatures")
-    ap.add_argument("--accept", type=float, default=0.30,
-                    help="learned reject option: accept the top candidate above this "
-                         "probability. Chosen from the held-out risk-coverage curve.")
+    ap.add_argument("--accept", type=float, default=None,
+                    help="accept the top candidate above this probability. Omit to "
+                         "derive it by split-conformal calibration at --alpha.")
+    ap.add_argument("--alpha", type=float, default=0.10,
+                    help="target miscoverage for conformal calibration of --accept")
     ap.add_argument("--save", type=Path, default=None,
                     help="fit on everything and write the artifact for Cascade to load")
     ap.add_argument("--cross-corpus", action="store_true",
@@ -263,6 +316,18 @@ def main(argv=None) -> None:
 
     if args.save:
         import joblib
+        conformal = None
+        accept = args.accept
+        if accept is None:
+            conformal = conformal_threshold(records, args.alpha)
+            accept = conformal["accept"]
+            print(f"\nconformal calibration at alpha={args.alpha}: accept >= {accept} "
+                  f"(qhat {conformal['qhat']:.4f}, n={conformal['calibration_n']})")
+            print(f"  realised coverage {conformal['realised_coverage']} "
+                  f"(target {1 - args.alpha:.2f}), mean set size "
+                  f"{conformal['mean_set_size']}")
+            print(f"  guarantee is conditional on the licence being retrievable: "
+                  f"{conformal['retrievable']} queries")
         model, scaler = fit([r for r in records if any(r["y"])])
         args.save.parent.mkdir(parents=True, exist_ok=True)
         # Families seen in training. Outside them the model is measurably worse than
@@ -270,7 +335,7 @@ def main(argv=None) -> None:
         families = sorted({family(n) for r in records
                            for n, lab in zip(r["names"], r["y"]) if lab})
         joblib.dump({"model": model, "scaler": scaler, "families": families,
-                     "accept": args.accept,
+                     "accept": accept, "conformal": conformal,
                      "features": FEATURE_NAMES, "n_queries": len(records)}, args.save)
         print(f"  trained families ({len(families)}): {', '.join(families)}")
         print(f"\nwrote ranker artifact -> {args.save} "

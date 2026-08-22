@@ -15,7 +15,7 @@
   "unreachable_gt": 0,
   "agent": {
     "exact_set": 0.8263,
-    "licenses_per_file": 1.056,
+    "licenses_per_file": 1.069,
     "n": 671,
     "answered": 639,
     "coverage": 0.9523,

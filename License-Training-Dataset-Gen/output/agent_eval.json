@@ -1,6 +1,6 @@
 {
   "config": {
-    "corpus": "debian",
+    "corpus": "spdx-tag",
     "per_lang": "0",
     "max_per_license": "150",
     "snapshot": "None",
@@ -9,79 +9,79 @@
     "no_ranker": "False",
     "dump_residual": "None"
   },
-  "n_notice": 671,
-  "n_scored": 671,
-  "n_no_signal": 1379,
+  "n_notice": 266,
+  "n_scored": 266,
+  "n_no_signal": 2145,
   "unreachable_gt": 0,
   "agent": {
-    "exact_set": 0.8263,
-    "licenses_per_file": 1.069,
-    "n": 671,
-    "answered": 639,
-    "coverage": 0.9523,
-    "correct": 558,
-    "precision_at_answered": 0.8732,
-    "recall_at_1": 0.8316,
+    "exact_set": 0.5992,
+    "licenses_per_file": 1.0,
+    "n": 266,
+    "answered": 257,
+    "coverage": 0.9662,
+    "correct": 251,
+    "precision_at_answered": 0.9767,
+    "recall_at_1": 0.9436,
     "unmapped_answers": 0
   },
-  "no_signal_answered": 76,
+  "no_signal_answered": 35,
   "sweep": [
     {
       "strong_run": 8,
-      "answered": 654,
-      "coverage": 0.9747,
-      "precision": 0.792,
-      "recall_at_1": 0.772
+      "answered": 262,
+      "coverage": 0.985,
+      "precision": 0.916,
+      "recall_at_1": 0.9023
     },
     {
       "strong_run": 12,
-      "answered": 647,
-      "coverage": 0.9642,
-      "precision": 0.7898,
-      "recall_at_1": 0.7615
+      "answered": 260,
+      "coverage": 0.9774,
+      "precision": 0.9269,
+      "recall_at_1": 0.906
     },
     {
       "strong_run": 16,
-      "answered": 646,
-      "coverage": 0.9627,
-      "precision": 0.791,
-      "recall_at_1": 0.7615
+      "answered": 260,
+      "coverage": 0.9774,
+      "precision": 0.9269,
+      "recall_at_1": 0.906
     },
     {
       "strong_run": 20,
-      "answered": 646,
-      "coverage": 0.9627,
-      "precision": 0.791,
-      "recall_at_1": 0.7615
+      "answered": 260,
+      "coverage": 0.9774,
+      "precision": 0.9269,
+      "recall_at_1": 0.906
     },
     {
       "strong_run": 24,
-      "answered": 643,
-      "coverage": 0.9583,
-      "precision": 0.7869,
-      "recall_at_1": 0.7541
+      "answered": 260,
+      "coverage": 0.9774,
+      "precision": 0.9269,
+      "recall_at_1": 0.906
     },
     {
       "strong_run": 30,
-      "answered": 643,
-      "coverage": 0.9583,
-      "precision": 0.7869,
-      "recall_at_1": 0.7541
+      "answered": 260,
+      "coverage": 0.9774,
+      "precision": 0.9269,
+      "recall_at_1": 0.906
     },
     {
       "strong_run": 40,
-      "answered": 643,
-      "coverage": 0.9583,
-      "precision": 0.7869,
-      "recall_at_1": 0.7541
+      "answered": 260,
+      "coverage": 0.9774,
+      "precision": 0.9192,
+      "recall_at_1": 0.8985
     }
   ],
   "scancode": {
-    "n": 671,
-    "answered": 664,
-    "coverage": 0.9896,
-    "correct": 558,
-    "precision_at_answered": 0.8404,
-    "recall_at_1": 0.8316
+    "n": 266,
+    "answered": 256,
+    "coverage": 0.9624,
+    "correct": 249,
+    "precision_at_answered": 0.9727,
+    "recall_at_1": 0.9361
   }
 }

@@ -38,6 +38,7 @@ SUITES = {
     "debian-dep5": ("evaluation.debian", "Debian DEP-5: independent labels and the licence tail"),
     "rank-model": ("evaluation.rank_model", "learned candidate scoring vs the hand-tuned rank key"),
     "sh-blobs": ("evaluation.sh_blobs", "Software Heritage blobs: the licence-granularity training corpus"),
+    "sh-prevalence": ("evaluation.sh_prevalence", "prevalence-weighted tail benchmark (the macro one's companion)"),
 }
 
 

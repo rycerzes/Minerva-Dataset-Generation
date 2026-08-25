@@ -14,66 +14,66 @@
   "n_no_signal": 2145,
   "unreachable_gt": 0,
   "agent": {
-    "exact_set": 0.5992,
-    "licenses_per_file": 1.0,
+    "exact_set": 0.9004,
+    "licenses_per_file": 1.36,
     "n": 266,
-    "answered": 257,
-    "coverage": 0.9662,
+    "answered": 261,
+    "coverage": 0.9812,
     "correct": 251,
-    "precision_at_answered": 0.9767,
+    "precision_at_answered": 0.9617,
     "recall_at_1": 0.9436,
     "unmapped_answers": 0
   },
-  "no_signal_answered": 35,
+  "no_signal_answered": 42,
   "sweep": [
     {
       "strong_run": 8,
       "answered": 262,
       "coverage": 0.985,
-      "precision": 0.916,
-      "recall_at_1": 0.9023
+      "precision": 0.5496,
+      "recall_at_1": 0.5414
     },
     {
       "strong_run": 12,
       "answered": 260,
       "coverage": 0.9774,
-      "precision": 0.9269,
-      "recall_at_1": 0.906
+      "precision": 0.5577,
+      "recall_at_1": 0.5451
     },
     {
       "strong_run": 16,
       "answered": 260,
       "coverage": 0.9774,
-      "precision": 0.9269,
-      "recall_at_1": 0.906
+      "precision": 0.5577,
+      "recall_at_1": 0.5451
     },
     {
       "strong_run": 20,
       "answered": 260,
       "coverage": 0.9774,
-      "precision": 0.9269,
-      "recall_at_1": 0.906
+      "precision": 0.5577,
+      "recall_at_1": 0.5451
     },
     {
       "strong_run": 24,
       "answered": 260,
       "coverage": 0.9774,
-      "precision": 0.9269,
-      "recall_at_1": 0.906
+      "precision": 0.5615,
+      "recall_at_1": 0.5489
     },
     {
       "strong_run": 30,
       "answered": 260,
       "coverage": 0.9774,
-      "precision": 0.9269,
-      "recall_at_1": 0.906
+      "precision": 0.5615,
+      "recall_at_1": 0.5489
     },
     {
       "strong_run": 40,
       "answered": 260,
       "coverage": 0.9774,
-      "precision": 0.9192,
-      "recall_at_1": 0.8985
+      "precision": 0.5615,
+      "recall_at_1": 0.5489
     }
   ],
   "scancode": {

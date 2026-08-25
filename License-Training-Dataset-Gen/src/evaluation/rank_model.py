@@ -39,6 +39,18 @@ FEATURES = ROOT / "cache" / "rank_features.json"
 # Imported, never redeclared: inference uses the same code, and a silent mismatch
 # between training and inference features would poison every score without erroring.
 from atarashi.libs.ranker import FEATURE_NAMES, family, featurize  # noqa: E402
+from atarashi.libs.references import expression_components  # noqa: E402
+
+
+def candidate_keys(shortname: str, k2: dict[str, str]) -> set[str] | None:
+    """The reference keys a candidate attests to, or None if any component is unmapped.
+
+    A candidate may be a whole expression since the index carries compound rules, so
+    the comparison against ground truth is set against set. ``None`` means the
+    candidate cannot be scored, which is not the same as being wrong.
+    """
+    keys = {k2.get(part) for part in expression_components(shortname)}
+    return None if None in keys else keys
 
 
 def extract(agent, rows, k2, corpus: str, regime: str = "notice") -> list[dict]:
@@ -47,6 +59,15 @@ def extract(agent, rows, k2, corpus: str, regime: str = "notice") -> list[dict]:
     No-signal queries are included with an all-zero label vector. They are what teaches
     the model to say "none of these" — without them its probabilities only ever rank
     candidates against each other and cannot support an accept/abstain decision.
+
+    A candidate is correct when the set of licenses it attests to *equals* the ground
+    truth, not when it merely contains one of them. Anything looser rewards adding an
+    exception to a file that does not carry one: on a plain GPL-2.0-or-later file,
+    ``GPL-2.0-or-later WITH Classpath-exception-2.0`` is the wrong answer, and under
+    "any component matches" the model would be taught it is right. Set equality also
+    aligns the training target with exact-set — the metric a reviewer consumes —
+    without costing R@1, since a correct compound answer still reports its primary
+    license first.
     """
     out = []
     for r in rows:
@@ -54,7 +75,7 @@ def extract(agent, rows, k2, corpus: str, regime: str = "notice") -> list[dict]:
         if not hits:
             continue
         labels = [0] * len(hits) if regime == "no-signal" else [
-            1 if k2.get(h.shortname) in r["gt"] else 0 for h in hits]
+            1 if candidate_keys(h.shortname, k2) == set(r["gt"]) else 0 for h in hits]
         out.append({
             "corpus": corpus,
             "regime": regime,

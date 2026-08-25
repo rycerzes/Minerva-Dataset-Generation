@@ -72,7 +72,7 @@ def load_license_list() -> "pd.DataFrame":
 
 
 def load_agent(strong_run: int | None = None, min_coverage: float | None = None,
-               use_ranker: bool = True):
+               use_ranker: bool = True, top_k: int | None = None):
     """The agent under test, on its shipped license list.
 
     The gate is switched off deliberately. ``libs/gate.py`` imports ``nirjas.gate``,
@@ -84,7 +84,9 @@ def load_agent(strong_run: int | None = None, min_coverage: float | None = None,
     from atarashi.libs.decision import DEFAULT_MIN_COVERAGE, DEFAULT_STRONG_RUN
 
     df = load_license_list()
+    from atarashi.libs.sequence import DEFAULT_TOP_K
     return Cascade(df, use_gate=False, use_ranker=use_ranker,
+                   top_k=DEFAULT_TOP_K if top_k is None else top_k,
                    strong_run=DEFAULT_STRONG_RUN if strong_run is None else strong_run,
                    min_coverage=DEFAULT_MIN_COVERAGE if min_coverage is None else min_coverage), df
 

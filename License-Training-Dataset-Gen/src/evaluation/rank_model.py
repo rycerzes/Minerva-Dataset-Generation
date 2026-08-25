@@ -71,7 +71,8 @@ def extract(agent, rows, k2, corpus: str, regime: str = "notice") -> list[dict]:
     """
     out = []
     for r in rows:
-        hits = agent.matcher.match(r["text"], min_run=agent.min_run)
+        hits = agent.matcher.match(r["text"], min_run=agent.min_run,
+                                   top_k=getattr(agent, "top_k", 5))
         if not hits:
             continue
         labels = [0] * len(hits) if regime == "no-signal" else [

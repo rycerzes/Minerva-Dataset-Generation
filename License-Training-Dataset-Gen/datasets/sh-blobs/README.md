@@ -95,3 +95,33 @@ excluded as multi-licence, leaving 99.9% of scored blobs under 50 KB.
 The last row is why this corpus exists. Both head corpora are notice-regime and the
 tail benchmark holds one Apache-2.0 file, so a defect costing 45% of the most common
 permissive licence in the verbatim regime was invisible until the pool was scored whole.
+
+## Provenance, licensing and attribution
+
+Derived from the **Software Heritage License Dataset (2022 edition)**, published on
+Zenodo under **CC-BY-4.0**. Attribution is the condition of that licence and is given
+here and in `evaluation/sh_blobs.py`:
+
+> Gonzalez-Barahona, J.M., Montes-Leon, S., Robles, G., Zacchiroli, S.
+> *The Software Heritage License Dataset (2022 Edition).*
+> Empirical Software Engineering, Springer.
+> Dataset: https://zenodo.org/records/8200352 · https://annex.softwareheritage.org/public/dataset/license-blobs/
+
+> Zacchiroli, S. *A Large-scale Dataset of (Open Source) License Text Variants.*
+> MSR 2022.
+
+**Why `tail_corpus.json.gz` carries text and the manifests do not** is a practical
+split, not a legal one. The manifests are large and the blobs bulk-download in one
+command, so shipping hashes costs a reproducer nothing. The tail set cannot be
+rebuilt that way — 120 anonymous requests per hour against the content API — so
+withholding its 81 files would put a day's wait between a reader and a number this
+repository quotes.
+
+The blobs themselves are **LICENSE files**: the texts of open source licences, each
+under its own terms, filtered to rows a human annotator confirmed *are* licence files.
+Redistributing licence texts is ordinary and already established here — `atarashi`
+ships 774 full licence texts in `processedLicenses.csv` and ~28k ScanCode rule texts
+in `notice_rules.json`. 81 more, credited, is the same act at a smaller scale.
+
+The selection, the grouping by blob, the manifests and the measured results are part of
+this repository.

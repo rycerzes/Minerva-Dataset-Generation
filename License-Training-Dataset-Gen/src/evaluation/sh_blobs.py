@@ -13,6 +13,9 @@ at full granularity, plus 8,102 human-annotated rows used as the tail benchmark.
       blobs-scancode.csv.zst    116M   sha1,license,score
       licenses-annotated-sample.tar.gz  808K  human ground truth (benchmark, not this)
 
+Released under CC-BY-4.0; cite Gonzalez-Barahona, Montes-Leon, Robles and Zacchiroli,
+"The Software Heritage License Dataset (2022 Edition)", Empirical Software Engineering.
+
 **Labels here are ScanCode's, so this corpus distils ScanCode's variant knowledge
 rather than being independent of it.** That is why it is training data only: the
 human-annotated sample and the DEP-5 / SPDX-tag corpora stay as the evaluation sets,

@@ -96,6 +96,19 @@ The last row is why this corpus exists. Both head corpora are notice-regime and 
 tail benchmark holds one Apache-2.0 file, so a defect costing 45% of the most common
 permissive licence in the verbatim regime was invisible until the pool was scored whole.
 
+## Published
+
+`hf/` holds the redistributable form, built by
+`uv run src/evaluation/export_hf_sh.py` and intended for
+**`rycerzes/atarashi-sh-blobs`** on HuggingFace, alongside `rycerzes/atarashi-dep5`.
+Four configs: `prevalence`, `training`, `tail`, `baseline`. The two large ones ship as
+pointers with `hf/rehydrate.py` to attach text from the SH annex and verify each blob
+against its sha1 — spot-checked at 1,997/1,997 exact. `tail` ships text inline.
+
+The card leads with the label caveat rather than burying it: on HuggingFace this will
+be found by people looking for a licence-detection benchmark, and it is a distillation
+of one scanner's output.
+
 ## Provenance, licensing and attribution
 
 Derived from the **Software Heritage License Dataset (2022 edition)**, published on
